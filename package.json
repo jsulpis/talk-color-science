@@ -9,10 +9,15 @@
 		"preview": "astro preview"
 	},
 	"dependencies": {
+		"@astrojs/svelte": "5.4.0",
 		"astro": "4.6.2",
-		"reveal.js": "5.1.0"
+		"reveal.js": "5.1.0",
+		"svelte": "4.2.15",
+		"typescript": "5.4.5"
 	},
 	"devDependencies": {
-		"sass": "1.75.0"
+		"@jaames/iro": "5.5.2",
+		"sass": "1.75.0",
+		"vanilla-colorful": "0.7.2"
 	}
 }

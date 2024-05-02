@@ -14,5 +14,8 @@ const { animate = true, ...attrs } = Astro.props;
 ---
 
 <section data-auto-animate={animate} {...attrs}>
-	<slot />
+	<!-- sometimes the auto-animate feature doesn't work depending on the content, this extra div seems to fix it -->
+	<div>
+		<slot />
+	</div>
 </section>

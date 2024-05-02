@@ -1,10 +1,26 @@
 ---
 import Slide from "../../components/Slide.astro";
+import ColorMix from "./ColorMix.svelte";
+import child from "./assets/child.webp";
+import meme from "./assets/qui-s-en-fout.webp";
+import ColorPicker from "./ColorPicker.svelte";
 ---
 
 <Slide>
 	<h1>C'est quoi la couleur ? 🤔</h1>
 </Slide>
+
+<Slide data-background-image={child.src} />
+
+<Slide>
+	<ColorMix client:visible />
+</Slide>
+
+<Slide>
+	<ColorPicker client:visible />
+</Slide>
+
+<Slide data-background-image={meme.src} />
 
 <style lang="scss">
 	h1 {

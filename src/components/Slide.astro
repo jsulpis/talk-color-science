@@ -1,16 +1,18 @@
 ---
-interface Props {
-  /**
-   * Use the auto-animate feature for this slide or not
-   *
-   * default: true
-   */
-  animate?: boolean;
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"section"> {
+	/**
+	 * Use the auto-animate feature for this slide or not
+	 *
+	 * default: true
+	 */
+	animate?: boolean;
 }
 
-const { animate = true } = Astro.props;
+const { animate = true, ...attrs } = Astro.props;
 ---
 
-<section data-auto-animate={animate}>
-  <slot />
+<section data-auto-animate={animate} {...attrs}>
+	<slot />
 </section>

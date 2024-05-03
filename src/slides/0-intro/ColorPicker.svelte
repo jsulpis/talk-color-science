@@ -2,7 +2,7 @@
 	import { onMount } from "svelte";
 	import iro from "@jaames/iro";
 
-	let color = "#101011";
+	let color = "#111";
 	let picker;
 
 	onMount(() => {

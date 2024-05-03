@@ -1,9 +1,17 @@
 ---
 import Slide from "../../components/Slide.astro";
 import ColorMix from "./ColorMix.svelte";
+import ColorPicker from "./ColorPicker.svelte";
 import child from "./assets/child.webp";
 import meme from "./assets/qui-s-en-fout.webp";
-import ColorPicker from "./ColorPicker.svelte";
+import srgb from "./assets/srgb.png";
+import p3 from "./assets/srgb+p3.png";
+import codepen from "./assets/screenshot-codepen.png";
+import figma from "./assets/screenshot-figma.png";
+import recording from "./assets/recording.mov";
+import framesCodepen from "./assets/frames-codepen.png";
+import framesFigma from "./assets/frames-figma.png";
+import framesVideo from "./assets/frames-video.png";
 ---
 
 <Slide>
@@ -22,8 +30,36 @@ import ColorPicker from "./ColorPicker.svelte";
 
 <Slide data-background-image={meme.src} />
 
+<Slide data-background-image={figma.src} data-background-size="contain">
+	<img src={framesFigma.src} class="fragment" />
+</Slide>
+<Slide data-background-image={codepen.src} data-background-size="contain">
+	<img src={framesCodepen.src} class="fragment" />
+</Slide>
+
+<Slide
+	data-background-video={recording}
+	data-background-video-loop
+	data-background-size="contain"
+>
+	<img src={framesVideo.src} />
+</Slide>
+
+<Slide data-background-image={srgb.src} data-background-size="contain" />
+<Slide
+	data-background-image={p3.src}
+	data-background-size="contain"
+	data-background-transition="none"
+/>
+
 <style lang="scss">
 	h1 {
 		font-size: 4rem;
+	}
+	img {
+		display: block;
+		margin: auto;
+		height: 100dvh;
+		object-fit: contain;
 	}
 </style>

@@ -1,0 +1,20 @@
+---
+import hsb1 from "./assets/hsb-circle/Group 1.png";
+import hsb2 from "./assets/hsb-circle/Group 2.png";
+import hsb3 from "./assets/hsb-circle/Group 3.png";
+import hsb4 from "./assets/hsb-circle/Group 4.png";
+import hsb5 from "./assets/hsb-circle/Group 5.png";
+import hsb6 from "./assets/hsb-circle/Group 6.png";
+import hsb7 from "./assets/hsb-circle/Group 7.png";
+import srgb from "../0-intro/assets/srgb.png";
+import ImageStack from "../../components/ImageStack.astro";
+import Slide from "../../components/Slide.astro";
+
+const hsbImages = [srgb, hsb1, hsb2, hsb3, hsb4, hsb5, hsb6, hsb7].map(
+	({ src }) => src
+);
+---
+
+<Slide>
+	<ImageStack images={hsbImages} />
+</Slide>

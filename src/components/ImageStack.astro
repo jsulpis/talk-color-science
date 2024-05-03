@@ -1,0 +1,26 @@
+---
+interface Props {
+	images: string[];
+}
+
+const { images } = Astro.props;
+---
+
+<div class="stack">
+	{images.map((src, i) => <img class={i > 0 ? "fragment" : ""} src={src} />)}
+</div>
+
+<style>
+	.stack {
+		height: 100vh;
+		width: 100vw;
+	}
+
+	img {
+		position: absolute;
+		inset: 0;
+		height: 100%;
+		margin: auto;
+		object-fit: contain;
+	}
+</style>

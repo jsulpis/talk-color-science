@@ -1,0 +1,47 @@
+---
+import cones from "./assets/cones.png";
+import rod from "./assets/rod.png";
+---
+
+<div class="container">
+	<img class="rod" src={rod.src} />
+	<img class="cones" src={cones.src} />
+
+	<span class="rod fragment"><span>Bâtonnets</span></span>
+	<span class="cones fragment">Cônes</span>
+</div>
+
+<style lang="scss">
+	span.rod,
+	span.cones {
+		border-top: 0.1em solid;
+		padding-top: 0.4em;
+		position: relative;
+
+		&::before,
+		&::after {
+			content: "|";
+			position: absolute;
+			font-size: 0.5em;
+			font-weight: bold;
+			left: -0.5ch;
+			bottom: 100%;
+		}
+		&::after {
+			right: -0.5ch;
+			left: unset;
+		}
+	}
+	img.rod {
+		width: 50%;
+		justify-self: center;
+	}
+	.container {
+		margin: auto;
+		display: grid;
+		width: min(90vmin, 900px);
+		grid-template: auto auto / minmax(0, 4fr) minmax(0, 7fr);
+		align-items: end;
+		gap: 50px;
+	}
+</style>

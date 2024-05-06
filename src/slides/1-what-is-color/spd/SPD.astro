@@ -1,0 +1,78 @@
+---
+import Arrow from "../../../components/Arrow.astro";
+---
+
+<script>
+	import { useGlslCanvas } from "../../../webgl/renderer";
+	import fragment from "./spd.frag";
+	import common from "./spd.common.frag";
+
+	useGlslCanvas({
+		canvas: document.querySelector("#spd-monochromatic")!,
+		animate: true,
+		fragment: common + "\n" + fragment,
+	});
+</script>
+
+<div class="container">
+	<canvas id="spd-monochromatic"></canvas>
+	<div class="axis">
+		<Arrow class="arrow" height="6" tip="right" />
+		<span class="label">380</span>
+		<span class="label">480</span>
+		<span class="label">580</span>
+		<span class="label">680</span>
+		<span class="label">780</span>
+		<span class="lambda"><strong>λ</strong>(nm)</span>
+	</div>
+</div>
+
+<style lang="scss">
+	.container {
+		position: relative;
+		font-size: 2rem;
+	}
+	canvas {
+		height: 100dvh;
+		width: 100dvw;
+	}
+	.axis {
+		position: absolute;
+		top: 65%;
+		left: 50%;
+		transform: translateX(-45%);
+		width: 70%;
+		display: flex;
+		justify-content: space-between;
+
+		.arrow {
+			position: absolute;
+			top: 0;
+			left: 50%;
+			width: 115%;
+			transform: translate(-50%, -50%);
+		}
+
+		.label {
+			position: relative;
+			line-height: 2em;
+
+			&::before {
+				content: "|";
+				font-size: 0.5em;
+				font-weight: bold;
+				position: absolute;
+				top: -2.1em;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+		}
+
+		.lambda {
+			position: absolute;
+			left: 104%;
+			line-height: 2em;
+			display: flex;
+		}
+	}
+</style>

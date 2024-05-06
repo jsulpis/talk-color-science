@@ -1,0 +1,38 @@
+---
+import Slide from "../../components/Slide.astro";
+import ConeCells from "./Cells.astro";
+import ConesSensitivity from "./cones/LMS.astro";
+import Waves from "./waves/Waves.astro";
+import cells from "./assets/cells.png";
+import SPD from "./spd/SPD.astro";
+---
+
+<Slide>
+	<h1>Qu'est-ce que la couleur ?</h1>
+</Slide>
+
+<Slide>
+	<Waves />
+</Slide>
+
+<Slide>
+	<ConeCells />
+</Slide>
+
+<Slide>
+	<ConesSensitivity />
+</Slide>
+
+<Slide>
+	<img class="cells" src={cells.src} />
+</Slide>
+
+<Slide>
+	<SPD />
+</Slide>
+
+<style>
+	img.cells {
+		width: min(90%, 1600px);
+	}
+</style>

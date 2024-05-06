@@ -1,0 +1,39 @@
+---
+import lmsNormalized from "../assets/lms-normalized.png";
+---
+
+<script>
+	import { useGlslCanvas } from "../../../webgl/renderer";
+	import fragment from "./lms.frag";
+	import common from "./lms.common.frag";
+
+	useGlslCanvas({
+		canvas: document.querySelector("#lms-sensitivity")!,
+		fragment: common + "\n" + fragment,
+	});
+</script>
+
+<div class="container">
+	<canvas id="lms-sensitivity"></canvas>
+	<img src={lmsNormalized.src} />
+</div>
+
+<style>
+	.container {
+		position: relative;
+		width: min(70%, 1200px);
+		margin: auto;
+	}
+	canvas {
+		width: 100%;
+		aspect-ratio: 2;
+	}
+	img {
+		position: absolute;
+		width: 120%;
+		left: -6%;
+		bottom: -5.5%;
+		max-width: none;
+		max-height: none;
+	}
+</style>

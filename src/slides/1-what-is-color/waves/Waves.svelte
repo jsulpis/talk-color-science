@@ -1,16 +1,14 @@
----
-import Arrow from "../../../components/Arrow.astro";
----
-
-<script>
+<script lang="ts">
+	import { onMount } from "svelte";
 	import { useGlslCanvas } from "../../../webgl/renderer";
 	import fragment from "./waves.frag";
+	import Arrow from "../../../components/Arrow.svelte";
 
-	const canvas = document.querySelector<HTMLCanvasElement>(
-		"#monochromatic-waves"
-	)!;
+	let canvas: HTMLCanvasElement;
 
-	useGlslCanvas({ canvas, fragment });
+	onMount(() => {
+		useGlslCanvas({ canvas, fragment });
+	});
 </script>
 
 <div class="container">
@@ -20,7 +18,7 @@ import Arrow from "../../../components/Arrow.astro";
 		</span>
 		<Arrow />
 	</div>
-	<canvas id="monochromatic-waves"></canvas>
+	<canvas bind:this={canvas}></canvas>
 </div>
 
 <style lang="scss">

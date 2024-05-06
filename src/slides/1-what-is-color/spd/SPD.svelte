@@ -1,23 +1,26 @@
----
-import Arrow from "../../../components/Arrow.astro";
----
-
-<script>
+<script lang="ts">
 	import { useGlslCanvas } from "../../../webgl/renderer";
 	import fragment from "./spd.frag";
 	import common from "./spd.common.frag";
+	import { onMount } from "svelte";
+	import Arrow from "../../../components/Arrow.svelte";
 
-	useGlslCanvas({
-		canvas: document.querySelector("#spd-monochromatic")!,
-		animate: true,
-		fragment: common + "\n" + fragment,
+	let canvas: HTMLCanvasElement;
+
+	onMount(() => {
+		useGlslCanvas({
+			canvas,
+			fragment: common + "\n" + fragment,
+			animate: true,
+		});
 	});
 </script>
 
 <div class="container">
-	<canvas id="spd-monochromatic"></canvas>
+	<canvas bind:this={canvas}></canvas>
+
 	<div class="axis">
-		<Arrow class="arrow" height="6" tip="right" />
+		<Arrow class="arrow" height={6} tip="right" />
 		<span class="label">380</span>
 		<span class="label">480</span>
 		<span class="label">580</span>
@@ -45,7 +48,7 @@ import Arrow from "../../../components/Arrow.astro";
 		display: flex;
 		justify-content: space-between;
 
-		.arrow {
+		:global(.arrow) {
 			position: absolute;
 			top: 0;
 			left: 50%;

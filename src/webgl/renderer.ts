@@ -21,6 +21,7 @@ type Args = Omit<MaterialOptions, "vertex" | "compute"> & {
 
 export function useGlslCanvas<CustomUniforms>({
 	canvas,
+	animate,
 	...materialOptions
 }: Args) {
 	const renderer = new WebGLRenderer({ canvas });
@@ -65,6 +66,8 @@ export function useGlslCanvas<CustomUniforms>({
 
 	const mesh = new Mesh(geometry, material);
 
+	renderer.render(mesh, camera);
+
 	const rafCallbacks: Function[] = [];
 
 	/**
@@ -82,14 +85,21 @@ export function useGlslCanvas<CustomUniforms>({
 
 	const uniforms = mesh.material.uniforms;
 
-	requestAnimationFrame(function animate() {
-		requestAnimationFrame(animate);
+	if (animate) {
+		requestAnimationFrame(function animate() {
+			requestAnimationFrame(animate);
 
-		rafCallbacks.forEach((callback) => callback());
+			if (!canvas.closest("section:not(.stack).present")) {
+				// skip animation when the slide is not visible to save processing power
+				return true;
+			}
 
-		(uniforms.uTime as number) += 0.01;
-		renderer.render(mesh, camera);
-	});
+			rafCallbacks.forEach((callback) => callback());
+
+			(uniforms.uTime as number) += 0.01;
+			renderer.render(mesh, camera);
+		});
+	}
 
 	window.addEventListener("resize", () => {
 		const quality = uniforms.uQuality as number;
@@ -103,7 +113,11 @@ export function useGlslCanvas<CustomUniforms>({
 			canvas.clientWidth,
 			canvas.clientHeight,
 		];
+
+		renderer.render(mesh, camera);
 	});
+
+	canvas.classList.add("loaded");
 
 	return {
 		renderer,

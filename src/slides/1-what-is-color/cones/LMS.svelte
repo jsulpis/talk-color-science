@@ -1,21 +1,23 @@
----
-import lmsNormalized from "../assets/lms-normalized.png";
----
-
-<script>
+<script lang="ts">
 	import { useGlslCanvas } from "../../../webgl/renderer";
 	import fragment from "./lms.frag";
 	import common from "./lms.common.frag";
+	import lmsNormalized from "../assets/lms-normalized.png";
+	import { onMount } from "svelte";
 
-	useGlslCanvas({
-		canvas: document.querySelector("#lms-sensitivity")!,
-		fragment: common + "\n" + fragment,
+	let canvas: HTMLCanvasElement;
+
+	onMount(() => {
+		useGlslCanvas({
+			canvas,
+			fragment: common + "\n" + fragment,
+		});
 	});
 </script>
 
 <div class="container">
-	<canvas id="lms-sensitivity"></canvas>
-	<img src={lmsNormalized.src} />
+	<canvas bind:this={canvas}></canvas>
+	<img src={lmsNormalized.src} alt="" />
 </div>
 
 <style>

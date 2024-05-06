@@ -16,7 +16,7 @@
 #define BEAM_WIDTH .04
 #define PADDING_TOP .3
 #define PADDING_BOTTOM .75
-#define GRAPH_LINE_THICKNESS 1.5
+#define GRAPH_LINE_THICKNESS 3.
 
 #define PI acos(-1.)
 
@@ -33,8 +33,8 @@
 
 
 float getMonochromaticWavelength() {
-    float lmin = L_MIN + 0.;
-    float lmax = L_MAX - 0.;
+    float lmin = L_MIN + 10.;
+    float lmax = L_MAX - 70.;
     return mix(lmin, lmax, (sin(uTime/2. - PI/2.) + 1.) / 2.);
 }
 
@@ -105,7 +105,7 @@ void main( ) {
         #if MODE == MONOCHROMATIC
             col = wl2xyz(w) * .5;
         #else
-            col = wl2xyz(w) * fPower * 2.;
+            col = wl2xyz(w) * fPower * 3.;
         #endif
 
     } else if (uv.y > .1 && abs(uv.x) < 1.) {
@@ -121,7 +121,7 @@ void main( ) {
             float t = (fragCoord.x/uResolution.x - .5)/(1. - fragCoord.y/uResolution.y - PADDING_TOP * .45) + .45;
             float w = mix(L_MIN, L_MAX, t);
             float fPower = SPD(w);
-            col = wl2xyz(w) * fPower * smoothstep(-.3, .5, uv.y);
+            col = wl2xyz(w) * fPower * smoothstep(-.3, .5, uv.y) * 2.;
 
             // compute the resulting color
             vec3 lightColor = vec3(0.);

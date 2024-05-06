@@ -37,7 +37,7 @@ const { title } = Astro.props;
 	</body>
 </html>
 
-<style is:global>
+<style is:global lang="scss">
 	@import "reveal.js/dist/reveal.css";
 	@import "reveal.js/dist/theme/night.css";
 	@import "../../src/styles/highlightjs-theme-vs2015.css";
@@ -75,5 +75,14 @@ const { title } = Astro.props;
 		max-width: 100%;
 		max-height: 100%;
 		margin: 0;
+	}
+
+	canvas {
+		opacity: 0;
+
+		&.loaded {
+			opacity: 1;
+			transition: opacity 0.2s ease-out;
+		}
 	}
 </style>

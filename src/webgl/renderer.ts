@@ -86,10 +86,12 @@ export function useGlslCanvas<CustomUniforms>({
 	const uniforms = mesh.material.uniforms;
 
 	if (animate) {
+		const parentSection = canvas.closest("section:not(.stack)");
+
 		requestAnimationFrame(function animate() {
 			requestAnimationFrame(animate);
 
-			if (!canvas.closest("section:not(.stack).present")) {
+			if (!parentSection?.classList.contains("present")) {
 				// skip animation when the slide is not visible to save processing power
 				return true;
 			}

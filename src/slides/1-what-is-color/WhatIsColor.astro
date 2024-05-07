@@ -3,8 +3,8 @@ import Slide from "../../components/Slide.astro";
 import Cells from "./Cells.astro";
 import LMS from "./cones/LMS.svelte";
 import Waves from "./waves/Waves.svelte";
-import cellsAndBrain from "./assets/cells.png";
 import SPD from "./spd/SPD.svelte";
+import CellsBrain from "./CellsBrain.astro";
 ---
 
 <Slide>
@@ -24,33 +24,9 @@ import SPD from "./spd/SPD.svelte";
 </Slide>
 
 <Slide>
-	<div class="container">
-		<img class="cells" src={cellsAndBrain.src} />
-		<a href="https://blog.ophtalmique.ch/2021/03/04/cones-batonnets/">
-			https://blog.ophtalmique.ch/2021/03/04/cones-batonnets/
-		</a>
-	</div>
+	<CellsBrain />
 </Slide>
 
 <Slide>
 	<SPD client:visible />
 </Slide>
-
-<style>
-	.container {
-		height: 100dvh;
-		display: grid;
-		place-items: center;
-	}
-	img.cells {
-		width: min(90%, 1600px);
-	}
-	img.cells + a {
-		position: absolute;
-		bottom: 1rem;
-		left: 1rem;
-		font-size: 0.75rem;
-		color: currentColor;
-		opacity: 0.3;
-	}
-</style>

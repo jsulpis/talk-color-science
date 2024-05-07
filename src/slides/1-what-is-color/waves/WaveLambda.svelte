@@ -3,6 +3,7 @@
 	import { useGlslCanvas } from "../../../webgl/renderer";
 	import fragment from "./wave.frag";
 	import Arrow from "../../../components/Arrow.svelte";
+	import MonochromaticWaveCanvas from "./MonochromaticWaveCanvas.svelte";
 
 	let canvas: HTMLCanvasElement;
 
@@ -18,10 +19,13 @@
 		</span>
 		<Arrow />
 	</div>
-	<canvas bind:this={canvas}></canvas>
+	<MonochromaticWaveCanvas class="canvas" />
 </div>
 
 <style lang="scss">
+	.container :global(.canvas) {
+		width: min(90%, 1400px);
+	}
 	.lambda {
 		position: absolute;
 		left: 50%;
@@ -35,9 +39,5 @@
 	.symbol strong {
 		font-size: 1.5em;
 		font-weight: bold;
-	}
-	canvas {
-		width: min(90%, 1400px);
-		aspect-ratio: 1200/900;
 	}
 </style>

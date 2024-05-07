@@ -7,11 +7,19 @@
 
 	let canvas: HTMLCanvasElement;
 
+	export let mode: 1 | 2 | 3 | 4;
+
 	onMount(() => {
 		useGlslCanvas({
 			canvas,
-			fragment: common + "\n" + fragment,
-			animate: true,
+			fragment:
+				common +
+				"\n" +
+				fragment.replace(
+					/#define MODE (MONOCHROMATIC)/,
+					`#define MODE ${mode}`,
+				),
+			animate: mode !== 4,
 		});
 	});
 </script>
@@ -20,7 +28,7 @@
 	<canvas bind:this={canvas}></canvas>
 
 	<div class="axis">
-		<Arrow class="arrow" height={6} tip="right" />
+		<Arrow class="arrow" height={4} tip="right" />
 		<span class="label">380</span>
 		<span class="label">480</span>
 		<span class="label">580</span>
@@ -35,7 +43,6 @@
 		position: relative;
 		font-size: 1.7rem;
 		height: 100dvh;
-		// left: -5%;
 	}
 	canvas {
 		height: 80dvh;

@@ -24,9 +24,10 @@
 //  Choose a mode here  //
 //======================//
 
-#define BLACKBODY 1
-#define NOISE 2
-#define MONOCHROMATIC 3
+#define MONOCHROMATIC 1
+#define BLACKBODY 2
+#define NOISE 3
+#define WHITE 4
 
 #define MODE MONOCHROMATIC
 
@@ -73,8 +74,11 @@ float SPD(float l_nm) {
     #elif MODE == MONOCHROMATIC
         return 1. - step(1., abs(l_nm - getMonochromaticWavelength()));
 
+    #elif MODE == WHITE
+        return .2;
+
     #else
-        return 1.;
+        return .2;
     #endif
 }
 
@@ -101,20 +105,20 @@ void main( ) {
     float w = mix(L_MIN, L_MAX, spectrumUV.x);
     float fPower = SPD(w);
 
-    if (uv.y < .1 && uv.y > -1. + PADDING_BOTTOM) {
+    if (uv.y < 0. && uv.y > -1. + PADDING_BOTTOM) {
         #if MODE == MONOCHROMATIC
             col = wl2xyz(w);
         #else
-            col = wl2xyz(w) * fPower * 3.;
+            col = wl2xyz(w) * fPower * 5.;
         #endif
 
-    } else if (uv.y > .1 && abs(uv.x) < 1.) {
+    } else if (uv.y > 0. && abs(uv.x) < 1.) {
         #if MODE == MONOCHROMATIC
             vec3 beamColor =  wl2xyz(getMonochromaticWavelength());
             float beamDist = sdBox(uv, vec2(BEAM_WIDTH/2., 100.));
             beamDist = clamp(beamDist, 0., 1.);
             float beamIntensity = pow(1. - beamDist, 150.) + .2 * pow(1. - beamDist, 40.);
-            beamIntensity *= smoothstep(0., .5, uv.y);
+            beamIntensity *= smoothstep(-.1, .5, uv.y);
             col = mix(col, beamColor, beamIntensity);
         #else
             // radial gradient, inspired by @izutionix: https://www.shadertoy.com/view/wtsyDl (l.31)
@@ -161,7 +165,7 @@ void main( ) {
     #if MODE == MONOCHROMATIC
         float wl = getMonochromaticWavelength();
         vec3 lms = .2 * waveToLms(w, vec3(0.)) * waveToLms(wl, vec3(0.));
-        float spdGraph = smoothstep(wl - 1., wl, w) * smoothstep(wl+1., wl, w) * smoothstep(.8, .78, spectrumUV.y) * smoothstep(-.1, -.08, spectrumUV.y);
+        float spdGraph = smoothstep(wl - 1., wl, w) * smoothstep(wl+1., wl, w) * smoothstep(.6, .58, spectrumUV.y) * smoothstep(-.1, -.08, spectrumUV.y);
     #else
         vec3 lms = waveToLms(w, vec3(0.)) * fPower * 1.2;
         vec2 spdUV = spectrumUV * vec2(1., .25);
@@ -171,7 +175,9 @@ void main( ) {
     col = col * XYZ_WGRGB;
 		col = reinhard_extended(col, 1.5);
 
-    col = mix(col, vec3(1.), spdGraph);
+		#if MODE != WHITE
+    	col = mix(col, vec3(1.), spdGraph);
+		#endif
 
     vec2 lmsGraphUV = (spectrumUV + vec2(0., 1.3)) * vec2(1., .3);
     col = mix(col, vec3(1., 0.02, 0.), getGraphShape(lms.x, lmsGraphUV, true)); // long - red

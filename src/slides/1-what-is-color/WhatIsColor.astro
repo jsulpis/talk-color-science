@@ -7,6 +7,8 @@ import SPD from "./spd/SPD.svelte";
 import CellsBrain from "./CellsBrain.astro";
 import WaveIntensity from "./waves/WaveIntensity.svelte";
 import ColorDefinition from "./ColorDefinition.astro";
+import WaveSuperposition from "./waves/WaveSuperposition.svelte";
+import MonochromaticWaveCanvas from "./waves/MonochromaticWaveCanvas.svelte";
 ---
 
 <Slide>
@@ -30,11 +32,35 @@ import ColorDefinition from "./ColorDefinition.astro";
 </Slide>
 
 <Slide>
-	<SPD client:visible />
+	<SPD client:visible mode={1} />
 </Slide>
 
 <Slide>
 	<WaveIntensity client:visible />
+</Slide>
+
+<Slide>
+	<h2>C'est quoi le blanc ?</h2>
+</Slide>
+
+<Slide>
+	<MonochromaticWaveCanvas frequency={5} client:visible style="width: 1000px" />
+</Slide>
+
+<Slide>
+	<WaveSuperposition client:visible />
+</Slide>
+
+<Slide>
+	<SPD client:visible mode={4} />
+</Slide>
+
+<Slide>
+	<SPD client:visible mode={2} />
+</Slide>
+
+<Slide>
+	<SPD client:visible mode={3} />
 </Slide>
 
 <Slide>

@@ -112,7 +112,7 @@ void main( ) {
             col = wl2xyz(w) * fPower * 5.;
         #endif
 
-    } else if (uv.y > 0. && abs(uv.x) < 1.) {
+    } else if (uv.y > 0. && abs(uv.x) < .6) {
         #if MODE == MONOCHROMATIC
             vec3 beamColor =  wl2xyz(getMonochromaticWavelength());
             float beamDist = sdBox(uv, vec2(BEAM_WIDTH/2., 100.));
@@ -128,6 +128,7 @@ void main( ) {
             col = wl2xyz(w) * fPower * smoothstep(-.3, .5, uv.y) * 2.;
 
             // compute the resulting color
+						// note: I keep that here for simplicity but this should be computed in the vertex shader for better performance
             vec3 lightColor = vec3(0.);
             for(float wl = L_MIN; wl < L_MAX; wl += 5.0) {
                 vec3 vCurrXYZ = wl2xyz(wl);

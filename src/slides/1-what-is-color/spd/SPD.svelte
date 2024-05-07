@@ -5,9 +5,17 @@
 	import { onMount } from "svelte";
 	import Arrow from "../../../components/Arrow.svelte";
 
+	enum Mode {
+		MONOCHROMATIC = 1,
+		BLACKBODY = 2,
+		NOISE = 3,
+		WHITE = 4,
+	}
+
 	let canvas: HTMLCanvasElement;
 
-	export let mode: 1 | 2 | 3 | 4;
+	export let mode: Mode;
+	export let showSPDAxis = false;
 
 	onMount(() => {
 		useGlslCanvas({
@@ -19,7 +27,7 @@
 					/#define MODE (MONOCHROMATIC)/,
 					`#define MODE ${mode}`,
 				),
-			animate: mode !== 4,
+			animate: mode !== Mode.WHITE,
 		});
 	});
 </script>
@@ -35,6 +43,16 @@
 		<span class="label">680</span>
 		<span class="label">780</span>
 		<span class="lambda"><strong>λ</strong>(nm)</span>
+
+		{#if showSPDAxis}
+			<Arrow
+				class="fragment arrow spd"
+				height={32}
+				tip="right"
+				data-fragment-index="1"
+			/>
+			<strong class="fragment spd" data-fragment-index="1">DSP(λ)</strong>
+		{/if}
 	</div>
 </div>
 
@@ -63,6 +81,20 @@
 			left: 50%;
 			width: 115%;
 			transform: translate(-50%, -50%);
+		}
+		:global(.arrow.spd) {
+			position: absolute;
+			left: 0;
+			bottom: 100%;
+			width: 16dvh;
+			transform: translate(0%, -100%) rotate(-90deg);
+			transform-origin: bottom left;
+		}
+		strong.spd {
+			position: absolute;
+			left: 0;
+			transform: translateX(-50%);
+			bottom: min(23dvh, 300px);
 		}
 
 		.label {

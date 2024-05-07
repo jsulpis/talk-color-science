@@ -9,6 +9,8 @@ import WaveIntensity from "./waves/WaveIntensity.svelte";
 import ColorDefinition from "./ColorDefinition.astro";
 import WaveSuperposition from "./waves/WaveSuperposition.svelte";
 import MonochromaticWaveCanvas from "./waves/MonochromaticWaveCanvas.svelte";
+import meme from "../0-intro/assets/qui-s-en-fout.webp";
+import CodeBlock from "../../components/CodeBlock.astro";
 ---
 
 <Slide>
@@ -60,9 +62,26 @@ import MonochromaticWaveCanvas from "./waves/MonochromaticWaveCanvas.svelte";
 </Slide>
 
 <Slide>
-	<SPD client:visible mode={3} />
+	<SPD client:visible mode={3} showSPDAxis={true} />
 </Slide>
 
 <Slide>
 	<ColorDefinition />
+</Slide>
+
+<Slide data-background-image={meme.src} />
+
+<Slide>
+	<h2>À quoi ça sert ?</h2>
+</Slide>
+
+<Slide>
+	<CodeBlock lang="css"
+		>{
+			`body {
+	background-color: ???;
+}
+`
+		}
+	</CodeBlock>
 </Slide>

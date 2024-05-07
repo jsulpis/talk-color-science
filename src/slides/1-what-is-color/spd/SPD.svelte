@@ -33,15 +33,17 @@
 <style lang="scss">
 	.container {
 		position: relative;
-		font-size: 2rem;
+		font-size: 1.7rem;
+		height: 100dvh;
+		// left: -5%;
 	}
 	canvas {
-		height: 100dvh;
+		height: 80dvh;
 		width: 100dvw;
 	}
 	.axis {
 		position: absolute;
-		top: 65%;
+		top: 50%;
 		left: 50%;
 		transform: translateX(-45%);
 		width: 70%;

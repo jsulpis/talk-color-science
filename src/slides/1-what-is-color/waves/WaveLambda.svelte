@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 	import { useGlslCanvas } from "../../../webgl/renderer";
-	import fragment from "./waves.frag";
+	import fragment from "./wave.frag";
 	import Arrow from "../../../components/Arrow.svelte";
 
 	let canvas: HTMLCanvasElement;
@@ -39,9 +39,5 @@
 	canvas {
 		width: min(90%, 1400px);
 		aspect-ratio: 1200/900;
-	}
-	svg {
-		width: 100%;
-		height: auto;
 	}
 </style>

@@ -2,9 +2,10 @@
 import Slide from "../../components/Slide.astro";
 import Cells from "./Cells.astro";
 import LMS from "./cones/LMS.svelte";
-import Waves from "./waves/Waves.svelte";
+import Waves from "./waves/WaveLambda.svelte";
 import SPD from "./spd/SPD.svelte";
 import CellsBrain from "./CellsBrain.astro";
+import WaveIntensity from "./waves/WaveIntensity.svelte";
 ---
 
 <Slide>
@@ -29,4 +30,8 @@ import CellsBrain from "./CellsBrain.astro";
 
 <Slide>
 	<SPD client:visible />
+</Slide>
+
+<Slide>
+	<WaveIntensity client:visible />
 </Slide>

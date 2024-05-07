@@ -17,9 +17,15 @@ vec3 wl2xyz(in float w){
 }
 
 // http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html
-const mat3 XYZ2SRGB = mat3(3.2404542, -1.5371385, -0.4985314,
-                           -0.9692660, 1.8760108, 0.0415560,
-                           0.0556434, -0.2040259, 1.0572252);
+const mat3 XYZ_WGRGB = mat3( 1.4628067, -0.1840623, -0.2743606,
+                            -0.5217933,  1.4472381,  0.0677227,
+                             0.0349342, -0.0968930,  1.2884099);
+
+// https://64.github.io/tonemapping/#extended-reinhard
+vec3 reinhard_extended(vec3 v, float max_white) {
+	vec3 numerator = v * (1.0f + (v / vec3(max_white * max_white)));
+	return numerator / (1.0f + v);
+}
 
 // x = current wavelength
 // u = control point wavelength

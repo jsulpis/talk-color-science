@@ -103,7 +103,7 @@ void main( ) {
 
     if (uv.y < .1 && uv.y > -1. + PADDING_BOTTOM) {
         #if MODE == MONOCHROMATIC
-            col = wl2xyz(w) * .5;
+            col = wl2xyz(w);
         #else
             col = wl2xyz(w) * fPower * 3.;
         #endif
@@ -168,15 +168,15 @@ void main( ) {
         float spdGraph = getGraphShape(fPower, spdUV, false);
     #endif
 
+    col = col * XYZ_WGRGB;
+		col = reinhard_extended(col, 1.5);
+
     col = mix(col, vec3(1.), spdGraph);
 
     vec2 lmsGraphUV = (spectrumUV + vec2(0., 1.3)) * vec2(1., .3);
-    col = mix(col, vec3(1., .5, 0.), getGraphShape(lms.x, lmsGraphUV, true)); // long - red
-    col = mix(col, vec3(0.5, 1., 0.), getGraphShape(lms.y, lmsGraphUV, true)); // medium - green
-    col = mix(col, vec3(0.2, 0.3, 1.), getGraphShape(lms.z, lmsGraphUV, true)); // short - blue
-
-    col = col * XYZ2SRGB;
-    col = clamp(col, 0., 1.);
+    col = mix(col, vec3(1., 0.02, 0.), getGraphShape(lms.x, lmsGraphUV, true)); // long - red
+    col = mix(col, vec3(0., 1., 0.), getGraphShape(lms.y, lmsGraphUV, true)); // medium - green
+    col = mix(col, vec3(0., 0.36, 1.), getGraphShape(lms.z, lmsGraphUV, true)); // short - blue
 
     col = pow(col, vec3(1./2.2));
 

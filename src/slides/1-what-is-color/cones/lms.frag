@@ -1,6 +1,6 @@
 #define L_MIN 380.
 #define L_MAX 780.
-#define GRAPH_THICKNESS 1.5 + uQuality
+#define GRAPH_THICKNESS 3. + uQuality
 
 float getGraphShape(in float value, in vec2 uv) {
 	// by @FabriceNeyret2 https://www.shadertoy.com/view/lXlGRB
@@ -27,9 +27,9 @@ void main() {
 
 	vec3 lms = waveToLms(w, vec3(0.)) * .9;
 
-	col = mix(col, vec4(1., .05, 0., 1.), getGraphShape(lms.x * .9, uv)); // long - red
+	col = mix(col, vec4(1., 0.02, 0., 1.), getGraphShape(lms.x * .9, uv)); // long - red
 	col = mix(col, vec4(0., 1., 0., 1.), getGraphShape(lms.y, uv)); // medium - green
-	col = mix(col, vec4(0.1, 0.3, 1., 1.), getGraphShape(lms.z * .15, uv)); // short - blue
+	col = mix(col, vec4(0., 0.36, 1., 1.), getGraphShape(lms.z * .15, uv)); // short - blue
 
 	col = pow(col, vec4(1./2.2));
 

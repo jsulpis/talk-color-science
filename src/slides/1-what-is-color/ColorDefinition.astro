@@ -1,0 +1,37 @@
+<blockquote cite="https://fr.wikipedia.org/wiki/Couleur">
+	<p>
+		La couleur est la perception visuelle de l'aspect d'une surface ou d'une
+		lumière, basée sur la répartition spectrale de la lumière, qui stimule des
+		cellules nerveuses spécialisées situées sur la rétine nommées cônes.
+	</p>
+	<footer>Wikipédia</footer>
+</blockquote>
+
+<style>
+	blockquote {
+		width: 80%;
+		background: none;
+	}
+	p {
+		font-size: 3rem;
+		text-wrap: balance;
+	}
+	p::before,
+	p::after {
+		display: inline-block;
+		font-size: 300%;
+		height: 0;
+		margin: -0.25em 0.15em 0em -0.05em;
+		opacity: 0.2;
+		vertical-align: text-top;
+	}
+	p::before {
+		content: "\201c";
+	}
+	p::after {
+		content: "\201d";
+	}
+	footer {
+		text-align: end;
+	}
+</style>

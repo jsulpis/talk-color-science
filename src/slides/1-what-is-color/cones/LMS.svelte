@@ -24,17 +24,17 @@
 	.container {
 		position: relative;
 		width: min(70%, 1200px);
-		margin: auto;
+		margin: 2% auto 0;
 	}
 	canvas {
 		width: 100%;
-		aspect-ratio: 2;
+		aspect-ratio: 1.5;
 	}
 	img {
 		position: absolute;
 		width: 120%;
 		left: -6%;
-		bottom: -5.5%;
+		bottom: 16.5%;
 		max-width: none;
 		max-height: none;
 	}

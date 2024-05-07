@@ -8,7 +8,7 @@
 // Converts from a wavelength to LMS.
 // Constructed using multi-peak Gaussian functions generated using Labplot
 // and closely fitted to the CIE 2006 2° cone fundamentals created by Stockman & Sharp 2000).
-vec3 waveToLms(float wave, vec3 amount) {
+vec3 waveToLms(float wave) {
 	const vec3[5] lParams = vec3[](
 		vec3(449.682, 21.6622, 2.36612),
 		vec3(477.589, 11.0682, 1.39883),
@@ -55,4 +55,19 @@ vec3 waveToLms(float wave, vec3 amount) {
 		gauss(wave, sParams[3].x, sParams[3].y, sParams[3].z) +
 		gauss(wave, sParams[4].x, sParams[4].y, sParams[4].z)
 	)/sqrt(2.0*PI);
+}
+
+// https://en.wikipedia.org/wiki/LMS_color_space#physiological_CMFs
+const mat3 LMS2XYZ = mat3(1.94735469, -1.41445123, 0.36476327,
+								  0.68990272, 0.34832189, 0.0,
+								  0.0, 0.0, 1.93485343);
+
+const mat3 XYZ_WGRGB = mat3(1.4628067, -0.1840623, -0.2743606,
+									-0.5217933, 1.4472381, 0.0677227,
+									0.0349342, -0.0968930, 1.2884099);
+
+// https://64.github.io/tonemapping/#extended-reinhard
+vec3 reinhard_extended(vec3 v, float max_white) {
+	vec3 numerator = v * (1.0f + (v / vec3(max_white * max_white)));
+	return numerator / (1.0f + v);
 }

@@ -95,7 +95,7 @@
 		aspect-ratio: 1;
 		border-radius: 100%;
 		box-shadow: inset 0 0 4px black;
-		background: #ffe600;
+		background: #ebc900;
 		justify-self: center;
 		transition: transform 1s var(--ease-in-out);
 
@@ -104,7 +104,7 @@
 		}
 	}
 	.reference.text {
-		color: #ffe600;
+		color: #ebc900;
 	}
 
 	.primaries.lights {
@@ -165,7 +165,7 @@
 		opacity: 0;
 
 		.container:global(.current-fragment) & {
-			transition: opacity 0.8s 0.2s var(--ease-in-out);
+			transition: opacity 0.9s 0.1s var(--ease-in-out);
 			opacity: 1;
 		}
 	}

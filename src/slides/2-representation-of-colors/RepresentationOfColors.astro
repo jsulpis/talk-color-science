@@ -1,5 +1,6 @@
 ---
 import Slide from "../../components/Slide.astro";
+import CIERGB from "./cie-rgb/CIERGB.svelte";
 import RGBExperiment from "./rgb-experiment/RGBExperiment.svelte";
 ---
 
@@ -9,6 +10,10 @@ import RGBExperiment from "./rgb-experiment/RGBExperiment.svelte";
 
 <Slide>
 	<RGBExperiment client:visible />
+</Slide>
+
+<Slide>
+	<CIERGB client:visible />
 </Slide>
 
 <Slide />

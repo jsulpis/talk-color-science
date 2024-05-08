@@ -7,7 +7,7 @@ float getGraphShape(in float value, in vec2 uv) {
 	float v = value - uv.y;
 	float graph = smoothstep(0., GRAPH_THICKNESS/2., GRAPH_THICKNESS - abs(v)/fwidth(v));
 
-	graph += .1 * step(0., uv.y) * (1. - step(value, uv.y));
+	graph += .1 * step(0., uv.y) * smoothstep(-.1, .1, uv.y) * (1. - step(value, uv.y));
 
 	return graph;
 }

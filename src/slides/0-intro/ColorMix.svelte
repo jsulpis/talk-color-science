@@ -77,6 +77,7 @@
 		width: calc(2 * var(--circle-radius));
 		aspect-ratio: 1;
 		border-radius: 100%;
+		box-shadow: inset 0 0 4px black;
 		mix-blend-mode: screen;
 		transition: transform var(--animation-duration) var(--ease-in-out);
 	}

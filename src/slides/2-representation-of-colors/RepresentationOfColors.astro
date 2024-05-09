@@ -1,6 +1,8 @@
 ---
 import Slide from "../../components/Slide.astro";
 import CIERGB from "./cie-rgb/CIERGB.svelte";
+import RGBMonochromaticExamples from "./cie-rgb/RGBMonochromaticExamples.astro";
+import RGBPolychromaticExamples from "./cie-rgb/RGBPolychromaticExamples.astro";
 import RGBExperiment from "./rgb-experiment/RGBExperiment.svelte";
 ---
 
@@ -16,4 +18,40 @@ import RGBExperiment from "./rgb-experiment/RGBExperiment.svelte";
 	<CIERGB client:visible />
 </Slide>
 
-<Slide />
+<Slide class="section">
+	<h3 class="fragment">CIE 1931 RGB</h3>
+	<div is:raw>
+		\[\begin{aligned} R = \bar{r}(\lambda)\\\\ G = \bar{g}(\lambda)\\\\ B =
+		\bar{b}(\lambda) \end{aligned} \]
+	</div>
+</Slide>
+
+<Slide class="section">
+	<h3>CIE 1931 RGB</h3>
+	<RGBMonochromaticExamples />
+</Slide>
+
+<Slide class="section">
+	<h3>CIE 1931 RGB</h3>
+	<div is:raw>
+		\[\begin{aligned} R = \int_{\lambda} DSP(\lambda)\ \bar{r}(\lambda)\
+		d\lambda \\ \\ G = \int_{\lambda} DSP(\lambda)\ \bar{g}(\lambda)\ d\lambda
+		\\ \\ B = \int_{\lambda} DSP(\lambda)\ \bar{b}(\lambda)\ d\lambda
+		\end{aligned} \]
+	</div>
+</Slide>
+
+<Slide class="section">
+	<h3>CIE 1931 RGB</h3>
+	<RGBPolychromaticExamples />
+</Slide>
+
+<style>
+	.section {
+		top: 0 !important;
+	}
+	h3 {
+		margin-top: 15dvh;
+		margin-bottom: 5rem;
+	}
+</style>

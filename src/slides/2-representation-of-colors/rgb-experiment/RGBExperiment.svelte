@@ -95,7 +95,7 @@
 		aspect-ratio: 1;
 		border-radius: 100%;
 		box-shadow: inset 0 0 4px black;
-		background: #ebc900;
+		background: #ffbe00;
 		justify-self: center;
 		transition: transform 1s var(--ease-in-out);
 
@@ -104,7 +104,7 @@
 		}
 	}
 	.reference.text {
-		color: #ebc900;
+		color: #ffbe00;
 	}
 
 	.primaries.lights {
@@ -201,7 +201,8 @@
 		.wavelength {
 			font-size: 1.5em;
 			text-decoration: underline;
-			text-decoration-thickness: 10px;
+			text-underline-offset: 0.3em;
+			text-decoration-thickness: 0.2em;
 		}
 
 		.red {

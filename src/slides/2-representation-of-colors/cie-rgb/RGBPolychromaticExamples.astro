@@ -1,0 +1,66 @@
+<div class="color white">
+	<span class="preview"></span> &RightArrow;
+	<strong class="value">0.142, 0.175, 0.184</strong>
+</div>
+
+<div class="color pink">
+	<span class="preview"></span> &RightArrow;
+	<strong class="value">0.137, 0.102, 0.110</strong>
+</div>
+
+<div class="color cyan">
+	<span class="preview"></span> &RightArrow;
+	<strong class="value">-0.029, 0.168, 0.182</strong>
+	<span class="circle fragment" data-fragment-index="1"></span>
+	<span class="emoji fragment" data-fragment-index="1">🤔</span>
+</div>
+
+<style lang="scss">
+	.color {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		margin-block: 3rem;
+		font-size: 2.5rem;
+	}
+
+	.wavelength {
+		font-size: 1em;
+	}
+	.value {
+		font-size: 1.3em;
+	}
+
+	.preview {
+		display: inline-block;
+		width: 1.5em;
+		aspect-ratio: 1;
+		border-radius: 100%;
+
+		.white & {
+			background: white;
+		}
+		.pink & {
+			background: pink;
+		}
+		.cyan & {
+			background: cyan;
+		}
+	}
+	.circle {
+		border-radius: 100%;
+		border: 10px solid red;
+		width: 3rem;
+		aspect-ratio: 1;
+		position: absolute;
+		left: 36.8%;
+		top: 82.8%;
+	}
+	.emoji {
+		position: absolute;
+		font-size: 5rem;
+		left: 38%;
+		top: 95%;
+	}
+</style>

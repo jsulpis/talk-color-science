@@ -3,7 +3,18 @@ import Slide from "../../components/Slide.astro";
 import CIERGB from "./cie-rgb/CIERGB.svelte";
 import RGBMonochromaticExamples from "./cie-rgb/RGBMonochromaticExamples.astro";
 import RGBPolychromaticExamples from "./cie-rgb/RGBPolychromaticExamples.astro";
+import CIEXYZ from "./cie-xyz/CIEXYZ.svelte";
+import Requirements from "./cie-xyz/Requirements.astro";
+import XYZExamples from "./cie-xyz/XYZExamples.astro";
 import RGBExperiment from "./rgb-experiment/RGBExperiment.svelte";
+import xyzVisible from "./assets/videos/XYZ-visible.webm";
+import xyVisible from "./assets/videos/xy-Z-visible.webm";
+import xyDiagram from "./assets/xy-base.png";
+import xyDiagramLambda from "./assets/xy-lambda.png";
+import xyColorMix from "./assets/xy-color-mix.png";
+import xyCieRgb from "./assets/xy-cie-rgb-1.png";
+import xyCieRgbWithLabel from "./assets/xy-cie-rgb-2.png";
+import ImageStack from "../../components/ImageStack.astro";
 ---
 
 <Slide>
@@ -18,40 +29,139 @@ import RGBExperiment from "./rgb-experiment/RGBExperiment.svelte";
 	<CIERGB client:visible />
 </Slide>
 
-<Slide class="section">
+<Slide class="section-with-title">
 	<h3 class="fragment">CIE 1931 RGB</h3>
 	<div is:raw>
-		\[\begin{aligned} R = \bar{r}(\lambda)\\\\ G = \bar{g}(\lambda)\\\\ B =
-		\bar{b}(\lambda) \end{aligned} \]
-	</div>
-</Slide>
-
-<Slide class="section">
-	<h3>CIE 1931 RGB</h3>
-	<RGBMonochromaticExamples />
-</Slide>
-
-<Slide class="section">
-	<h3>CIE 1931 RGB</h3>
-	<div is:raw>
-		\[\begin{aligned} R = \int_{\lambda} DSP(\lambda)\ \bar{r}(\lambda)\
-		d\lambda \\ \\ G = \int_{\lambda} DSP(\lambda)\ \bar{g}(\lambda)\ d\lambda
-		\\ \\ B = \int_{\lambda} DSP(\lambda)\ \bar{b}(\lambda)\ d\lambda
+		\[\begin{aligned}
+			R = \bar{r}(\lambda)\\ \\
+			G = \bar{g}(\lambda)\\ \\
+			B = \bar{b}(\lambda)
 		\end{aligned} \]
 	</div>
 </Slide>
 
-<Slide class="section">
+<Slide class="section-with-title">
+	<h3>CIE 1931 RGB</h3>
+	<RGBMonochromaticExamples />
+</Slide>
+
+<Slide class="section-with-title">
+	<h3>CIE 1931 RGB</h3>
+	<div is:raw>
+		\[\begin{aligned}
+			R = \int_{\lambda} DSP(\lambda)\ \bar{r}(\lambda)\ d\lambda \\ \\
+			G = \int_{\lambda} DSP(\lambda)\ \bar{g}(\lambda)\ d\lambda \\ \\
+			B = \int_{\lambda} DSP(\lambda)\ \bar{b}(\lambda)\ d\lambda
+		\end{aligned} \]
+	</div>
+</Slide>
+
+<Slide class="section-with-title">
 	<h3>CIE 1931 RGB</h3>
 	<RGBPolychromaticExamples />
 </Slide>
 
-<style>
-	.section {
+<Slide class="section-with-title">
+	<h3>🎅 Un nouvel espace de couleurs...</h3>
+	<Requirements />
+</Slide>
+
+<Slide class="section-with-title">
+	<h3>CIE 1931 XYZ</h3>
+	<div is:raw>
+		\[
+		\begin{pmatrix}
+			X \\
+			Y \\
+			Z \\
+		\end{pmatrix} =
+		\begin{pmatrix}
+			0.49000 & 0.31000 & 0.20000 \\
+			0.17697 & 0.81240 & 0.01063 \\
+			0.00000 & 0.01000 & 0.99000 \\
+		\end{pmatrix}
+		\begin{pmatrix}
+			R \\
+			G \\
+			B \\
+		\end{pmatrix}
+		\]
+	</div>
+</Slide>
+
+<Slide class="section-with-title">
+	<h3>CIE 1931 XYZ</h3>
+	<CIEXYZ client:visible />
+</Slide>
+
+
+<Slide class="section-with-title">
+	<h3>CIE 1931 XYZ</h3>
+	<XYZExamples />
+</Slide>
+
+<Slide data-background-color="white">
+	<video data-src={xyzVisible} loop data-autoplay></video>
+	<aside>Credits: <a href="https://commons.wikimedia.org/wiki/File:Visible_gamut_within_CIEXYZ_color_space_D65_whitepoint_mesh.webm">Michael Horvath, Christoph Lipka</a></aside>
+</Slide>
+
+<Slide data-background-color="white">
+	<div is:raw>
+		\[\begin{aligned}
+			Y &= Y \\ \\
+			x &= \frac{X}{X+Y+Z} \\ \\
+			y &= \frac{Y}{X+Y+Z} \\ \\
+		\end{aligned} \]
+	</div>
+</Slide>
+
+<Slide data-background-color="white">
+	<video data-src={xyVisible} loop data-autoplay></video>
+	<aside>Credits: <a href="https://commons.wikimedia.org/w/index.php?title=File:Visible_gamut_within_CIExyY_color_space_D65_whitepoint_mesh.webm">Michael Horvath, Christoph Lipka</a></aside>
+</Slide>
+
+<Slide data-background-color="white" class="section-with-title" animate={false}>
+	<h3 class="diagram">Diagramme de chromaticité CIE 1931 xy</h3>
+	<ImageStack class="diagram-pictures" images={[xyDiagram.src, xyDiagramLambda.src, xyColorMix.src, xyCieRgb.src, xyCieRgbWithLabel.src]} />
+</Slide>
+
+<style lang="scss">
+	.section-with-title {
 		top: 0 !important;
 	}
 	h3 {
 		margin-top: 15dvh;
 		margin-bottom: 5rem;
+
+		&.diagram {
+			margin-top: 5dvh;
+		}
+	}
+	.diagram-pictures {
+		height: 70dvh;
+		width: auto;
+		margin-top: -4%;
+	}
+	aside {
+		position: absolute;
+		font-size: .8rem;
+		bottom: 1.5rem;
+		left: 1.5rem;
+		opacity: .4;
+
+		a {
+			text-decoration: underline;
+			color: inherit;
+		}
+	}
+	section[data-background-color="white"] {
+		color: black;
+		height: 100dvh;
+		top: 0 !important;
+		display: grid !important;
+		place-items: center;
+	}
+	video {
+		height: 80dvh;
 	}
 </style>

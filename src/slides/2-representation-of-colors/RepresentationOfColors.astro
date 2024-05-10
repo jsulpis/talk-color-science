@@ -120,7 +120,7 @@ import ImageStack from "../../components/ImageStack.astro";
 	<aside>Credits: <a href="https://commons.wikimedia.org/w/index.php?title=File:Visible_gamut_within_CIExyY_color_space_D65_whitepoint_mesh.webm">Michael Horvath, Christoph Lipka</a></aside>
 </Slide>
 
-<Slide data-background-color="white" class="section-with-title" animate={false}>
+<Slide class="section-with-title diagram">
 	<h3 class="diagram">Diagramme de chromaticité CIE 1931 xy</h3>
 	<ImageStack class="diagram-pictures" images={[xyDiagram.src, xyDiagramLambda.src, xyColorMix.src, xyCieRgb.src, xyCieRgbWithLabel.src]} />
 </Slide>
@@ -134,7 +134,7 @@ import ImageStack from "../../components/ImageStack.astro";
 		margin-bottom: 5rem;
 
 		&.diagram {
-			margin-top: 5dvh;
+			margin-top: 10dvh;
 		}
 	}
 	.diagram-pictures {
@@ -154,10 +154,12 @@ import ImageStack from "../../components/ImageStack.astro";
 			color: inherit;
 		}
 	}
+	section.diagram {
+		height: 100dvh;
+	}
 	section[data-background-color="white"] {
 		color: black;
 		height: 100dvh;
-		top: 0 !important;
 		display: grid !important;
 		place-items: center;
 	}

@@ -11,6 +11,7 @@ import WaveSuperposition from "./waves/WaveSuperposition.svelte";
 import MonochromaticWaveCanvas from "./waves/MonochromaticWaveCanvas.svelte";
 import meme from "../0-intro/assets/qui-s-en-fout.webp";
 import CodeBlock from "../../components/CodeBlock.astro";
+import Question from "../../components/Question.astro";
 ---
 
 <Slide>
@@ -42,7 +43,7 @@ import CodeBlock from "../../components/CodeBlock.astro";
 </Slide>
 
 <Slide>
-	<h2>C'est quoi le blanc ?</h2>
+	<Question>C'est quoi le blanc ?</Question>
 </Slide>
 
 <Slide>
@@ -71,14 +72,15 @@ import CodeBlock from "../../components/CodeBlock.astro";
 
 <Slide data-background-image={meme.src} />
 
-<Slide>
-	<h2>À quoi ça sert ?</h2>
+<Slide animate={false}>
+	<Question>À quoi ça sert ?</Question>
 </Slide>
 
 <Slide>
-	<CodeBlock lang="css"  is:raw>
+	<CodeBlock lang="css" is:raw>
 body {
 	background-color: ???;
 }
-	</CodeBlock>
+
+</CodeBlock>
 </Slide>

@@ -21,6 +21,8 @@ import ImageStack from "../../components/ImageStack.astro";
 import PartTitle from "../../components/PartTitle.astro";
 import SrgbRGB from "./srgb/SrgbRGB.svelte";
 import SrgbRGB3d from "./srgb/SrgbRGB-3D.svelte";
+import SrgbHSV3d from "./srgb/SrgbHSV-3D.svelte";
+import SrgbHSV from "./srgb/SrgbHSV.svelte";
 ---
 
 <PartTitle>2. Comment représenter la couleur ?</PartTitle>
@@ -155,6 +157,16 @@ import SrgbRGB3d from "./srgb/SrgbRGB-3D.svelte";
 	<img class="hexa" src={hexa.src} />
 </Slide>
 
+<Slide class="section-with-title">
+	<h3>sRGB / HSV</h3>
+	<SrgbHSV client:visible />
+</Slide>
+
+<Slide class="section-with-title">
+	<h3>sRGB / HSV</h3>
+	<SrgbHSV3d client:visible />
+</Slide>
+
 <style lang="scss">
 	.section-with-title {
 		top: 0 !important;
@@ -195,5 +207,6 @@ import SrgbRGB3d from "./srgb/SrgbRGB-3D.svelte";
 	}
 	.hexa {
 		height: 40dvh;
+		margin-top: 5%;
 	}
 </style>

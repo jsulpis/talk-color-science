@@ -3,7 +3,7 @@
 	import iro from "@jaames/iro";
 
 	let color = "#b524ff";
-	let colorRgb = { r: 181, g: 36, b: 255 };
+	let colorHsv = { h: 280, s: 86, v: 100 };
 	let picker;
 
 	onMount(() => {
@@ -17,24 +17,19 @@
 			width: 350,
 			margin: 20,
 			layout: [
+				{ component: iro.ui.Box },
 				{
 					component: iro.ui.Slider,
-					options: { id: "red-slider", sliderType: "red" },
-				},
-				{
-					component: iro.ui.Slider,
-					options: { id: "green-slider", sliderType: "green" },
-				},
-				{
-					component: iro.ui.Slider,
-					options: { id: "blue-slider", sliderType: "blue" },
+					options: {
+						sliderType: "hue",
+					},
 				},
 			],
 		});
 
 		colorPicker.on("color:change", (value) => {
 			color = value.hexString;
-			colorRgb = value.rgb;
+			colorHsv = value.hsv;
 		});
 	});
 </script>
@@ -42,9 +37,13 @@
 <div>
 	<div class="container">
 		<div class="circle" style:background={color}></div>
-		<div class="picker rgb" bind:this={picker}></div>
+		<div class="picker hsv" bind:this={picker}></div>
 	</div>
-	<strong>{`rgb(${colorRgb.r}, ${colorRgb.g}, ${colorRgb.b})`}</strong>
+	<strong>
+		{`hsv(${colorHsv.h.toFixed(0)}deg,
+		${colorHsv.s.toFixed(0)}%,
+		${colorHsv.v.toFixed(0)}%)`}
+	</strong>
 </div>
 
 <style lang="scss">

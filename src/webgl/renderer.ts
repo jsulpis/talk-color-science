@@ -83,24 +83,39 @@ export function useGlslCanvas<CustomUniforms>({
 		rafCallbacks.push(callback);
 	}
 
+	const isPlaying = { value: false };
 	const uniforms = mesh.material.uniforms;
+	let rafHandle: number | null;
+	const parentSection = canvas.closest("section:not(.stack)");
+
+	function loop() {
+		rafHandle = requestAnimationFrame(loop);
+
+		if (!parentSection?.classList.contains("present")) {
+			// skip animation when the slide is not visible to save processing power
+			return true;
+		}
+
+		rafCallbacks.forEach((callback) => callback());
+
+		(uniforms.uTime as number) += 0.01;
+		renderer.render(mesh, camera);
+	}
+
+	function pause() {
+		if (rafHandle != undefined) {
+			cancelAnimationFrame(rafHandle);
+			rafHandle = null;
+			isPlaying.value = false;
+		}
+	}
+	function play() {
+		isPlaying.value = true;
+		rafHandle = requestAnimationFrame(loop);
+	}
 
 	if (animate) {
-		const parentSection = canvas.closest("section:not(.stack)");
-
-		requestAnimationFrame(function animate() {
-			requestAnimationFrame(animate);
-
-			if (!parentSection?.classList.contains("present")) {
-				// skip animation when the slide is not visible to save processing power
-				return true;
-			}
-
-			rafCallbacks.forEach((callback) => callback());
-
-			(uniforms.uTime as number) += 0.01;
-			renderer.render(mesh, camera);
-		});
+		play();
 	}
 
 	window.addEventListener("resize", () => {
@@ -124,6 +139,9 @@ export function useGlslCanvas<CustomUniforms>({
 	return {
 		renderer,
 		raf,
+		pause,
+		play,
+		isPlaying,
 		uniforms: mesh.material.uniforms as CustomUniforms,
 		canvas,
 	};

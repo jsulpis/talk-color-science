@@ -8,11 +8,12 @@
 	onMount(() => {
 		const colorPicker = new iro.ColorPicker(picker, {
 			color,
-			width: 350,
+			width: 400,
 			borderWidth: 2,
 			borderColor: "#fff",
-			handleRadius: 15,
-			sliderSize: 50,
+			handleRadius: 20,
+			sliderSize: 70,
+			margin: 20,
 			layout: [
 				{ component: iro.ui.Box },
 				{

@@ -14,8 +14,12 @@ import xyDiagramLambda from "./assets/xy-lambda.png";
 import xyColorMix from "./assets/xy-color-mix.png";
 import xyCieRgb from "./assets/xy-cie-rgb-1.png";
 import xyCieRgbWithLabel from "./assets/xy-cie-rgb-2.png";
+import xysrgb from "./assets/xy-srgb.png";
+import computerTv from "./assets/computer-tv.jpg";
 import ImageStack from "../../components/ImageStack.astro";
 import PartTitle from "../../components/PartTitle.astro";
+import SrgbRGB from "./srgb/SrgbRGB.svelte";
+import SrgbRGB3d from "./srgb/SrgbRGB-3D.svelte";
 ---
 
 <PartTitle>2. Comment représenter la couleur ?</PartTitle>
@@ -119,9 +123,30 @@ import PartTitle from "../../components/PartTitle.astro";
 	<aside>Credits: <a href="https://commons.wikimedia.org/w/index.php?title=File:Visible_gamut_within_CIExyY_color_space_D65_whitepoint_mesh.webm">Michael Horvath, Christoph Lipka</a></aside>
 </Slide>
 
-<Slide class="section-with-title diagram">
-	<h3 class="diagram">Diagramme de chromaticité CIE 1931 xy</h3>
+<Slide class="section-with-title">
+	<h3 class="mb-0">Diagramme de chromaticité CIE 1931 xy</h3>
 	<ImageStack class="diagram-pictures" images={[xyDiagram.src, xyDiagramLambda.src, xyColorMix.src, xyCieRgb.src, xyCieRgbWithLabel.src]} />
+</Slide>
+
+<Slide class="section-with-title">
+	<h3 class="mb-0">1990's</h3>
+	<p>Premiers appareil numériques personnels</p>
+	<img class="computer" src={computerTv.src}>
+</Slide>
+
+<Slide class="section-with-title">
+	<h3 class="mb-0">Rec.709 (vidéo) ≈ sRGB (image)</h3>
+	<img class="diagram-pictures" src={xysrgb.src} />
+</Slide>
+
+<Slide class="section-with-title">
+	<h3>sRGB / RGB</h3>
+	<SrgbRGB client:visible />
+</Slide>
+
+<Slide class="section-with-title">
+	<h3 class="mb-0">sRGB / RGB</h3>
+	<SrgbRGB3d client:visible />
 </Slide>
 
 <style lang="scss">
@@ -131,15 +156,13 @@ import PartTitle from "../../components/PartTitle.astro";
 	h3 {
 		margin-top: 15dvh;
 		margin-bottom: 5rem;
-
-		&.diagram {
-			margin-top: 10dvh;
-		}
+	}
+	.mb-0 {
+		margin-bottom: 0;
 	}
 	.diagram-pictures {
 		height: 70dvh;
 		width: auto;
-		margin-top: -4%;
 	}
 	aside {
 		position: absolute;
@@ -147,14 +170,10 @@ import PartTitle from "../../components/PartTitle.astro";
 		bottom: 1.5rem;
 		left: 1.5rem;
 		opacity: .4;
-
 		a {
 			text-decoration: underline;
 			color: inherit;
 		}
-	}
-	section.diagram {
-		height: 100dvh;
 	}
 	section[data-background-color="white"] {
 		color: black;
@@ -164,5 +183,8 @@ import PartTitle from "../../components/PartTitle.astro";
 	}
 	video {
 		height: 80dvh;
+	}
+	.computer {
+		height: 60dvh;
 	}
 </style>

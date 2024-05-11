@@ -11,9 +11,10 @@
 			borderWidth: 2,
 			borderColor: "#fff",
 			layoutDirection: "horizontal",
-			handleRadius: 15,
-			sliderSize: 50,
-			width: 300,
+			handleRadius: 20,
+			sliderSize: 70,
+			width: 350,
+			margin: 20,
 			layout: [
 				{
 					component: iro.ui.Slider,

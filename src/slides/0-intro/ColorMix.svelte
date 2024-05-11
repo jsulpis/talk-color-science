@@ -49,7 +49,7 @@
 
 <style lang="scss">
 	.container {
-		--animation-duration: 2s;
+		--animation-duration: 1s;
 		--circle-radius: 20vmin;
 
 		display: grid;

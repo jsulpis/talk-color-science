@@ -1,0 +1,18 @@
+---
+import Slide from "./Slide.astro";
+import titleBackground from "./assets/title-background.jpg";
+---
+
+<Slide data-background-image={titleBackground.src}>
+	<h1>
+		<slot />
+	</h1>
+</Slide>
+
+<style>
+	h1 {
+		font-size: 5.5rem;
+		margin-top: -20dvh;
+		text-shadow: 0 0 2dvh rgba(0 0 0 / .5), 0 0 15dvh black;
+	}
+</style>

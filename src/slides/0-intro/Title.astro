@@ -1,0 +1,56 @@
+---
+import Slide from "../../components/Slide.astro";
+import introBackground from "./assets/intro-background.jpg";
+---
+
+<Slide data-background-image={introBackground.src} style="top: 0;">
+	<div class="content">
+		<div class="title">
+			<h1>
+				Savez-vous <i>vraiment</i> ce qu'est la <strong>couleur</strong> ?
+			</h1>
+			<p>Découvrez la science derrière les pixels 🎨</p>
+		</div>
+
+		<p class="speaker">
+			<span class="name">Julien Sulpis</span>
+			<span class="event">Technozaure Lyon</span>
+			<span class="date">24/05/2024</span>
+		</p>
+	</div>
+</Slide>
+
+<style lang="scss">
+	.content {
+		height: min(60dvh, 500px);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	p {
+		margin: 0;
+	}
+	h1, p {
+		text-shadow: 0 0 2dvh rgba(0 0 0 / .5), 0 0 15dvh black;
+	}
+	h1 {
+		font-size: 5.2rem;
+		font-weight: 400;
+	}
+	.title p {
+		font-size: 3.5rem;
+	}
+	.speaker {
+		display: flex;
+		flex-direction: column;
+		line-height: 1.5;
+	}
+	.name {
+		font-size: 1em;
+		font-weight: bold;
+	}
+	.event,
+	.date {
+		font-size: 0.7em;
+	}
+</style>

@@ -62,6 +62,6 @@
 	strong {
 		display: block;
 		margin-top: 1em;
-		font-size: 5rem;
+		font-size: 4rem;
 	}
 </style>

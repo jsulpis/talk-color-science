@@ -1,8 +1,8 @@
-#define CAMERA_POSITION vec3(0., 2.4, 3.)
-#define CAMERA_ORIENTATION vec3(0., -0.5, -1.)
+#define CAMERA_POSITION vec3(0., 1.8, 3.)
+#define CAMERA_ORIENTATION vec3(0., -0.3, -1.)
 #define BACKGROUND vec3(.2)
-#define CONE_HEIGHT 1.7
-#define CONE_RADIUS 1.
+#define CONE_HEIGHT 1.15
+#define CONE_RADIUS .8
 
 #define LIGHT_1 vec3(3., 2., -5.)
 #define LIGHT_2 vec3(-3., 2., -5.)
@@ -82,6 +82,12 @@ vec3 hsv2rgb( in vec3 c ) {
 	return c.z * mix( vec3(1.0), rgb, c.y);
 }
 
+vec3 hsl2rgb( in vec3 c ) {
+    vec3 rgb = clamp( abs(mod(c.x*6.0+vec3(0.0,4.0,2.0),6.0)-3.0)-1.0, 0.0, 1.0 );
+
+    return c.z + c.y * (rgb-0.5)*(1.0-abs(2.0*c.z-1.0));
+}
+
 mat3 rotateY(float angle) {
   float c = cos(angle);
   float s = sin(angle);
@@ -97,13 +103,15 @@ mat3 rotateY(float angle) {
 //================//
 
 float shapeDist(in vec3 ro, in vec3 rd) {
-	float coneDist = coneIntersect(ro, rd, vec3(0., 0., 0.), vec3(0., CONE_HEIGHT, 0.), 0., CONE_RADIUS).x;
-
-	float opening = 4.;
+	float coneDist = min(
+										coneIntersect(ro, rd, vec3(0., 0., 0.), vec3(0., CONE_HEIGHT, 0.), 0., CONE_RADIUS).x,
+										coneIntersect(ro, rd, vec3(0., CONE_HEIGHT*2., 0.), vec3(0., CONE_HEIGHT, 0.), 0., CONE_RADIUS).x
+	);
+	float opening = 3.;
 	vec2 cubeDist = boxIntersection(
-		rotateY(PI/4.) * (ro* vec3(opening, 1., 1.) - vec3(0., 0., .33)),
-		rotateY(PI/4.) * (rd* vec3(opening, 1., 1.) - vec3(0., 0., .33)),
-		vec3(CONE_RADIUS, CONE_HEIGHT, CONE_RADIUS)
+		rotateY(PI/4.) * (ro* vec3(opening, 1., 1.) - vec3(0., 0., .28)),
+		rotateY(PI/4.) * (rd* vec3(opening, 1., 1.) - vec3(0., 0., .28)),
+		vec3(CONE_RADIUS, CONE_HEIGHT*2., CONE_RADIUS)
 	);
 
 	return max(cubeDist.y, coneDist);
@@ -123,7 +131,7 @@ vec3 calculateNormal(vec3 rayOrigin, vec3 rayDirection) {
 vec4 trace(in vec3 ro, in vec3 rd) {
   float distance = shapeDist(ro, rd);
 
-  if (distance == INFINITY) {
+  if (distance >= INFINITY) {
     return vec4(0.);
   }
 
@@ -137,9 +145,9 @@ vec4 trace(in vec3 ro, in vec3 rd) {
 
   float h = (atan(p.x, p.z) + PI) / (2. * PI);
   float s = length(vec2(p.x, p.z));
-  float v = (p.y / CONE_HEIGHT) * lighting;
+  float l = (p.y / (2.* CONE_HEIGHT)) * lighting;
 
-	vec3 color = hsv2rgb(vec3(h, s, v));
+	vec3 color = hsl2rgb(vec3(h, s, l));
   return vec4(color, 1.);
 }
 

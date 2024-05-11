@@ -3,7 +3,7 @@
 	import iro from "@jaames/iro";
 
 	let color = "#b524ff";
-	let colorRgb = { r: 181, g: 36, b: 255 };
+	let colorHsl = { h: 280, s: 86, l: 100 };
 	let picker;
 
 	onMount(() => {
@@ -17,48 +17,52 @@
 			width: 350,
 			margin: 20,
 			layout: [
+				{ component: iro.ui.Box },
 				{
 					component: iro.ui.Slider,
-					options: { id: "red-slider", sliderType: "red" },
-				},
-				{
-					component: iro.ui.Slider,
-					options: { id: "green-slider", sliderType: "green" },
-				},
-				{
-					component: iro.ui.Slider,
-					options: { id: "blue-slider", sliderType: "blue" },
+					options: {
+						sliderType: "hue",
+					},
 				},
 			],
 		});
 
 		colorPicker.on("color:change", (value) => {
 			color = value.hexString;
-			colorRgb = value.rgb;
+			colorHsl = value.hsl;
 		});
 	});
 </script>
 
 <div>
-	<div class="container">
-		<div class="circle" style:background={color}></div>
-		<div class="picker rgb" bind:this={picker}></div>
+	<div class="container" style={`--color: ${color}`}>
+		<span class="circle"></span>
+		<div class="picker hsv" bind:this={picker}></div>
 	</div>
-	<strong>{`rgb(${colorRgb.r}, ${colorRgb.g}, ${colorRgb.b})`}</strong>
+	<strong>
+		{`hsl(${colorHsl.h.toFixed(0)}deg,
+		${colorHsl.s.toFixed(0)}%,
+		${colorHsl.l.toFixed(0)}%)`}
+	</strong>
 </div>
 
 <style lang="scss">
 	.container {
 		display: flex;
 		justify-content: center;
-		gap: 10dvw;
+		gap: 15dvw;
 		align-items: center;
 	}
 
 	.circle {
+		background: var(--color);
+		display: block;
 		width: calc(30vmin);
 		aspect-ratio: 1;
 		border-radius: 100%;
+		box-shadow: inset 0 0 4px black;
+		mix-blend-mode: screen;
+		transition: transform var(--animation-duration) var(--ease-in-out);
 	}
 	strong {
 		display: block;

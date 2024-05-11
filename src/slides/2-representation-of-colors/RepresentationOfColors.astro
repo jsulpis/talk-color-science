@@ -23,6 +23,8 @@ import SrgbRGB from "./srgb/SrgbRGB.svelte";
 import SrgbRGB3d from "./srgb/SrgbRGB-3D.svelte";
 import SrgbHSV3d from "./srgb/SrgbHSV-3D.svelte";
 import SrgbHSV from "./srgb/SrgbHSV.svelte";
+import SrgbHSL3d from "./srgb/SrgbHSL-3D.svelte";
+import SrgbHSL from "./srgb/SrgbHSL.svelte";
 ---
 
 <PartTitle>2. Comment représenter la couleur ?</PartTitle>
@@ -155,6 +157,16 @@ import SrgbHSV from "./srgb/SrgbHSV.svelte";
 <Slide class="section-with-title">
 	<h3>sRGB / Hexadécimal</h3>
 	<img class="hexa" src={hexa.src} />
+</Slide>
+
+<Slide class="section-with-title">
+	<h3>sRGB / HSL</h3>
+	<SrgbHSL client:visible />
+</Slide>
+
+<Slide class="section-with-title">
+	<h3>sRGB / HSL</h3>
+	<SrgbHSL3d client:visible />
 </Slide>
 
 <Slide class="section-with-title">

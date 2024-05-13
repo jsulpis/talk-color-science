@@ -50,7 +50,7 @@
 	.container {
 		display: flex;
 		justify-content: center;
-		gap: 15dvw;
+		gap: 10dvw;
 		align-items: center;
 	}
 

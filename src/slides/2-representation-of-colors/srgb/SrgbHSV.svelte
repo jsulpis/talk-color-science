@@ -40,7 +40,7 @@
 		<div class="picker hsv" bind:this={picker}></div>
 	</div>
 	<strong>
-		{`hsv(${colorHsv.h.toFixed(0)}deg,
+		{`hsb(${colorHsv.h.toFixed(0)}deg,
 		${colorHsv.s.toFixed(0)}%,
 		${colorHsv.v.toFixed(0)}%)`}
 	</strong>

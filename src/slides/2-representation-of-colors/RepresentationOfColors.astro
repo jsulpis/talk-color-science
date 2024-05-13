@@ -25,6 +25,7 @@ import SrgbHSV3d from "./srgb/SrgbHSV-3D.svelte";
 import SrgbHSV from "./srgb/SrgbHSV.svelte";
 import SrgbHSL3d from "./srgb/SrgbHSL-3D.svelte";
 import SrgbHSL from "./srgb/SrgbHSL.svelte";
+import RecapSrgb from "./srgb/RecapSrgb.svelte";
 ---
 
 <PartTitle>2. Comment représenter la couleur ?</PartTitle>
@@ -102,7 +103,6 @@ import SrgbHSL from "./srgb/SrgbHSL.svelte";
 	<CIEXYZ client:visible />
 </Slide>
 
-
 <Slide class="section-with-title">
 	<h3>CIE 1931 XYZ</h3>
 	<XYZExamples />
@@ -110,7 +110,9 @@ import SrgbHSL from "./srgb/SrgbHSL.svelte";
 
 <Slide data-background-color="white">
 	<video data-src={xyzVisible} loop data-autoplay></video>
-	<aside>Credits: <a href="https://commons.wikimedia.org/wiki/File:Visible_gamut_within_CIEXYZ_color_space_D65_whitepoint_mesh.webm">Michael Horvath, Christoph Lipka</a></aside>
+	<aside>
+		Credits: <a href="https://commons.wikimedia.org/wiki/File:Visible_gamut_within_CIEXYZ_color_space_D65_whitepoint_mesh.webm">Michael Horvath, Christoph Lipka</a>
+	</aside>
 </Slide>
 
 <Slide data-background-color="white">
@@ -125,18 +127,29 @@ import SrgbHSL from "./srgb/SrgbHSL.svelte";
 
 <Slide data-background-color="white">
 	<video data-src={xyVisible} loop data-autoplay></video>
-	<aside>Credits: <a href="https://commons.wikimedia.org/w/index.php?title=File:Visible_gamut_within_CIExyY_color_space_D65_whitepoint_mesh.webm">Michael Horvath, Christoph Lipka</a></aside>
+	<aside>
+		Credits: <a href="https://commons.wikimedia.org/w/index.php?title=File:Visible_gamut_within_CIExyY_color_space_D65_whitepoint_mesh.webm">Michael Horvath, Christoph Lipka</a>
+	</aside>
 </Slide>
 
 <Slide class="section-with-title">
 	<h3 class="mb-0">Diagramme de chromaticité CIE 1931 xy</h3>
-	<ImageStack class="diagram-pictures" images={[xyDiagram.src, xyDiagramLambda.src, xyColorMix.src, xyCieRgb.src, xyCieRgbWithLabel.src]} />
+	<ImageStack
+		class="diagram-pictures"
+		images={[
+			xyDiagram.src,
+			xyDiagramLambda.src,
+			xyColorMix.src,
+			xyCieRgb.src,
+			xyCieRgbWithLabel.src,
+		]}
+	/>
 </Slide>
 
 <Slide class="section-with-title">
 	<h3 class="mb-0">1990's</h3>
 	<p>Premiers appareil numériques personnels</p>
-	<img class="computer" src={computerTv.src}>
+	<img class="computer" src={computerTv.src} />
 </Slide>
 
 <Slide class="section-with-title">
@@ -154,10 +167,10 @@ import SrgbHSL from "./srgb/SrgbHSL.svelte";
 	<SrgbRGB3d client:visible />
 </Slide>
 
-<Slide class="section-with-title">
+<!-- <Slide class="section-with-title">
 	<h3>sRGB / Hexadécimal</h3>
 	<img class="hexa" src={hexa.src} />
-</Slide>
+</Slide> -->
 
 <Slide class="section-with-title">
 	<h3>sRGB / HSL</h3>
@@ -170,13 +183,18 @@ import SrgbHSL from "./srgb/SrgbHSL.svelte";
 </Slide>
 
 <Slide class="section-with-title">
-	<h3>sRGB / HSV</h3>
+	<h3>sRGB / HSB</h3>
 	<SrgbHSV client:visible />
 </Slide>
 
 <Slide class="section-with-title">
-	<h3>sRGB / HSV</h3>
+	<h3>sRGB / HSB</h3>
 	<SrgbHSV3d client:visible />
+</Slide>
+
+<Slide class="section-with-title">
+	<h3>sRGB</h3>
+	<RecapSrgb client:visible />
 </Slide>
 
 <style lang="scss">
@@ -196,10 +214,10 @@ import SrgbHSL from "./srgb/SrgbHSL.svelte";
 	}
 	aside {
 		position: absolute;
-		font-size: .8rem;
+		font-size: 0.8rem;
 		bottom: 1.5rem;
 		left: 1.5rem;
-		opacity: .4;
+		opacity: 0.4;
 		a {
 			text-decoration: underline;
 			color: inherit;

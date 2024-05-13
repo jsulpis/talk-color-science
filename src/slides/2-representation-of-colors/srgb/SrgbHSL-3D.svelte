@@ -2,6 +2,7 @@
 	import { onMount } from "svelte";
 	import fragment from "./hsl-3d.frag";
 	import { useGlslCanvas } from "../../../webgl/renderer";
+	import hsl from "../assets/hsl.png";
 
 	let canvas: HTMLCanvasElement;
 	let pause: Function;
@@ -17,15 +18,26 @@
 	});
 </script>
 
-<canvas
-	bind:this={canvas}
-	on:click={() => (isPlaying.value ? pause() : play())}
-/>
+<div class="container">
+	<canvas
+		bind:this={canvas}
+		on:click={() => (isPlaying.value ? pause() : play())}
+	/>
+	<img src={hsl.src} class="fragment" alt="" />
+</div>
 
 <style lang="scss">
+	.container {
+		display: inline-flex;
+		position: relative;
+		margin-top: -5%;
+	}
 	canvas {
 		width: 50dvw;
 		aspect-ratio: 1;
-		margin-top: -5%;
+	}
+	img {
+		position: absolute;
+		inset: 0;
 	}
 </style>

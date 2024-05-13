@@ -17,6 +17,12 @@ import xyCieRgbWithLabel from "./assets/xy-cie-rgb-2.png";
 import xysrgb from "./assets/xy-srgb.png";
 import computerTv from "./assets/computer-tv.jpg";
 import hexa from "./assets/hexa.png";
+import modernScreens from "./assets/modern-screens.webp";
+import xyp3 from "./assets/xyp3.png";
+import colorWheelP3 from "../0-intro/assets/srgb+p3.png";
+import srgbP3Mismatch from "./assets/srgb-p3-mismatch.png";
+import figmaPreferences from "./assets/figma-preferences.png";
+import colorDeformation from "./assets/color-deformation.png";
 import ImageStack from "../../components/ImageStack.astro";
 import PartTitle from "../../components/PartTitle.astro";
 import SrgbRGB from "./srgb/SrgbRGB.svelte";
@@ -26,6 +32,8 @@ import SrgbHSV from "./srgb/SrgbHSV.svelte";
 import SrgbHSL3d from "./srgb/SrgbHSL-3D.svelte";
 import SrgbHSL from "./srgb/SrgbHSL.svelte";
 import RecapSrgb from "./srgb/RecapSrgb.svelte";
+import CodeBlock from "../../components/CodeBlock.astro";
+import IssuesWithRgb from "./IssuesWithRgb.astro";
 ---
 
 <PartTitle>2. Comment représenter la couleur ?</PartTitle>
@@ -197,6 +205,63 @@ import RecapSrgb from "./srgb/RecapSrgb.svelte";
 	<RecapSrgb client:visible />
 </Slide>
 
+<Slide class="section-with-title">
+	<h3 class="mb-0">2010's</h3>
+	<p>Des écrans plus performants</p>
+	<img class="computer" src={modernScreens.src} />
+</Slide>
+
+<Slide class="section-with-title">
+	<h3 class="mb-0">P3</h3>
+	<img class="diagram-pictures" src={xyp3.src} />
+</Slide>
+
+<Slide class="section-with-title">
+	<h3 class="mb-0">P3</h3>
+	<img class="diagram-pictures" src={colorWheelP3.src} />
+</Slide>
+
+<Slide>
+	<CodeBlock lang="css" is:raw>
+body {
+	/* sRGB */
+	background-color: rgb(0 255 0);
+}
+
+@media (color-gamut: p3) {
+	body {
+		/* P3 */
+		background-color: color(display-p3 0 1 0);
+  }
+}
+
+</CodeBlock>
+</Slide>
+
+
+<Slide data-background-image={srgbP3Mismatch.src}></Slide>
+
+<Slide data-background-image={figmaPreferences.src} data-background-size="contain"></Slide>
+
+<Slide>
+	<ul>
+		<li><strong>Designers</strong> &rightarrow; configurer son logiciel pour l'espace de couleur P3</li>
+		<li><strong>Devs</strong> &rightarrow; préciser l'espace P3 dans ses codes couleurs</li>
+	</ul>
+</Slide>
+
+<Slide>
+	<h3 style="margin: 0">Il reste un problème... 🙄</h3>
+</Slide>
+
+<Slide>
+	<IssuesWithRgb />
+</Slide>
+
+<Slide>
+	<img style="width: 80dvw" src={colorDeformation.src} alt="">
+</Slide>
+
 <style lang="scss">
 	.section-with-title {
 		top: 0 !important;
@@ -238,5 +303,11 @@ import RecapSrgb from "./srgb/RecapSrgb.svelte";
 	.hexa {
 		height: 40dvh;
 		margin-top: 5%;
+	}
+	ul {
+		line-height: 2;
+		strong {
+			font-size: 1.3em;
+		}
 	}
 </style>

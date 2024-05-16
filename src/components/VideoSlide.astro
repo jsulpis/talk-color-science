@@ -1,0 +1,51 @@
+---
+import Slide from "./Slide.astro";
+
+interface Props {
+	src: string;
+	title?: string;
+	link: string;
+	authors: string;
+}
+
+const { src, title, link, authors } = Astro.props;
+---
+
+<Slide class={title && "with-title"}>
+	<h3>{title}</h3>
+	<video data-src={src} loop data-autoplay></video>
+	<aside>
+		Credits: <a href={link}>{authors}</a>
+	</aside>
+</Slide>
+
+<style lang="scss">
+	.with-title {
+		top: 0 !important;
+		position: relative;
+		height: 100dvh;
+	}
+	h3 {
+		margin-top: 15dvh;
+		margin-bottom: 3rem;
+
+		.with-title & {
+			margin-bottom: 2rem;
+		}
+	}
+	video {
+		height: 65dvh;
+		border-radius: 16px;
+	}
+	aside {
+		position: absolute;
+		font-size: 0.8rem;
+		bottom: 1.5rem;
+		left: 1.5rem;
+		opacity: 0.4;
+		a {
+			text-decoration: underline;
+			color: inherit;
+		}
+	}
+</style>

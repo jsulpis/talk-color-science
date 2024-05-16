@@ -1,0 +1,17 @@
+---
+import blue from "./assets/blue.png";
+import buttons from "./assets/buttons.png";
+import yellow from "./assets/yellow.png";
+import srgb from "./assets/srgb.png";
+import ImageStack from "../../components/ImageStack.astro";
+
+const hsbImages = [srgb, blue, yellow, buttons].map(({ src }) => src);
+---
+
+<ImageStack images={hsbImages} class="stack" />
+
+<style>
+	.stack {
+		margin-top: -5%;
+	}
+</style>

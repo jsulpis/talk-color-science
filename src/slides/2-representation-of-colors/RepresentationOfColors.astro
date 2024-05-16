@@ -20,7 +20,7 @@ import modernScreens from "./assets/modern-screens.webp";
 import xyp3 from "./assets/xyp3.png";
 import srgbP3Mismatch from "./assets/srgb-p3-mismatch.png";
 import figmaPreferences from "./assets/figma-preferences.png";
-import colorDeformation from "./assets/color-deformation.png";
+import srgbIssue from "./assets/srgb-issue.png";
 import ImageStack from "../../components/ImageStack.astro";
 import PartTitle from "../../components/PartTitle.astro";
 import SrgbRGB from "./srgb/SrgbRGB.svelte";
@@ -31,7 +31,7 @@ import SrgbHSL3d from "./srgb/SrgbHSL-3D.svelte";
 import SrgbHSL from "./srgb/SrgbHSL.svelte";
 import RecapSrgb from "./srgb/RecapSrgb.svelte";
 import CodeBlock from "../../components/CodeBlock.astro";
-import IssuesWithRgb from "./IssuesWithRgb.astro";
+import VideoSlide from "../../components/VideoSlide.astro";
 ---
 
 <PartTitle>2. Comment représenter la couleur ?</PartTitle>
@@ -114,14 +114,10 @@ import IssuesWithRgb from "./IssuesWithRgb.astro";
 	<XYZExamples />
 </Slide>
 
-<Slide data-background-color="white">
-	<video data-src={xyzVisible} loop data-autoplay></video>
-	<aside>
-		Credits: <a href="https://commons.wikimedia.org/wiki/File:Visible_gamut_within_CIEXYZ_color_space_D65_whitepoint_mesh.webm">Michael Horvath, Christoph Lipka</a>
-	</aside>
-</Slide>
+<VideoSlide title="CIE 1931 XYZ" src={xyzVisible} link="https://commons.wikimedia.org/wiki/File:Visible_gamut_within_CIEXYZ_color_space_D65_whitepoint_mesh.webm" authors="Michael Horvath, Christoph Lipka" />
 
-<Slide data-background-color="white">
+<Slide class="section-with-title">
+	<h3>CIE 1931 XYZ</h3>
 	<div is:raw>
 		\[\begin{aligned}
 			Y &= Y \\ \\
@@ -131,12 +127,11 @@ import IssuesWithRgb from "./IssuesWithRgb.astro";
 	</div>
 </Slide>
 
-<Slide data-background-color="white">
-	<video data-src={xyVisible} loop data-autoplay></video>
-	<aside>
-		Credits: <a href="https://commons.wikimedia.org/w/index.php?title=File:Visible_gamut_within_CIExyY_color_space_D65_whitepoint_mesh.webm">Michael Horvath, Christoph Lipka</a>
-	</aside>
-</Slide>
+<VideoSlide
+	title="CIE 1931 XYZ"
+	src={xyVisible}
+	link="https://commons.wikimedia.org/w/index.php?title=File:Visible_gamut_within_CIExyY_color_space_D65_whitepoint_mesh.webm"
+	authors="Michael Horvath, Christoph Lipka" />
 
 <Slide class="section-with-title">
 	<h3 class="mb-0">Diagramme de chromaticité CIE 1931 xy</h3>
@@ -242,12 +237,9 @@ body {
 	<h3 style="margin: 0">Il reste un problème... 🙄</h3>
 </Slide>
 
+<Slide data-background-image={srgbIssue.src} data-background-size="contain"></Slide>
 <Slide>
-	<IssuesWithRgb />
-</Slide>
-
-<Slide>
-	<img style="width: 80dvw" src={colorDeformation.src} alt="">
+	<img style="height: 80dvh" src={xyDiagram.src} alt="">
 </Slide>
 
 <style lang="scss">
@@ -265,32 +257,8 @@ body {
 		height: 70dvh;
 		width: auto;
 	}
-	aside {
-		position: absolute;
-		font-size: 0.8rem;
-		bottom: 1.5rem;
-		left: 1.5rem;
-		opacity: 0.4;
-		a {
-			text-decoration: underline;
-			color: inherit;
-		}
-	}
-	section[data-background-color="white"] {
-		color: black;
-		height: 100dvh;
-		display: grid !important;
-		place-items: center;
-	}
-	video {
-		height: 80dvh;
-	}
 	.computer {
 		height: 60dvh;
-	}
-	.hexa {
-		height: 40dvh;
-		margin-top: 5%;
 	}
 	ul {
 		line-height: 2;

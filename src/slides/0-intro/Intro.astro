@@ -1,19 +1,13 @@
 ---
 import Slide from "../../components/Slide.astro";
 import ColorMix from "./ColorMix.svelte";
-import ColorPicker from "./ColorPicker.svelte";
 import child from "./assets/child.webp";
 import meme from "./assets/qui-s-en-fout.webp";
-import srgb from "./assets/srgb.png";
-import p3 from "./assets/srgb+p3.png";
-import codepen from "./assets/screenshot-codepen.png";
-import figma from "./assets/screenshot-figma.png";
 import recording from "./assets/recording.mov";
-import framesCodepen from "./assets/frames-codepen.png";
-import framesFigma from "./assets/frames-figma.png";
 import framesVideo from "./assets/frames-video.png";
 import Question from "../../components/Question.astro";
 import Title from "./Title.astro";
+import IssuesWithRgb from "../2-representation-of-colors/IssuesWithRgb.astro";
 ---
 
 <Title />
@@ -28,17 +22,10 @@ import Title from "./Title.astro";
 	<ColorMix client:visible />
 </Slide>
 
-<Slide>
-	<ColorPicker client:visible />
-</Slide>
-
 <Slide data-background-image={meme.src} />
 
-<Slide data-background-image={figma.src} data-background-size="contain">
-	<img src={framesFigma.src} class="fragment" />
-</Slide>
-<Slide data-background-image={codepen.src} data-background-size="contain">
-	<img src={framesCodepen.src} class="fragment" />
+<Slide>
+	<IssuesWithRgb />
 </Slide>
 
 <Slide
@@ -48,13 +35,6 @@ import Title from "./Title.astro";
 >
 	<img data-src={framesVideo.src} data-autoplay />
 </Slide>
-
-<Slide data-background-image={srgb.src} data-background-size="contain" />
-<Slide
-	data-background-image={p3.src}
-	data-background-size="contain"
-	data-background-transition="none"
-/>
 
 <style lang="scss">
 	img {

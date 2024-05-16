@@ -3,7 +3,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -34,6 +34,21 @@ const { title } = Astro.props;
 				margin: 0,
 				plugins: [highlightPlugin, MathJax3],
 			});
+
+			// Display a hand cursor when
+			const root = document.documentElement;
+			root.addEventListener("keydown", (e) => {
+				if (e.code !== "AltLeft" || e.metaKey) {
+					return;
+				}
+
+				root.dataset.cursor = "hand";
+				root.addEventListener(
+					"keyup",
+					() => root.removeAttribute("data-cursor"),
+					{ once: true }
+				);
+			});
 		</script>
 	</body>
 </html>
@@ -46,6 +61,13 @@ const { title } = Astro.props;
 	:root {
 		--r-background-color: black;
 		--ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	[data-cursor="hand"] {
+		cursor:
+			url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='100' height='120' viewport='0 0 200 200' style='fill:black;font-size:120px;'><text y='90%'>☝️</text></svg>")
+				60 60,
+			auto; /*!emojicursor.app*/
 	}
 
 	.picker.rgb .IroSlider:nth-of-type(1) .IroSliderGradient {

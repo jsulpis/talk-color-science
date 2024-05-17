@@ -2,7 +2,6 @@
 import Slide from "../../components/Slide.astro";
 import CIERGB from "./cie-rgb/CIERGB.astro";
 import CIEXYZ from "./cie-xyz/CIEXYZ.svelte";
-import Requirements from "./cie-xyz/Requirements.astro";
 import XYZExamples from "./cie-xyz/XYZExamples.astro";
 import xyzVisible from "./assets/videos/XYZ-visible.webm";
 import xyVisible from "./assets/videos/xy-Z-visible.webm";
@@ -36,7 +35,13 @@ import VideoSlide from "../../components/VideoSlide.astro";
 <CIERGB />
 
 <Slide title="🎅 Une nouvelle notation...">
-	<Requirements />
+	<ul>
+		<li class="fragment">Pas de valeurs négatives !</li>
+		<li class="fragment">
+			Une des coordonnées doit représenter la luminosité de la couleur
+		</li>
+		<li class="fragment">...</li>
+	</ul>
 </Slide>
 
 <Slide title="CIE 1931 XYZ">
@@ -197,11 +202,5 @@ body {
 	}
 	p {
 		margin-top: -.5em;
-	}
-	ul {
-		line-height: 2;
-		strong {
-			font-size: 1.3em;
-		}
 	}
 </style>

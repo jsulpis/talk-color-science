@@ -1,0 +1,85 @@
+---
+import PartTitle from "../../components/PartTitle.astro";
+import Slide from "../../components/Slide.astro";
+import VideoSlide from "../../components/VideoSlide.astro";
+import cielab from "./assets/cielab-visible.webm"
+import cielch from "./assets/cielch-visible.webm"
+import srgb from "./assets/srgb.mov";
+import LchSrgb3d from "./srgb/LchSrgb.svelte";
+---
+
+<PartTitle>3. Un espace de couleur<br />pour les humains</PartTitle>
+
+<Slide title="🎅 Un nouvel espace de couleurs...">
+	<ul>
+		<li>Fidèle à la perception humaine des couleurs 🤞</li>
+	</ul>
+</Slide>
+
+<Slide title="CIE LAB 1976">
+	<div is:raw style="font-size: 1.3rem;">
+		\[\begin{aligned}
+			L* &= 116f(\frac{Y}{Y_n}) - 16 \\
+			a* &= 500(f(\frac{X}{X_n}) - f(\frac{Y}{Y_n})) \\
+			b* &= 200(f(\frac{Y}{Y_n}) - f(\frac{Z}{Z_n})) \\ \\
+			\text{où :} \\
+  		f(t) &= \begin{cases}
+							\sqrt[3]{t} & \text{si } t > \delta^3 \\[4mu]
+							\tfrac13 t \delta^{-2} + \tfrac{4}{29} & \text{sinon}
+						\end{cases} \\
+  		\delta &= \tfrac{6}{29} \\ \\
+			(X_n, Y_n, Z_n)& \text{ coordonnées du blanc de référence}
+		\end{aligned} \]
+	</div>
+</Slide>
+
+<VideoSlide
+	title="CIE LAB 1976"
+	src={cielab}
+	link="https://commons.wikimedia.org/wiki/File:Visible_gamut_within_CIELAB_color_space_D65_whitepoint_mesh.webm"
+	authors="Michael Horvath, Christoph Lipka" />
+
+
+<Slide title="CIE LCH 1976">
+	<div is:raw style="font-size: 2rem; margin-top: 3em; line-height: 2em;">
+		\[\begin{aligned}
+			C^* &= \sqrt{a^{*2} + b^{*2}} \\
+			h &= \arctan \frac{b^*}{a^*}
+		\end{aligned} \]
+	</div>
+</Slide>
+
+<VideoSlide
+	title="CIE LCH 1976"
+	src={cielch}
+	link="https://commons.wikimedia.org/wiki/File:Visible_gamut_within_CIELCHab_color_space_D65_whitepoint_mesh.webm"
+	authors="Michael Horvath, Christoph Lipka" />
+
+<Slide>
+	<figure>
+		<!-- made from https://www.shadertoy.com/view/XddGRN -->
+		<video src={srgb} loop data-autoplay></video>
+		<figcaption>sRGB / LCH</figcaption>
+	</figure>
+</Slide>
+
+<Slide>
+	<LchSrgb3d client:visible />
+</Slide>
+
+<Slide title="Björn Ottosson, 2020">
+<ul class="fragment">
+	<li>LAB &rightarrow; OKLAB</li>
+	<li>LCH &rightarrow; OKLCH</li>
+</ul>
+</Slide>
+
+<style>
+	video {
+		border-radius: 16px;
+	}
+	figcaption {
+		font-size: 3rem;
+		font-weight: bold;
+	}
+</style>

@@ -1,0 +1,134 @@
+---
+import Slide from "../../../components/Slide.astro";
+import RGBExperiment from "../rgb-experiment/RGBExperiment.svelte";
+import RGBMonochromaticExamples from "./RGBMonochromaticExamples.astro";
+import RGBPolychromaticExamples from "./RGBPolychromaticExamples.astro";
+import chaplin from "../assets/charlie-chaplin.jpeg"
+import movieColor from "../assets/movie-color.jpeg"
+import movieSound from "../assets/movie-sound.jpg"
+import wright from "../assets/wright.jpeg"
+import guild from "../assets/guild.png"
+import CIERGBCurves from "./CIERGBCurves.svelte";
+---
+
+<Slide title="1920's">
+	<div class="fragment">
+		<p>Charlie Chaplin</p>
+		<figure >
+			<img src={chaplin.src} aria-hidden/>
+			<a href="https://commons.wikimedia.org/wiki/File:Chaplin_the_gold_rush_boot.jpg">
+				<img src={chaplin.src} alt="Charlie Chaplin"/>
+			</a>
+			<figcaption>Charlot mangeant sa chaussure dans La Ruée vers l'or (1925)</figcaption>
+		</figure>
+	</div>
+</Slide>
+
+<Slide title="1920's">
+	<p>Cinéma sonore</p>
+	<figure>
+		<img src={movieSound.src} aria-hidden/>
+		<a href="https://commons.wikimedia.org/wiki/File:Ray_Vaughan_filming_at_a_Movietone_event_in_Circular_Quay,_Sydney_(8618628686).jpg">
+			<img src={movieSound.src}/>
+		</a>
+		<figcaption>Un cadreur et un preneur de son</figcaption>
+	</figure>
+</Slide>
+
+<Slide title="1920's">
+	<p>Cinéma en couleurs</p>
+	<figure>
+		<img src={movieColor.src} aria-hidden />
+		<a href="https://www.cineclubdecaen.com/analyse/couleur.htm">
+			<img src={movieColor.src}/>
+		</a>
+		<figcaption>Couleurs par le procédé Keller-Dorian Berthon</figcaption>
+	</figure>
+</Slide>
+
+<Slide title="1920's">
+	<div class="wright-guild">
+		<figure>
+			<figcaption>William David Wright</figcaption>
+			<img src={wright.src} aria-hidden />
+			<img src={wright.src} />
+		</figure>
+		<figure>
+			<figcaption>John Guild</figcaption>
+			<img src={guild.src} aria-hidden />
+			<img src={guild.src}/>
+		</figure>
+	</div>
+</Slide>
+
+<Slide>
+	<RGBExperiment client:visible />
+</Slide>
+
+<Slide>
+	<CIERGBCurves client:visible />
+</Slide>
+
+<Slide title="CIE 1931 RGB">
+	<div is:raw>
+		\[\begin{aligned}
+			R = \bar{r}(\lambda)\\ \\
+			G = \bar{g}(\lambda)\\ \\
+			B = \bar{b}(\lambda)
+		\end{aligned} \]
+	</div>
+</Slide>
+
+<Slide title="CIE 1931 RGB">
+	<RGBMonochromaticExamples />
+</Slide>
+
+<Slide title="CIE 1931 RGB">
+	<div is:raw>
+		\[\begin{aligned}
+			R = \int_{\lambda} DSP(\lambda)\ \bar{r}(\lambda)\ d\lambda \\ \\
+			G = \int_{\lambda} DSP(\lambda)\ \bar{g}(\lambda)\ d\lambda \\ \\
+			B = \int_{\lambda} DSP(\lambda)\ \bar{b}(\lambda)\ d\lambda
+		\end{aligned} \]
+	</div>
+</Slide>
+
+<Slide title="CIE 1931 RGB">
+	<RGBPolychromaticExamples />
+</Slide>
+
+
+<style lang="scss">
+	.wright-guild {
+		display: flex;
+		justify-content: space-evenly;
+		max-width: 60dvw;
+		margin: auto;
+
+		figcaption {
+			font-size: var(--r-main-font-size);
+			margin-bottom: .5em;
+		}
+	}
+	figure {
+		margin: 0;
+		position: relative;
+
+		img {
+			height: 53dvh;
+			border-radius: 16px;
+			box-shadow: 0 0 3dvw black;
+
+			&[aria-hidden] {
+				position: absolute;
+				z-index: -1;
+				transform: scale(1, .9);
+				opacity: .7;
+				filter: blur(100px);
+			}
+		}
+	}
+	figcaption {
+		font-size: 1.2rem;
+	}
+</style>

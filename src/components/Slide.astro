@@ -8,16 +8,22 @@ interface Props extends HTMLAttributes<"section"> {
 	 * default: true
 	 */
 	animate?: boolean;
+	title?: string;
 }
 
-const { animate = true, ...attrs } = Astro.props;
+const { animate = true, title, ...attrs } = Astro.props;
 ---
 
 <section data-auto-animate={animate} {...attrs}>
-	{
-		/* sometimes the auto-animate feature doesn't work depending on the content, this extra div seems to fix it */
-	}
-	<div>
-		<slot />
-	</div>
+	{title && <h3 class="slide-title">{title}</h3>}
+	<slot />
 </section>
+
+<style>
+	section:has(.slide-title) {
+		top: 0 !important;
+	}
+	.slide-title {
+		--r-heading-margin: 15dvh 0 5dvh;
+	}
+</style>

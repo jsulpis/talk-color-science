@@ -1,12 +1,9 @@
 ---
 import Slide from "../../components/Slide.astro";
-import CIERGB from "./cie-rgb/CIERGB.svelte";
-import RGBMonochromaticExamples from "./cie-rgb/RGBMonochromaticExamples.astro";
-import RGBPolychromaticExamples from "./cie-rgb/RGBPolychromaticExamples.astro";
+import CIERGB from "./cie-rgb/CIERGB.astro";
 import CIEXYZ from "./cie-xyz/CIEXYZ.svelte";
 import Requirements from "./cie-xyz/Requirements.astro";
 import XYZExamples from "./cie-xyz/XYZExamples.astro";
-import RGBExperiment from "./rgb-experiment/RGBExperiment.svelte";
 import xyzVisible from "./assets/videos/XYZ-visible.webm";
 import xyVisible from "./assets/videos/xy-Z-visible.webm";
 import xyDiagram from "./assets/xy-base.png";
@@ -36,53 +33,13 @@ import VideoSlide from "../../components/VideoSlide.astro";
 
 <PartTitle>2. Comment représenter la couleur ?</PartTitle>
 
-<Slide>
-	<RGBExperiment client:visible />
-</Slide>
+<CIERGB />
 
-<Slide>
-	<CIERGB client:visible />
-</Slide>
-
-<Slide class="section-with-title">
-	<h3 class="fragment">CIE 1931 RGB</h3>
-	<div is:raw>
-		\[\begin{aligned}
-			R = \bar{r}(\lambda)\\ \\
-			G = \bar{g}(\lambda)\\ \\
-			B = \bar{b}(\lambda)
-		\end{aligned} \]
-	</div>
-</Slide>
-
-<Slide class="section-with-title">
-	<h3>CIE 1931 RGB</h3>
-	<RGBMonochromaticExamples />
-</Slide>
-
-<Slide class="section-with-title">
-	<h3>CIE 1931 RGB</h3>
-	<div is:raw>
-		\[\begin{aligned}
-			R = \int_{\lambda} DSP(\lambda)\ \bar{r}(\lambda)\ d\lambda \\ \\
-			G = \int_{\lambda} DSP(\lambda)\ \bar{g}(\lambda)\ d\lambda \\ \\
-			B = \int_{\lambda} DSP(\lambda)\ \bar{b}(\lambda)\ d\lambda
-		\end{aligned} \]
-	</div>
-</Slide>
-
-<Slide class="section-with-title">
-	<h3>CIE 1931 RGB</h3>
-	<RGBPolychromaticExamples />
-</Slide>
-
-<Slide class="section-with-title">
-	<h3>🎅 Une nouvelle notation...</h3>
+<Slide title="🎅 Une nouvelle notation...">
 	<Requirements />
 </Slide>
 
-<Slide class="section-with-title">
-	<h3>CIE 1931 XYZ</h3>
+<Slide title="CIE 1931 XYZ">
 	<div is:raw>
 		\[
 		\begin{pmatrix}
@@ -104,20 +61,17 @@ import VideoSlide from "../../components/VideoSlide.astro";
 	</div>
 </Slide>
 
-<Slide class="section-with-title">
-	<h3>CIE 1931 XYZ</h3>
+<Slide title="CIE 1931 XYZ">
 	<CIEXYZ client:visible />
 </Slide>
 
-<Slide class="section-with-title">
-	<h3>CIE 1931 XYZ</h3>
+<Slide title="CIE 1931 XYZ">
 	<XYZExamples />
 </Slide>
 
 <VideoSlide title="CIE 1931 XYZ" src={xyzVisible} link="https://commons.wikimedia.org/wiki/File:Visible_gamut_within_CIEXYZ_color_space_D65_whitepoint_mesh.webm" authors="Michael Horvath, Christoph Lipka" />
 
-<Slide class="section-with-title">
-	<h3>CIE 1931 XYZ</h3>
+<Slide title="CIE 1931 XYZ">
 	<div is:raw>
 		\[\begin{aligned}
 			Y &= Y \\ \\
@@ -133,8 +87,7 @@ import VideoSlide from "../../components/VideoSlide.astro";
 	link="https://commons.wikimedia.org/w/index.php?title=File:Visible_gamut_within_CIExyY_color_space_D65_whitepoint_mesh.webm"
 	authors="Michael Horvath, Christoph Lipka" />
 
-<Slide class="section-with-title">
-	<h3 class="mb-0">Diagramme de chromaticité CIE 1931 xy</h3>
+<Slide title="Diagramme de chromaticité CIE 1931 xy">
 	<ImageStack
 		class="diagram-pictures"
 		images={[
@@ -147,60 +100,49 @@ import VideoSlide from "../../components/VideoSlide.astro";
 	/>
 </Slide>
 
-<Slide class="section-with-title">
-	<h3 class="mb-0">1990's</h3>
+<Slide title="1990's">
 	<p>Premiers appareil numériques personnels</p>
 	<img class="computer" src={computerTv.src} />
 </Slide>
 
-<Slide class="section-with-title">
-	<h3 class="mb-0">Rec.709 (vidéo) ≈ sRGB (image)</h3>
+<Slide title="Rec.709 (vidéo) ≈ sRGB (image)">
 	<img class="diagram-pictures" src={xysrgb.src} />
 </Slide>
 
-<Slide class="section-with-title">
-	<h3>sRGB / RGB</h3>
+<Slide title="sRGB / RGB">
 	<SrgbRGB client:visible />
 </Slide>
 
-<Slide class="section-with-title">
-	<h3 class="mb-0">sRGB / RGB</h3>
+<Slide title="sRGB / RGB">
 	<SrgbRGB3d client:visible />
 </Slide>
 
-<Slide class="section-with-title">
-	<h3>sRGB / HSL</h3>
+<Slide title="sRGB / HSL">
 	<SrgbHSL client:visible />
 </Slide>
 
-<Slide class="section-with-title">
-	<h3>sRGB / HSL</h3>
+<Slide title="sRGB / HSL">
 	<SrgbHSL3d client:visible />
 </Slide>
 
-<Slide class="section-with-title">
-	<h3>sRGB / HSB</h3>
+<Slide title="sRGB / HSB">
 	<SrgbHSV client:visible />
 </Slide>
 
-<Slide class="section-with-title">
-	<h3>sRGB / HSB</h3>
+<Slide title="sRGB / HSB">
 	<SrgbHSV3d client:visible />
 </Slide>
 
-<Slide class="section-with-title">
-	<h3>sRGB</h3>
+<Slide title="sRGB">
 	<RecapSrgb client:visible />
 </Slide>
 
-<Slide class="section-with-title">
-	<h3 class="mb-0">2010's</h3>
+<Slide title="2010's">
 	<p>Des écrans plus performants</p>
 	<img class="computer" src={modernScreens.src} />
 </Slide>
 
-<Slide class="section-with-title">
-	<h3 class="mb-0">P3</h3>
+<Slide title="P3">
 	<img class="diagram-pictures" src={xyp3.src} />
 </Slide>
 
@@ -243,13 +185,6 @@ body {
 </Slide>
 
 <style lang="scss">
-	.section-with-title {
-		top: 0 !important;
-	}
-	h3 {
-		margin-top: 15dvh;
-		margin-bottom: 5rem;
-	}
 	.mb-0 {
 		margin-bottom: 0;
 	}
@@ -259,6 +194,9 @@ body {
 	}
 	.computer {
 		height: 60dvh;
+	}
+	p {
+		margin-top: -.5em;
 	}
 	ul {
 		line-height: 2;

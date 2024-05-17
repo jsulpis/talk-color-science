@@ -21,7 +21,7 @@
 		position: relative;
 		width: min(70%, 1200px);
 		margin-inline: auto;
-		margin-top: -5%;
+		margin-top: -2%;
 	}
 	canvas {
 		width: 100%;

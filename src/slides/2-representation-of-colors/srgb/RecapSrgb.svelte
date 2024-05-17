@@ -36,7 +36,6 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		margin-top: -2%;
 	}
 	canvas {
 		width: 30dvw;

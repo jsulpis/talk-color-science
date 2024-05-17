@@ -30,7 +30,7 @@
 	.container {
 		display: inline-flex;
 		position: relative;
-		margin-top: -5%;
+		margin-top: -2%;
 	}
 	canvas {
 		width: 50dvw;

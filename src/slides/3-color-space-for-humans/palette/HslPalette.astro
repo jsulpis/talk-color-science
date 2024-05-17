@@ -1,0 +1,56 @@
+---
+const hues = Array.from({ length: 12 }).map(
+	(_, i, array) => (360 / array.length) * i
+);
+const lightnesss = [93, 82, 65, 50, 33, 18, 8];
+const saturations = [80, 85, 90, 90, 90, 85, 80];
+---
+
+<table class="container">
+	<thead>
+		<tr>
+			<th>L</th>
+			<th>S \ H</th>
+			{hues.map((hue) => <th class="value">{hue}</th>)}
+		</tr>
+	</thead>
+	{
+		saturations.map((saturation, i) => (
+			<tr>
+				<th class="value">{lightnesss[i]}</th>
+				<th class="value">{saturation}</th>
+				{hues.map((hue) => (
+					<td
+						style={`background: hsl(${hue}deg, ${saturation}%, ${lightnesss[i]}%);color:${i < 3 ? "black" : "white"}`}
+					>
+						<span class="fragment" data-fragment-index="1">
+							Aa
+						</span>
+					</td>
+				))}
+			</tr>
+		))
+	}
+</table>
+
+<style lang="scss">
+	table {
+		font-size: 2rem;
+		border-spacing: 10px;
+		border-collapse: unset;
+
+		th,
+		td {
+			border: 0;
+		}
+
+		.value {
+			font-size: 0.8em;
+		}
+
+		td {
+			width: 3dvw;
+			aspect-ratio: 5;
+		}
+	}
+</style>

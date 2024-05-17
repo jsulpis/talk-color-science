@@ -1,0 +1,56 @@
+---
+const hues = Array.from({ length: 12 }).map(
+	(_, i, array) => (360 / array.length) * i
+);
+const chromas = [0.05, 0.12, 0.21, 0.26, 0.2, 0.12, 0.08];
+const lightnesss = [95, 85, 70, 55, 40, 25, 16];
+---
+
+<table class="container">
+	<thead>
+		<tr>
+			<th>L</th>
+			<th>C \ H</th>
+			{hues.map((hue) => <th class="value">{hue}</th>)}
+		</tr>
+	</thead>
+	{
+		chromas.map((chroma, i) => (
+			<tr>
+				<th class="value">{lightnesss[i]}</th>
+				<th class="value">{chroma}</th>
+				{hues.map((hue) => (
+					<td
+						style={`background: oklch(${lightnesss[i]}%, ${chroma}, ${hue}deg);color:${i < 3 ? "black" : "white"}`}
+					>
+						<span class="fragment" data-fragment-index="1">
+							Aa
+						</span>
+					</td>
+				))}
+			</tr>
+		))
+	}
+</table>
+
+<style lang="scss">
+	table {
+		font-size: 2rem;
+		border-spacing: 10px;
+		border-collapse: unset;
+
+		th,
+		td {
+			border: 0;
+		}
+
+		.value {
+			font-size: 0.8em;
+		}
+
+		td {
+			width: 3dvw;
+			aspect-ratio: 5;
+		}
+	}
+</style>

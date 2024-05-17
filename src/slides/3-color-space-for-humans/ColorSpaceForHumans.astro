@@ -5,6 +5,8 @@ import VideoSlide from "../../components/VideoSlide.astro";
 import cielab from "./assets/cielab-visible.webm"
 import cielch from "./assets/cielch-visible.webm"
 import srgb from "./assets/srgb.mov";
+import HslPalette from "./palette/HslPalette.astro";
+import OKLCHPalette from "./palette/OKLCHPalette.astro";
 import LchSrgb3d from "./srgb/LchSrgb.svelte";
 ---
 
@@ -72,6 +74,22 @@ import LchSrgb3d from "./srgb/LchSrgb.svelte";
 	<li>LAB &rightarrow; OKLAB</li>
 	<li>LCH &rightarrow; OKLCH</li>
 </ul>
+</Slide>
+
+<Slide>
+	<h3>Applications 🎨</h3>
+</Slide>
+
+<Slide>
+	<h3>Palette de couleurs</h3>
+</Slide>
+
+<Slide title="HSL">
+	<HslPalette />
+</Slide>
+
+<Slide title="OKLCH">
+	<OKLCHPalette />
 </Slide>
 
 <style>

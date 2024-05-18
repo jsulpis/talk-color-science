@@ -17,7 +17,7 @@
 
 <div class="container">
 	<canvas bind:this={canvas}></canvas>
-	<img src={lmsNormalized.src} alt="" />
+	<img data-src={lmsNormalized.src} alt="" />
 </div>
 
 <style>

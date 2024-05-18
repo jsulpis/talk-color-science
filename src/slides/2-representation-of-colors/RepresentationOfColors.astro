@@ -107,11 +107,11 @@ import VideoSlide from "../../components/VideoSlide.astro";
 
 <Slide title="1990's">
 	<p>Premiers appareil numériques personnels</p>
-	<img class="computer" src={computerTv.src} />
+	<img class="computer" data-src={computerTv.src} />
 </Slide>
 
 <Slide title="Rec.709 (vidéo) ≈ sRGB (image)">
-	<img class="diagram-pictures" src={xysrgb.src} />
+	<img class="diagram-pictures" data-src={xysrgb.src} />
 </Slide>
 
 <Slide title="sRGB / RGB">
@@ -144,11 +144,11 @@ import VideoSlide from "../../components/VideoSlide.astro";
 
 <Slide title="2010's">
 	<p>Des écrans plus performants</p>
-	<img class="computer" src={modernScreens.src} />
+	<img class="computer" data-src={modernScreens.src} />
 </Slide>
 
 <Slide title="P3">
-	<img class="diagram-pictures" src={xyp3.src} />
+	<img class="diagram-pictures" data-src={xyp3.src} />
 </Slide>
 
 <Slide>
@@ -186,7 +186,7 @@ body {
 
 <Slide data-background-image={srgbIssue.src} data-background-size="contain"></Slide>
 <Slide>
-	<img style="height: 80dvh" src={xyDiagram.src} alt="">
+	<img style="height: 80dvh" data-src={xyDiagram.src} alt="">
 </Slide>
 
 <style lang="scss">

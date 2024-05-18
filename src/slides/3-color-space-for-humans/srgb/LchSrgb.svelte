@@ -34,7 +34,7 @@
 	</div>
 	<figure>
 		<!-- made from https://www.shadertoy.com/view/XddGRN -->
-		<video src={srgb} loop data-autoplay></video>
+		<video data-src={srgb} loop data-autoplay></video>
 		<figcaption>sRGB / LCH</figcaption>
 	</figure>
 </div>

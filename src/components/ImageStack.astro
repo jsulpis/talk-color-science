@@ -1,5 +1,5 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
+import type { HTMLAttributes } from "astro/types";
 
 interface Props extends HTMLAttributes<"div"> {
 	images: string[];
@@ -8,8 +8,12 @@ interface Props extends HTMLAttributes<"div"> {
 const { images, class: className, ...attrs } = Astro.props;
 ---
 
-<div class={`stack ${className}`} {...attrs} >
-	{images.map((src, i) => <img class={i > 0 ? "fragment" : ""} src={src} />)}
+<div class={`stack ${className}`} {...attrs}>
+	{
+		images.map((src, i) => (
+			<img class={i > 0 ? "fragment" : ""} data-src={src} />
+		))
+	}
 </div>
 
 <style>

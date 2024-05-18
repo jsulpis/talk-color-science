@@ -13,7 +13,7 @@
 
 <div class="container">
 	<canvas bind:this={canvas}></canvas>
-	<img src={ciergb.src} alt="" />
+	<img data-src={ciergb.src} alt="" />
 </div>
 
 <style>

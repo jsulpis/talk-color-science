@@ -15,9 +15,9 @@ import CIERGBCurves from "./CIERGBCurves.svelte";
 	<div class="fragment">
 		<p>Charlie Chaplin</p>
 		<figure >
-			<img src={chaplin.src} aria-hidden/>
+			<img data-src={chaplin.src} aria-hidden/>
 			<a href="https://commons.wikimedia.org/wiki/File:Chaplin_the_gold_rush_boot.jpg">
-				<img src={chaplin.src} alt="Charlie Chaplin"/>
+				<img data-src={chaplin.src} alt="Charlie Chaplin"/>
 			</a>
 			<figcaption>Charlot mangeant sa chaussure dans La Ruée vers l'or (1925)</figcaption>
 		</figure>
@@ -27,9 +27,9 @@ import CIERGBCurves from "./CIERGBCurves.svelte";
 <Slide title="1920's">
 	<p>Cinéma sonore</p>
 	<figure>
-		<img src={movieSound.src} aria-hidden/>
+		<img data-src={movieSound.src} aria-hidden/>
 		<a href="https://commons.wikimedia.org/wiki/File:Ray_Vaughan_filming_at_a_Movietone_event_in_Circular_Quay,_Sydney_(8618628686).jpg">
-			<img src={movieSound.src}/>
+			<img data-src={movieSound.src}/>
 		</a>
 		<figcaption>Un cadreur et un preneur de son</figcaption>
 	</figure>
@@ -38,9 +38,9 @@ import CIERGBCurves from "./CIERGBCurves.svelte";
 <Slide title="1920's">
 	<p>Cinéma en couleurs</p>
 	<figure>
-		<img src={movieColor.src} aria-hidden />
+		<img data-src={movieColor.src} aria-hidden />
 		<a href="https://www.cineclubdecaen.com/analyse/couleur.htm">
-			<img src={movieColor.src}/>
+			<img data-src={movieColor.src}/>
 		</a>
 		<figcaption>Couleurs par le procédé Keller-Dorian Berthon</figcaption>
 	</figure>
@@ -50,13 +50,13 @@ import CIERGBCurves from "./CIERGBCurves.svelte";
 	<div class="wright-guild">
 		<figure>
 			<figcaption>William David Wright</figcaption>
-			<img src={wright.src} aria-hidden />
-			<img src={wright.src} />
+			<img data-src={wright.src} aria-hidden />
+			<img data-src={wright.src} />
 		</figure>
 		<figure>
 			<figcaption>John Guild</figcaption>
-			<img src={guild.src} aria-hidden />
-			<img src={guild.src}/>
+			<img data-src={guild.src} aria-hidden />
+			<img data-src={guild.src}/>
 		</figure>
 	</div>
 </Slide>

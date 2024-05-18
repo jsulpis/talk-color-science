@@ -13,7 +13,7 @@
 
 <div class="container">
 	<canvas bind:this={canvas}></canvas>
-	<img src={ciexyz.src} alt="" />
+	<img data-src={ciexyz.src} alt="" />
 </div>
 
 <style>

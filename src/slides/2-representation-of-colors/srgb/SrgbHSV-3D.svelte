@@ -23,7 +23,7 @@
 		bind:this={canvas}
 		on:click={() => (isPlaying.value ? pause() : play())}
 	/>
-	<img src={hsb.src} class="fragment" alt="" />
+	<img data-src={hsb.src} class="fragment" alt="" />
 </div>
 
 <style lang="scss">

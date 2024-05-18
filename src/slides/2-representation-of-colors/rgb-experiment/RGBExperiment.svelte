@@ -99,7 +99,7 @@
 		justify-self: center;
 		transition: transform 1s var(--ease-in-out);
 
-		.container:global(.current-fragment) & {
+		.container:global(.visible) & {
 			transform: translateX(130%);
 		}
 	}
@@ -118,7 +118,7 @@
 		border-color: transparent;
 		transition: border 1s;
 
-		.container:global(.current-fragment) & {
+		.container:global(.visible) & {
 			border-color: white;
 		}
 	}
@@ -130,7 +130,7 @@
 		transition: transform 1s var(--ease-in-out);
 		transform: translateX(50%);
 
-		.container:global(.current-fragment) & {
+		.container:global(.visible) & {
 			transform: translateX(-50%);
 		}
 	}
@@ -164,7 +164,7 @@
 	.picker {
 		opacity: 0;
 
-		.container:global(.current-fragment) & {
+		.container:global(.visible) & {
 			transition: opacity 0.9s 0.1s var(--ease-in-out);
 			opacity: 1;
 		}
@@ -174,7 +174,7 @@
 		opacity: 0;
 		transition: opacity 1s var(--ease-in-out);
 
-		.container:global(.current-fragment) & {
+		.container:global(.visible) & {
 			opacity: 1;
 		}
 	}

@@ -11,8 +11,7 @@ interface Props {
 const { src, title, link, authors } = Astro.props;
 ---
 
-<Slide class={title && "with-title"}>
-	<h3>{title}</h3>
+<Slide title={title}>
 	<video data-src={src} loop data-autoplay></video>
 	<aside>
 		Credits: <a href={link}>{authors}</a>
@@ -20,19 +19,6 @@ const { src, title, link, authors } = Astro.props;
 </Slide>
 
 <style lang="scss">
-	.with-title {
-		top: 0 !important;
-		position: relative;
-		height: 100dvh;
-	}
-	h3 {
-		margin-top: 15dvh;
-		margin-bottom: 3rem;
-
-		.with-title & {
-			margin-bottom: 2rem;
-		}
-	}
 	video {
 		height: 65dvh;
 		border-radius: 16px;

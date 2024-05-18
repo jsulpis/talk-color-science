@@ -1,14 +1,13 @@
 ---
 import Slide from "../../../components/Slide.astro";
 import RGBExperiment from "../rgb-experiment/RGBExperiment.svelte";
-import RGBMonochromaticExamples from "./RGBMonochromaticExamples.astro";
-import RGBPolychromaticExamples from "./RGBPolychromaticExamples.astro";
 import chaplin from "../assets/charlie-chaplin.jpeg"
 import movieColor from "../assets/movie-color.jpeg"
 import movieSound from "../assets/movie-sound.jpg"
 import wright from "../assets/wright.jpeg"
 import guild from "../assets/guild.png"
 import CIERGBCurves from "./CIERGBCurves.svelte";
+import CIERGBNotations from "./CIERGBNotations.astro";
 ---
 
 <Slide title="1920's">
@@ -70,31 +69,7 @@ import CIERGBCurves from "./CIERGBCurves.svelte";
 </Slide>
 
 <Slide title="CIE 1931 RGB">
-	<div is:raw>
-		\[\begin{aligned}
-			R = \bar{r}(\lambda)\\ \\
-			G = \bar{g}(\lambda)\\ \\
-			B = \bar{b}(\lambda)
-		\end{aligned} \]
-	</div>
-</Slide>
-
-<Slide title="CIE 1931 RGB">
-	<RGBMonochromaticExamples />
-</Slide>
-
-<Slide title="CIE 1931 RGB">
-	<div is:raw>
-		\[\begin{aligned}
-			R = \int_{\lambda} DSP(\lambda)\ \bar{r}(\lambda)\ d\lambda \\ \\
-			G = \int_{\lambda} DSP(\lambda)\ \bar{g}(\lambda)\ d\lambda \\ \\
-			B = \int_{\lambda} DSP(\lambda)\ \bar{b}(\lambda)\ d\lambda
-		\end{aligned} \]
-	</div>
-</Slide>
-
-<Slide title="CIE 1931 RGB">
-	<RGBPolychromaticExamples />
+	<CIERGBNotations />
 </Slide>
 
 

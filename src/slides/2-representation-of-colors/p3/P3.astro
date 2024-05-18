@@ -1,0 +1,78 @@
+---
+import xyDiagram from "../assets/xy-base.png";
+import modernScreens from "../assets/modern-screens.webp";
+import xyp3 from "../assets/xyp3.png";
+import srgbP3Mismatch from "../assets/srgb-p3-mismatch.png";
+import figmaPreferences from "../assets/figma-preferences.png";
+import srgbIssue from "../assets/srgb-issue.png";
+import Slide from "../../../components/Slide.astro";
+import CodeBlock from "../../../components/CodeBlock.astro";
+---
+
+<Slide title="2010's">
+	<p>Des écrans plus performants</p>
+	<img class="computer" data-src={modernScreens.src} />
+</Slide>
+
+<Slide title="P3">
+	<img class="diagram" data-src={xyp3.src} />
+</Slide>
+
+<Slide>
+	<CodeBlock lang="css">
+		{
+			`body {
+	/* sRGB */
+	background-color: rgb(0 255 0);
+}
+
+@media (color-gamut: p3) {
+	body {
+		/* P3 */
+		background-color: color(display-p3 0 1 0);
+  }
+}`
+		}
+	</CodeBlock>
+</Slide>
+
+<Slide data-background-image={srgbP3Mismatch.src} />
+
+<Slide
+	data-background-image={figmaPreferences.src}
+	data-background-size="contain"
+/>
+
+<Slide>
+	<ul>
+		<li>
+			<strong>Designers</strong> &rightarrow; configurer son logiciel pour l'espace
+			de couleur P3
+		</li>
+		<li>
+			<strong>Devs</strong> &rightarrow; préciser l'espace P3 dans ses codes couleurs
+		</li>
+	</ul>
+</Slide>
+
+<Slide>
+	<h3 style="margin: 0">Il reste un problème... 🙄</h3>
+</Slide>
+
+<Slide data-background-image={srgbIssue.src} data-background-size="contain" />
+<Slide>
+	<img style="height: 80dvh" data-src={xyDiagram.src} alt="" />
+</Slide>
+
+<style>
+	.diagram {
+		height: 70dvh;
+		width: auto;
+	}
+	.computer {
+		height: 60dvh;
+	}
+	p {
+		margin-top: -0.5em;
+	}
+</style>

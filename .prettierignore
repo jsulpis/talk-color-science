@@ -1,3 +1,4 @@
 src/slides/2-representation-of-colors/RepresentationOfColors.astro
 src/slides/3-color-space-for-humans/ColorSpaceForHumans.astro
 src/slides/2-representation-of-colors/cie-rgb/CIERGB.astro
+src/slides/2-representation-of-colors/cie-xyz/CIEXYZ.astro

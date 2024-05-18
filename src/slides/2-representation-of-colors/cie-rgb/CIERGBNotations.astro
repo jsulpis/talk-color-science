@@ -1,0 +1,112 @@
+<table>
+	<thead>
+		<td></td>
+		<th>R</th>
+		<th>G</th>
+		<th>B</th>
+	</thead>
+	<tr class="yellow">
+		<td>580nm<span class="preview"></span></td>
+		<td>0.238</td>
+		<td>0.129</td>
+		<td>0.000</td>
+	</tr>
+	<tr class="orange">
+		<td>620nm<span class="preview"></span></td>
+		<td>0.285</td>
+		<td>0.017</td>
+		<td>0.000</td>
+	</tr>
+	<tr class="white">
+		<td>mix<span class="preview"></span></td>
+		<td>0.142</td>
+		<td>0.175</td>
+		<td>0.184</td>
+	</tr>
+	<tr class="pink">
+		<td>blanc + rouge<span class="preview"></span></td>
+		<td>0.137</td>
+		<td>0.102</td>
+		<td>0.110</td>
+	</tr>
+	<tr class="cyan">
+		<td>bleu + vert<span class="preview"></span></td>
+		<td
+			><span class="minus"
+				>-<span class="circle fragment" data-fragment-index="1"></span>
+				<span class="emoji fragment" data-fragment-index="1">🤔</span></span
+			>0.029</td
+		>
+		<td>0.168</td>
+		<td>0.182</td>
+	</tr>
+</table>
+
+<style lang="scss">
+	table {
+		border-spacing: 2rem;
+
+		thead th {
+			text-align: center;
+		}
+
+		td,
+		th {
+			border-bottom: 1px solid rgba(255 255 255 / 0.8) !important;
+		}
+
+		td {
+			padding: 1rem 2rem;
+		}
+	}
+	td:first-of-type {
+		text-align: end;
+		font-size: 0.6em;
+
+		span {
+			vertical-align: middle;
+		}
+	}
+
+	.preview {
+		display: inline-block;
+		width: 2em;
+		aspect-ratio: 1;
+		border-radius: 100%;
+		margin-left: 1rem;
+
+		.yellow & {
+			background: #ffbe00;
+		}
+		.orange & {
+			background: #ea5602;
+		}
+		.white & {
+			background: white;
+		}
+		.pink & {
+			background: pink;
+		}
+		.cyan & {
+			background: cyan;
+		}
+	}
+	.minus {
+		position: relative;
+	}
+	.circle {
+		border-radius: 100%;
+		border: 10px solid red;
+		width: 4.5rem;
+		aspect-ratio: 1;
+		position: absolute;
+		left: -100%;
+		top: -25%;
+	}
+	.emoji {
+		position: absolute;
+		font-size: 5rem;
+		left: 150%;
+		top: 130%;
+	}
+</style>

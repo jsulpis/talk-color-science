@@ -1,0 +1,107 @@
+<table>
+	<thead>
+		<td></td>
+		<th>X</th>
+		<th>Y</th>
+		<th>Z</th>
+	</thead>
+	<tr class="yellow">
+		<td>580nm<span class="preview"></span></td>
+		<td>67.388</td>
+		<td>62.583</td>
+		<td>6.404</td>
+	</tr>
+	<tr class="orange">
+		<td>620nm<span class="preview"></span></td>
+		<td>49.441</td>
+		<td>30.363</td>
+		<td>2.888</td>
+	</tr>
+	<tr class="white">
+		<td>mix<span class="preview"></span></td>
+		<td>95.047</td>
+		<td>100.000</td>
+		<td>108.883</td>
+	</tr>
+	<tr class="pink">
+		<td>blanc + rouge<span class="preview"></span></td>
+		<td>70.870</td>
+		<td>63.274</td>
+		<td>64.969</td>
+	</tr>
+	<tr class="cyan">
+		<td>bleu + vert<span class="preview"></span></td>
+		<td>43.801</td>
+		<td>78.733</td>
+		<td>106.950</td>
+	</tr>
+</table>
+
+<style lang="scss">
+	table {
+		border-spacing: 2rem;
+
+		thead th {
+			text-align: center;
+		}
+
+		td,
+		th {
+			border-bottom: 1px solid rgba(255 255 255 / 0.8) !important;
+		}
+
+		td {
+			padding: 1rem 2rem;
+		}
+	}
+	td:first-of-type {
+		text-align: end;
+		font-size: 0.6em;
+
+		span {
+			vertical-align: middle;
+		}
+	}
+
+	.preview {
+		display: inline-block;
+		width: 2em;
+		aspect-ratio: 1;
+		border-radius: 100%;
+		margin-left: 1rem;
+
+		.yellow & {
+			background: #ffbe00;
+		}
+		.orange & {
+			background: #ea5602;
+		}
+		.white & {
+			background: white;
+		}
+		.pink & {
+			background: pink;
+		}
+		.cyan & {
+			background: cyan;
+		}
+	}
+	.minus {
+		position: relative;
+	}
+	.circle {
+		border-radius: 100%;
+		border: 10px solid red;
+		width: 4.5rem;
+		aspect-ratio: 1;
+		position: absolute;
+		left: -100%;
+		top: -25%;
+	}
+	.emoji {
+		position: absolute;
+		font-size: 5rem;
+		left: 150%;
+		top: 130%;
+	}
+</style>

@@ -1,0 +1,62 @@
+---
+import Slide from "../../../components/Slide.astro";
+import RecapSrgb from "./RecapSrgb.svelte";
+import SrgbHSL3d from "./SrgbHSL-3D.svelte";
+import SrgbHSL from "./SrgbHSL.svelte";
+import SrgbHSV3d from "./SrgbHSV-3D.svelte";
+import SrgbHSV from "./SrgbHSV.svelte";
+import SrgbRGB3d from "./SrgbRGB-3D.svelte";
+import SrgbRGB from "./SrgbRGB.svelte";
+import xysrgb from "../assets/xy-srgb.png";
+import computerTv from "../assets/computer-tv.jpg";
+---
+
+<Slide title="1990's">
+	<p>Premiers appareil numériques personnels</p>
+	<img class="computer" data-src={computerTv.src} />
+</Slide>
+
+<Slide title="Rec.709 (vidéo) ≈ sRGB (image)">
+	<img class="diagram" data-src={xysrgb.src} />
+</Slide>
+
+<Slide title="sRGB / RGB">
+	<SrgbRGB client:visible />
+</Slide>
+
+<Slide title="sRGB / RGB">
+	<SrgbRGB3d client:visible />
+</Slide>
+
+<Slide title="sRGB / HSL">
+	<SrgbHSL client:visible />
+</Slide>
+
+<Slide title="sRGB / HSL">
+	<SrgbHSL3d client:visible />
+</Slide>
+
+<Slide title="sRGB / HSB">
+	<SrgbHSV client:visible />
+</Slide>
+
+<Slide title="sRGB / HSB">
+	<SrgbHSV3d client:visible />
+</Slide>
+
+<Slide title="sRGB">
+	<RecapSrgb client:visible />
+</Slide>
+
+<style>
+	.computer {
+		height: 60dvh;
+	}
+	.diagram {
+		height: 70dvh;
+		width: auto;
+	}
+	p {
+		margin-top: -0.5em;
+	}
+</style>

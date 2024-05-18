@@ -3,13 +3,13 @@ import CodeBlock from "../../components/CodeBlock.astro";
 import PartTitle from "../../components/PartTitle.astro";
 import Slide from "../../components/Slide.astro";
 import VideoSlide from "../../components/VideoSlide.astro";
-import cielab from "./assets/cielab-visible.webm"
-import cielch from "./assets/cielch-visible.webm"
+import cielab from "./assets/cielab-visible.webm";
+import cielch from "./assets/cielch-visible.webm";
 import srgb from "./assets/srgb.mov";
 import palette from "./assets/palette.png";
 import gradients from "./assets/gradient.avif";
 import Gradients from "./gradients/Gradients.astro";
-import HslPalette from "./palette/HslPalette.astro";
+import HSLPalette from "./palette/HSLPalette.astro";
 import OKLCHPalette from "./palette/OKLCHPalette.astro";
 import LchSrgb3d from "./srgb/LchSrgb.svelte";
 import SectionTitle from "../../components/SectionTitle.astro";
@@ -44,8 +44,8 @@ import SectionTitle from "../../components/SectionTitle.astro";
 	title="CIE LAB 1976"
 	src={cielab}
 	link="https://commons.wikimedia.org/wiki/File:Visible_gamut_within_CIELAB_color_space_D65_whitepoint_mesh.webm"
-	authors="Michael Horvath, Christoph Lipka" />
-
+	authors="Michael Horvath, Christoph Lipka"
+/>
 
 <Slide title="CIE LCH 1976">
 	<div is:raw style="font-size: 2rem; margin-top: 3em; line-height: 2em;">
@@ -60,7 +60,8 @@ import SectionTitle from "../../components/SectionTitle.astro";
 	title="CIE LCH 1976"
 	src={cielch}
 	link="https://commons.wikimedia.org/wiki/File:Visible_gamut_within_CIELCHab_color_space_D65_whitepoint_mesh.webm"
-	authors="Michael Horvath, Christoph Lipka" />
+	authors="Michael Horvath, Christoph Lipka"
+/>
 
 <Slide>
 	<figure>
@@ -75,18 +76,16 @@ import SectionTitle from "../../components/SectionTitle.astro";
 </Slide>
 
 <Slide title="Björn Ottosson, 2020">
-<ul class="fragment">
-	<li>LAB &rightarrow; OKLAB</li>
-	<li>LCH &rightarrow; OKLCH</li>
-</ul>
+	<ul class="fragment">
+		<li>LAB &rightarrow; OKLAB</li>
+		<li>LCH &rightarrow; OKLCH</li>
+	</ul>
 </Slide>
 
-<SectionTitle background={palette.src}>
-	Palettes de couleurs
-</SectionTitle>
+<SectionTitle background={palette.src}> Palettes de couleurs </SectionTitle>
 
 <Slide title="HSL">
-	<HslPalette />
+	<HSLPalette />
 </Slide>
 
 <Slide title="OKLCH">
@@ -94,18 +93,19 @@ import SectionTitle from "../../components/SectionTitle.astro";
 </Slide>
 
 <SectionTitle background={gradients.src}>
-	Application : <br/>gradients
+	Gradients
 </SectionTitle>
 
 <Gradients />
 
-
 <Slide>
-	<CodeBlock lang="css" is:raw>
-.gradient {
+	<CodeBlock lang="css">
+		{
+			`.gradient {
 	background-image: linear-gradient(in oklab, blue, yellow);
-}
-		</CodeBlock>
+}`
+		}
+	</CodeBlock>
 </Slide>
 
 <style>

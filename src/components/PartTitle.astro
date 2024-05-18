@@ -1,18 +1,42 @@
 ---
 import Slide from "./Slide.astro";
 import titleBackground from "./assets/title-background.jpg";
+
+interface Props {
+	index: number;
+}
+const { index } = Astro.props;
 ---
 
 <Slide data-background-image={titleBackground.src}>
 	<h1>
+		<span>{index}</span>
 		<slot />
 	</h1>
 </Slide>
 
-<style>
+<style lang="scss">
+	span {
+		background: linear-gradient(to bottom right, #0cc3ee -100%, #003369 80%);
+		border-radius: 100%;
+		display: inline-grid;
+		height: 1.2em;
+		font-size: 0.9em;
+		aspect-ratio: 1;
+		position: relative;
+
+		&::after {
+			content: ".";
+			position: absolute;
+			right: 0.3rem;
+		}
+	}
+
 	h1 {
 		font-size: 5.5rem;
 		margin-top: -20dvh;
-		text-shadow: 0 0 2dvh rgba(0 0 0 / .5), 0 0 15dvh black;
+		text-shadow:
+			0 0 2dvh rgba(0 0 0 / 0.5),
+			0 0 15dvh black;
 	}
 </style>

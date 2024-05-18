@@ -2,7 +2,7 @@
 const hues = Array.from({ length: 12 }).map(
 	(_, i, array) => (360 / array.length) * i
 );
-const chromas = [0.05, 0.12, 0.21, 0.26, 0.2, 0.12, 0.08];
+const chromas = [0.05, 0.12, 0.21, 0.27, 0.21, 0.12, 0.08];
 const lightnesss = [95, 85, 70, 55, 40, 25, 16];
 ---
 
@@ -21,7 +21,7 @@ const lightnesss = [95, 85, 70, 55, 40, 25, 16];
 				<th class="value">{chroma}</th>
 				{hues.map((hue) => (
 					<td
-						style={`background: oklch(${lightnesss[i]}%, ${chroma}, ${hue}deg);color:${i < 3 ? "black" : "white"}`}
+						style={`background: oklch(${lightnesss[i]}% ${chroma} ${hue});color:${i < 3 ? "black" : "white"}`}
 					>
 						<span class="fragment" data-fragment-index="1">
 							Aa

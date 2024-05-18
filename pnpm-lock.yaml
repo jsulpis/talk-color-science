@@ -32,6 +32,9 @@ importers:
       '@jaames/iro':
         specifier: 5.5.2
         version: 5.5.2
+      colorjs.io:
+        specifier: 0.5.0
+        version: 0.5.0
       four:
         specifier: npm:fourwastaken@0.4.0
         version: fourwastaken@0.4.0(patch_hash=nonsqgv4kaurk2of3etkobpr6e)
@@ -875,6 +878,9 @@ packages:
   color@4.2.3:
     resolution: {integrity: sha512-1rXeuUUiGGrykh+CeBdu5Ie7OJwinCgQY0bc7GCRxy5xVHy+moaqkpL/jqQq0MtQOeYcrqEz4abc5f0KtU7W4A==}
     engines: {node: '>=12.5.0'}
+
+  colorjs.io@0.5.0:
+    resolution: {integrity: sha512-qekjTiBLM3F/sXKks/ih5aWaHIGu+Ftel0yKEvmpbKvmxpNOhojKgha5uiWEUOqEpRjC1Tq3nJRT7WgdBOxIGg==}
 
   comma-separated-tokens@2.0.2:
     resolution: {integrity: sha512-G5yTt3KQN4Yn7Yk4ed73hlZ1evrFKXeUW3086p3PRFNp7m2vIjI6Pg+Kgb+oyzhd9F2qdcoj67+y3SdxL5XWsg==}
@@ -2799,6 +2805,8 @@ snapshots:
       color-convert: 2.0.1
       color-string: 1.9.1
     optional: true
+
+  colorjs.io@0.5.0: {}
 
   comma-separated-tokens@2.0.2: {}
 

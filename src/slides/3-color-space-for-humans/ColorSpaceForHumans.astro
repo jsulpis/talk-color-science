@@ -1,13 +1,18 @@
 ---
+import CodeBlock from "../../components/CodeBlock.astro";
 import PartTitle from "../../components/PartTitle.astro";
 import Slide from "../../components/Slide.astro";
 import VideoSlide from "../../components/VideoSlide.astro";
 import cielab from "./assets/cielab-visible.webm"
 import cielch from "./assets/cielch-visible.webm"
 import srgb from "./assets/srgb.mov";
+import palette from "./assets/palette.png";
+import gradients from "./assets/gradient.avif";
+import Gradients from "./gradients/Gradients.astro";
 import HslPalette from "./palette/HslPalette.astro";
 import OKLCHPalette from "./palette/OKLCHPalette.astro";
 import LchSrgb3d from "./srgb/LchSrgb.svelte";
+import SlideWithTitle from "../../components/SlideWithTitle.astro";
 ---
 
 <PartTitle>3. Un espace de couleur<br />pour les humains</PartTitle>
@@ -76,13 +81,9 @@ import LchSrgb3d from "./srgb/LchSrgb.svelte";
 </ul>
 </Slide>
 
-<Slide>
-	<h3>Applications 🎨</h3>
-</Slide>
-
-<Slide>
-	<h3>Palette de couleurs</h3>
-</Slide>
+<SlideWithTitle background={palette.src}>
+	Palettes de couleurs
+</SlideWithTitle>
 
 <Slide title="HSL">
 	<HslPalette />
@@ -90,6 +91,21 @@ import LchSrgb3d from "./srgb/LchSrgb.svelte";
 
 <Slide title="OKLCH">
 	<OKLCHPalette />
+</Slide>
+
+<SlideWithTitle background={gradients.src}>
+	Application : <br/>gradients
+</SlideWithTitle>
+
+<Gradients />
+
+
+<Slide>
+	<CodeBlock lang="css" is:raw>
+.gradient {
+	background-image: linear-gradient(in oklab, blue, yellow);
+}
+		</CodeBlock>
 </Slide>
 
 <style>

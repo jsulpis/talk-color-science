@@ -1,0 +1,82 @@
+---
+import Color from "colorjs.io";
+
+const start = new Color("blue");
+const end = new Color("yellow");
+const spaces = ["hsl", "oklab", "oklch"];
+
+function stringify(color: Color, space: string) {
+	return color
+		.to(space)
+		.toString({ format: space, precision: 2 })
+		.replace(/.*\((.*)\)/, "$1")
+		.replaceAll(" ", ", ");
+}
+---
+
+{
+	Array.from({ length: spaces.length + 1 }).map((_, i) => (
+		<section data-auto-animate>
+			<p class="warning">
+				⚠️ Sorry, your browser doesn't support interpolation color space
+			</p>
+			<div class="container">
+				<div class="gradient" data-id="rgb" style={`--space: srgb`}>
+					<strong>rgb</strong>
+					<span>0, 0, 1</span>
+					<div class="preview" />
+					<span>1, 1, 0</span>
+				</div>
+				{spaces.slice(0, i).map((space) => (
+					<div class="gradient" data-id={space} style={`--space: ${space}`}>
+						<strong>{space}</strong>
+						<span>{stringify(start, space)}</span>
+						<div class="preview" />
+						<span>{stringify(end, space)}</span>
+					</div>
+				))}
+			</div>
+		</section>
+	))
+}
+
+<style lang="scss">
+	.container {
+		display: flex;
+		height: 100dvh;
+		align-items: center;
+		justify-content: center;
+	}
+	.gradient {
+		display: flex;
+		flex: 0 0 23dvw;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+	span {
+		font-size: 2rem;
+	}
+	strong {
+		font-size: 3.5rem;
+		margin-bottom: 0.5em;
+	}
+	.preview {
+		border-radius: 16px;
+		height: 40dvh;
+		aspect-ratio: 0.5;
+		background-image: linear-gradient(in var(--space), blue, yellow);
+	}
+
+	.warning {
+		margin-bottom: 0;
+		width: 100%;
+		font-size: 2rem;
+		position: absolute;
+	}
+	@supports (background-image: linear-gradient(in oklab, blue, yellow)) {
+		.warning {
+			display: none;
+		}
+	}
+</style>

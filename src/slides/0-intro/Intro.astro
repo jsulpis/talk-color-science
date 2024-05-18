@@ -4,17 +4,18 @@ import ColorMix from "./ColorMix.svelte";
 import child from "./assets/child.webp";
 import meme from "./assets/qui-s-en-fout.webp";
 import recording from "./assets/recording.mov";
+import questionBackground from "./assets/question-background.png";
 import framesVideo from "./assets/frames-video.png";
-import Question from "../../components/Question.astro";
 import Title from "./Title.astro";
 import IssuesWithRgb from "./IssuesWithRgb.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
 ---
 
 <Title />
 
-<Slide>
-	<Question>C'est quoi la couleur ?</Question>
-</Slide>
+<SectionTitle background={questionBackground.src}>
+	C'est quoi la couleur ?
+</SectionTitle>
 
 <Slide data-background-image={child.src} />
 

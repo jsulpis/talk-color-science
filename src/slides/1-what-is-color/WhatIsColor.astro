@@ -10,8 +10,9 @@ import WaveSuperposition from "./waves/WaveSuperposition.svelte";
 import MonochromaticWaveCanvas from "./waves/MonochromaticWaveCanvas.svelte";
 import meme from "../0-intro/assets/qui-s-en-fout.webp";
 import CodeBlock from "../../components/CodeBlock.astro";
-import Question from "../../components/Question.astro";
 import PartTitle from "../../components/PartTitle.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+import questionBackground from "../0-intro/assets/question-background.png";
 ---
 
 <PartTitle>1. C'est quoi la couleur ?</PartTitle>
@@ -36,9 +37,9 @@ import PartTitle from "../../components/PartTitle.astro";
 	<WaveIntensity client:visible />
 </Slide>
 
-<Slide>
-	<Question>C'est quoi le blanc ?</Question>
-</Slide>
+<SectionTitle background={questionBackground.src}>
+	C'est quoi le blanc ?
+</SectionTitle>
 
 <Slide>
 	<MonochromaticWaveCanvas frequency={5} client:visible style="width: 1000px" />
@@ -66,9 +67,9 @@ import PartTitle from "../../components/PartTitle.astro";
 
 <Slide data-background-image={meme.src} />
 
-<Slide animate={false}>
-	<Question>À quoi ça sert ?</Question>
-</Slide>
+<SectionTitle animate={false} background={questionBackground.src}>
+	À quoi ça sert ?
+</SectionTitle>
 
 <Slide>
 	<CodeBlock lang="css" is:raw>

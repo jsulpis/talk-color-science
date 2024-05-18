@@ -3,11 +3,12 @@ import Slide from "./Slide.astro";
 
 interface Props {
 	background: string;
+	animate?: boolean;
 }
-const { background } = Astro.props;
+const { background, ...props } = Astro.props;
 ---
 
-<Slide class="section">
+<Slide class="section" {...props}>
 	<div class="background" style={`background-image: url(${background});`}>
 		<h2><slot /></h2>
 	</div>

@@ -12,7 +12,7 @@ import Gradients from "./gradients/Gradients.astro";
 import HslPalette from "./palette/HslPalette.astro";
 import OKLCHPalette from "./palette/OKLCHPalette.astro";
 import LchSrgb3d from "./srgb/LchSrgb.svelte";
-import SlideWithTitle from "../../components/SlideWithTitle.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
 ---
 
 <PartTitle>3. Un espace de couleur<br />pour les humains</PartTitle>
@@ -81,9 +81,9 @@ import SlideWithTitle from "../../components/SlideWithTitle.astro";
 </ul>
 </Slide>
 
-<SlideWithTitle background={palette.src}>
+<SectionTitle background={palette.src}>
 	Palettes de couleurs
-</SlideWithTitle>
+</SectionTitle>
 
 <Slide title="HSL">
 	<HslPalette />
@@ -93,9 +93,9 @@ import SlideWithTitle from "../../components/SlideWithTitle.astro";
 	<OKLCHPalette />
 </Slide>
 
-<SlideWithTitle background={gradients.src}>
+<SectionTitle background={gradients.src}>
 	Application : <br/>gradients
-</SlideWithTitle>
+</SectionTitle>
 
 <Gradients />
 

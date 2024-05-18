@@ -35,7 +35,7 @@ const { title } = Astro.props;
 				plugins: [highlightPlugin, MathJax3],
 			});
 
-			// Display a hand cursor when
+			// Display a hand cursor when pressing AltLeft
 			const root = document.documentElement;
 			root.addEventListener("keydown", (e) => {
 				if (e.code !== "AltLeft" || e.metaKey) {

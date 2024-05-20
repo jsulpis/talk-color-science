@@ -7,6 +7,8 @@ import figmaPreferences from "../assets/figma-preferences.png";
 import srgbIssue from "../assets/srgb-issue.png";
 import Slide from "../../../components/Slide.astro";
 import CodeBlock from "../../../components/CodeBlock.astro";
+import Luminosity from "./Luminosity.svelte";
+import Luminance from "./Luminance.svelte";
 ---
 
 <Slide title="2010's">
@@ -60,7 +62,20 @@ import CodeBlock from "../../../components/CodeBlock.astro";
 	<h3 style="margin: 0">Il reste un problème... 🙄</h3>
 </Slide>
 
-<Slide data-background-image={srgbIssue.src} data-background-size="contain" />
+<Slide title="Luminosité...">
+	<img class="wheel" data-src={srgbIssue.src} alt="" />
+</Slide>
+
+<Slide title="Luminosité...">
+	<p>Quantité de rouge / vert / bleu</p>
+	<Luminosity client:visible />
+</Slide>
+
+<Slide title="... vs Luminance">
+	<p><em>Sensation</em> visuelle de la luminosité</p>
+	<Luminance client:visible />
+</Slide>
+
 <Slide>
 	<img style="height: 80dvh" data-src={xyDiagram.src} alt="" />
 </Slide>
@@ -69,6 +84,10 @@ import CodeBlock from "../../../components/CodeBlock.astro";
 	.diagram {
 		height: 70dvh;
 		width: auto;
+	}
+	.wheel {
+		height: 80dvh;
+		margin-top: -8%;
 	}
 	.computer {
 		height: 60dvh;

@@ -5,6 +5,7 @@ import SrgbP3Comparison from "./SrgbP3Comparison.svelte";
 import diagram from "../2-representation-of-colors/assets/xyp3.png";
 import VideoSlide from "../../components/VideoSlide.astro";
 import cielch from "../3-color-space-for-humans/assets/cielch-visible.webm";
+import TheEnd from "./TheEnd.svelte";
 ---
 
 <PartTitle title="TL;DL" subtitle="too long ; didn't listen" />
@@ -19,6 +20,10 @@ import cielch from "../3-color-space-for-humans/assets/cielch-visible.webm";
 	link="https://commons.wikimedia.org/wiki/File:Visible_gamut_within_CIELCHab_color_space_D65_whitepoint_mesh.webm"
 	authors="Michael Horvath, Christoph Lipka"
 />
+
+<Slide style="top: 0">
+	<TheEnd client:visible />
+</Slide>
 
 <Slide>
 	<SrgbP3Comparison client:visible />

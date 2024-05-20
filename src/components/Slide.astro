@@ -15,8 +15,13 @@ const { animate = true, title, ...attrs } = Astro.props;
 ---
 
 <section data-auto-animate={animate} {...attrs}>
-	{title && <h3 class="slide-title">{title}</h3>}
-	<slot />
+	{
+		/* the auto-animate feature seems to fail when the section has more than one children. This divs is an attempt to fix that */
+	}
+	<div>
+		{title && <h3 class="slide-title">{title}</h3>}
+		<slot />
+	</div>
 </section>
 
 <style>

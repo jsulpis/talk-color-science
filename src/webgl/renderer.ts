@@ -17,14 +17,24 @@ type Args = Omit<MaterialOptions, "vertex" | "compute"> & {
 	canvas: HTMLCanvasElement;
 	vertex?: string;
 	animate?: boolean;
+	colorSpace?: "srgb" | "p3";
 };
 
 export function useGlslCanvas<CustomUniforms>({
 	canvas,
 	animate,
+	colorSpace,
 	...materialOptions
 }: Args) {
 	const renderer = new WebGLRenderer({ canvas });
+
+	const glP3 = renderer.gl;
+
+	if (colorSpace === "p3" && `drawingBufferColorSpace` in glP3) {
+		glP3.drawingBufferColorSpace = "display-p3";
+		glP3.clearColor(1, 0, 0, 1);
+		glP3.clear(glP3.COLOR_BUFFER_BIT);
+	}
 
 	const uniformsParams = {
 		uTime: 100,

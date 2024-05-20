@@ -121,4 +121,12 @@ const { title } = Astro.props;
 			font-size: 1.3em;
 		}
 	}
+
+	.reveal img.diagram {
+		height: 70dvh;
+		width: auto;
+		// There is an unwanted white border at the top of all images but I don't want to edit them all
+		clip-path: polygon(0% 2%, 100% 2%, 100% 100%, 0% 100%);
+		margin-top: -1.5%; // Compensate for the little extra space at the top
+	}
 </style>

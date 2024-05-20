@@ -29,19 +29,21 @@ import SectionTitle from "../../components/SectionTitle.astro";
 	<IssuesWithRgb />
 </Slide>
 
-<Slide
-	data-background-video={recording}
-	data-background-video-loop
-	data-background-size="contain"
->
-	<img data-src={framesVideo.src} data-autoplay />
+<Slide>
+	<div class="r-stack">
+		<video data-src={recording} onclick="this.play()" loop></video>
+		<img data-src={framesVideo.src} data-autoplay />
+	</div>
 </Slide>
 
 <style lang="scss">
-	img {
+	img,
+	video {
 		display: block;
 		margin: auto;
 		height: 100dvh;
 		object-fit: contain;
+		max-width: none;
+		max-height: none;
 	}
 </style>

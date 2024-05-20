@@ -1,5 +1,4 @@
 ---
-import ImageStack from "../../../components/ImageStack.astro";
 import Slide from "../../../components/Slide.astro";
 import VideoSlide from "../../../components/VideoSlide.astro";
 import XYZNotations from "./XYZNotations.astro";
@@ -76,21 +75,14 @@ import CIEXYZCurves from "./CIEXYZCurves.svelte";
 	authors="Michael Horvath, Christoph Lipka" />
 
 <Slide title="Diagramme de chromaticité CIE 1931 xy">
-	<ImageStack
-		class="diagram"
-		images={[
+	<div class="r-stack">
+		{[
 			xyDiagram.src,
 			xyDiagramLambda.src,
 			xyColorMix.src,
 			xyCieRgb.src,
 			xyCieRgbWithLabel.src,
-		]}
-	/>
+		].map((src, i) => <img class={`diagram${i > 0 ? ' fragment' : ''}`} data-src={src} />)}
+	</div>
 </Slide>
 
-<style>
-	.diagram {
-		height: 70dvh;
-		width: auto;
-	}
-</style>

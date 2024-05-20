@@ -3,6 +3,7 @@ import PartTitle from "../../components/PartTitle.astro";
 import Slide from "../../components/Slide.astro";
 import SrgbP3Comparison from "./SrgbP3Comparison.svelte";
 import diagram from "../2-representation-of-colors/assets/xyp3.png";
+import screenshot from "./assets/screenshot.png";
 import VideoSlide from "../../components/VideoSlide.astro";
 import cielch from "../3-color-space-for-humans/assets/cielch-visible.webm";
 import TheEnd from "./TheEnd.svelte";
@@ -11,7 +12,7 @@ import TheEnd from "./TheEnd.svelte";
 <PartTitle title="TL;DL" subtitle="too long ; didn't listen" />
 
 <Slide title="XYZ > P3 > sRGB">
-	<img src={diagram.src} alt="" />
+	<img class="diagram" src={diagram.src} alt="" />
 </Slide>
 
 <VideoSlide
@@ -29,8 +30,4 @@ import TheEnd from "./TheEnd.svelte";
 	<SrgbP3Comparison client:visible />
 </Slide>
 
-<style>
-	img {
-		height: 70dvh;
-	}
-</style>
+<Slide data-background-image={screenshot.src} data-background-size="contain" />

@@ -18,7 +18,7 @@ import CodeBlock from "../../../components/CodeBlock.astro";
 	<img class="diagram" data-src={xyp3.src} />
 </Slide>
 
-<Slide>
+<Slide title="P3">
 	<CodeBlock lang="css">
 		{
 			`body {
@@ -43,11 +43,12 @@ import CodeBlock from "../../../components/CodeBlock.astro";
 	data-background-size="contain"
 />
 
-<Slide>
+<Slide title="P3">
+	<p>Pour utiliser cet espace de couleur :</p>
 	<ul>
 		<li>
-			<strong>Designers</strong> &rightarrow; configurer son logiciel pour l'espace
-			de couleur P3
+			<strong>Designers</strong> &rightarrow; configurer son logiciel pour utiliser
+			le profil de couleur P3 (et l'inclure dans les images)
 		</li>
 		<li>
 			<strong>Devs</strong> &rightarrow; préciser l'espace P3 dans ses codes couleurs
@@ -74,5 +75,12 @@ import CodeBlock from "../../../components/CodeBlock.astro";
 	}
 	p {
 		margin-top: -0.5em;
+	}
+	ul {
+		margin-top: 1em;
+		max-width: 80dvw;
+	}
+	li {
+		margin-bottom: 1em;
 	}
 </style>

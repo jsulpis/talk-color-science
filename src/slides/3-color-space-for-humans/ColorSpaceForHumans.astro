@@ -24,7 +24,7 @@ import SectionTitle from "../../components/SectionTitle.astro";
 </Slide>
 
 <Slide title="CIE LAB 1976">
-	<div is:raw style="font-size: 1.3rem;">
+	<div is:raw style="font-size: 1.5rem;">
 		\[\begin{aligned}
 			L* &= 116f(\frac{Y}{Y_n}) - 16 \\
 			a* &= 500(f(\frac{X}{X_n}) - f(\frac{Y}{Y_n})) \\
@@ -76,7 +76,7 @@ import SectionTitle from "../../components/SectionTitle.astro";
 </Slide>
 
 <Slide title="Björn Ottosson, 2020">
-	<ul class="fragment">
+	<ul class="fragment oklch">
 		<li>LAB &rightarrow; OKLAB</li>
 		<li>LCH &rightarrow; OKLCH</li>
 	</ul>
@@ -115,5 +115,8 @@ import SectionTitle from "../../components/SectionTitle.astro";
 	figcaption {
 		font-size: 3rem;
 		font-weight: bold;
+	}
+	ul.oklch {
+		margin-top: 1em;
 	}
 </style>

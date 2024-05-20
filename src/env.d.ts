@@ -15,3 +15,5 @@ declare module "*.vert" {
 	const shaderSource: string;
 	export default shaderSource;
 }
+
+declare module "*.mov" {}

@@ -24,7 +24,8 @@
 <style>
 	figure {
 		display: inline-grid;
-		grid-template-columns: 20dvw 60dvw;
+		grid-template-columns: 15dvw 75dvw;
+		gap: 2dvw;
 		align-items: center;
 		font-weight: bold;
 		color: white;

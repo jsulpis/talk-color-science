@@ -83,7 +83,8 @@
 		--circle-radius: 20vmin;
 
 		display: grid;
-		grid-template: 1fr 15vh / 1fr 1fr;
+		grid-template: 1fr 25vh / 1fr 1fr;
+		margin-top: 5dvh;
 		height: 100dvh;
 		column-gap: 4px;
 		align-items: center;

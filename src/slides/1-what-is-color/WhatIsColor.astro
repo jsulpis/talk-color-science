@@ -13,12 +13,17 @@ import CodeBlock from "../../components/CodeBlock.astro";
 import PartTitle from "../../components/PartTitle.astro";
 import SectionTitle from "../../components/SectionTitle.astro";
 import questionBackground from "../0-intro/assets/question-background.png";
+import CellsBrain from "./CellsBrain.astro";
 ---
 
 <PartTitle index={1}>C'est quoi la couleur ?</PartTitle>
 
 <Slide>
 	<Waves client:visible />
+</Slide>
+
+<Slide>
+	<CellsBrain />
 </Slide>
 
 <Slide>
@@ -33,13 +38,9 @@ import questionBackground from "../0-intro/assets/question-background.png";
 	<SPD client:visible mode={1} />
 </Slide>
 
-<Slide>
+<!-- <Slide>
 	<WaveIntensity client:visible />
-</Slide>
-
-<SectionTitle background={questionBackground.src}>
-	C'est quoi le blanc ?
-</SectionTitle>
+</Slide> -->
 
 <Slide>
 	<MonochromaticWaveCanvas frequency={5} client:visible style="width: 1000px" />
@@ -50,15 +51,11 @@ import questionBackground from "../0-intro/assets/question-background.png";
 </Slide>
 
 <Slide>
-	<SPD client:visible mode={4} />
+	<SPD client:visible mode={3} />
 </Slide>
 
 <Slide>
 	<SPD client:visible mode={2} />
-</Slide>
-
-<Slide>
-	<SPD client:visible mode={3} showSPDAxis={true} />
 </Slide>
 
 <Slide>

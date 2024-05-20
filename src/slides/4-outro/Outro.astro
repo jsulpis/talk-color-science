@@ -1,8 +1,31 @@
 ---
+import PartTitle from "../../components/PartTitle.astro";
 import Slide from "../../components/Slide.astro";
 import SrgbP3Comparison from "./SrgbP3Comparison.svelte";
+import diagram from "../2-representation-of-colors/assets/xyp3.png";
+import VideoSlide from "../../components/VideoSlide.astro";
+import cielch from "../3-color-space-for-humans/assets/cielch-visible.webm";
 ---
+
+<PartTitle title="TL;DL" subtitle="too long ; didn't listen" />
+
+<Slide title="XYZ > P3 > sRGB">
+	<img src={diagram.src} alt="" />
+</Slide>
+
+<VideoSlide
+	title="OKLAB / OKLCH"
+	src={cielch}
+	link="https://commons.wikimedia.org/wiki/File:Visible_gamut_within_CIELCHab_color_space_D65_whitepoint_mesh.webm"
+	authors="Michael Horvath, Christoph Lipka"
+/>
 
 <Slide>
 	<SrgbP3Comparison client:visible />
 </Slide>
+
+<style>
+	img {
+		height: 70dvh;
+	}
+</style>

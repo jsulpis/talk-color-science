@@ -3,16 +3,19 @@ import Slide from "./Slide.astro";
 import titleBackground from "./assets/title-background.jpg";
 
 interface Props {
-	index: number;
+	index?: number;
+	title?: string;
+	subtitle?: string;
 }
-const { index } = Astro.props;
+const { index, title, subtitle } = Astro.props;
 ---
 
 <Slide data-background-image={titleBackground.src}>
 	<h1>
-		<span>{index}</span>
-		<slot />
+		{index && <span>{index}</span>}
+		{title || <slot />}
 	</h1>
+	{subtitle && <p class="fragment">{subtitle}</p>}
 </Slide>
 
 <style lang="scss">
@@ -38,5 +41,8 @@ const { index } = Astro.props;
 		text-shadow:
 			0 0 2dvh rgba(0 0 0 / 0.5),
 			0 0 15dvh black;
+	}
+	p {
+		font-size: 3rem;
 	}
 </style>

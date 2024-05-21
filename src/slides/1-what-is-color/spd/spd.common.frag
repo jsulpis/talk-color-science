@@ -1,4 +1,18 @@
+#define L_MIN 380.
+#define L_MAX 780.
 #define PI acos(-1.)
+
+//======================//
+//  Choose a mode here  //
+//======================//
+
+#define MONOCHROMATIC 1
+#define BLACKBODY 2
+#define NOISE 3
+#define WHITE 4
+
+#define MODE MONOCHROMATIC
+
 
 //=========================//
 //  Color transformations  //
@@ -150,3 +164,55 @@ mat2 rotateZ(float angle) {
   );
 }
 
+//================//
+//  Project code  //
+//================//
+
+float getMonochromaticWavelength() {
+	float lmin = L_MIN + 10.;
+	float lmax = L_MAX - 70.;
+	return mix(lmin, lmax, (sin(uTime / 2. - PI / 2.) + 1.) / 2.);
+}
+
+// by @P_Malin (https://www.shadertoy.com/view/lsKczc)
+float FBM(float p, float ps) {
+	float f = 0.0;
+	float tot = 0.0;
+	float a = .2;
+	for(int i = 0; i < 5; i++) {
+		f += SmoothNoise(p + uTime) * a;
+		p *= 2.0;
+		tot += a;
+		a *= ps;
+	}
+	return f / tot;
+}
+
+// by @P_Malin (https://www.shadertoy.com/view/lsKczc)
+float SPD_BlackBody(float w, float t) {
+	return BlackBody(w, t) / BlackBody(600.0, t);
+}
+
+float SPD_Noise(float w) {
+	float n = FBM((w) * 0.005, 0.5);
+	return pow(n, 3.) * 40.;
+}
+
+float SPD(float l_nm) {
+	#if MODE == BLACKBODY
+	float blackBodyTemperature = 2000. + 8000. * (sin(uTime) + 1.) / 2.;
+	return SPD_BlackBody(l_nm, blackBodyTemperature) / 10.;
+
+	#elif MODE == NOISE
+	return SPD_Noise(l_nm) * smoothstep(L_MIN - 50., L_MIN + 100., l_nm) * smoothstep(L_MAX + 50., L_MAX - 100., l_nm);
+
+	#elif MODE == MONOCHROMATIC
+	return 1. - step(1., abs(l_nm - getMonochromaticWavelength()));
+
+	#elif MODE == WHITE
+	return .2;
+
+	#else
+	return .2;
+	#endif
+}

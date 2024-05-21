@@ -78,37 +78,33 @@ export function useGlslCanvas<CustomUniforms>({
 
 	renderer.render(mesh, camera);
 
-	const rafCallbacks: Function[] = [];
-
-	/**
-	 * Usage:
-	 * ```javascript
-	 * raf(() => {
-	 *   // do something at each frame
-	 * })
-	 * ```
-	 * @param callback function to execute at each frame
-	 */
-	function raf(callback: Function) {
-		rafCallbacks.push(callback);
-	}
-
 	const isPlaying = { value: false };
 	const uniforms = mesh.material.uniforms;
+
 	let rafHandle: number | null;
 	const parentSection = canvas.closest("section:not(.stack)");
 
-	function loop() {
+	// ensure consistent animation speed with all screen's refresh rates
+	// https://www.kirupa.com/animations/ensuring_consistent_animation_speeds.htm
+	const fps = 60;
+	const frameInterval = 1000 / fps;
+	let previousTime = performance.now();
+	let deltaTimeMultiplier = 1;
+	let deltaTime = 0;
+
+	function loop(currentTime: number) {
 		rafHandle = requestAnimationFrame(loop);
 
+		deltaTime = currentTime - previousTime;
+		deltaTimeMultiplier = deltaTime / frameInterval;
+		previousTime = currentTime;
+
 		if (!parentSection?.classList.contains("present")) {
-			// skip animation when the slide is not visible to save processing power
-			return true;
+			// skip animation when the slide is not visible
+			return;
 		}
 
-		rafCallbacks.forEach((callback) => callback());
-
-		(uniforms.uTime as number) += 0.01;
+		(uniforms.uTime as number) += 0.02 * deltaTimeMultiplier;
 		renderer.render(mesh, camera);
 	}
 
@@ -148,7 +144,6 @@ export function useGlslCanvas<CustomUniforms>({
 
 	return {
 		renderer,
-		raf,
 		pause,
 		play,
 		isPlaying,

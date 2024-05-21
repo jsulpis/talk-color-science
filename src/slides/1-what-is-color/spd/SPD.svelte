@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { useGlslCanvas } from "../../../webgl/renderer";
 	import fragment from "./spd.frag";
-	import common from "./spd.common.frag";
+	import vertex from "./spd.vert";
 	import { onMount } from "svelte";
 	import Arrow from "../../../components/Arrow.svelte";
 
@@ -20,13 +20,14 @@
 	onMount(() => {
 		useGlslCanvas({
 			canvas,
-			fragment:
-				common +
-				"\n" +
-				fragment.replace(
-					/#define MODE (MONOCHROMATIC)/,
-					`#define MODE ${mode}`,
-				),
+			fragment: fragment.replace(
+				/#define MODE (MONOCHROMATIC)/,
+				`#define MODE ${mode}`,
+			),
+			vertex: vertex.replace(
+				/#define MODE (MONOCHROMATIC)/,
+				`#define MODE ${mode}`,
+			),
 			animate: mode !== Mode.WHITE,
 		});
 	});

@@ -27,7 +27,6 @@
 		});
 
 		colorPicker.on("color:change", (value) => {
-			console.log(value);
 			color = value.hexString;
 		});
 	});

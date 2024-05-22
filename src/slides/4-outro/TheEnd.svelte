@@ -118,6 +118,21 @@
 			1;
 		border-top: 1px solid;
 		padding-top: 1em;
+		position: relative;
+
+		&::before {
+			content: "";
+			position: absolute;
+			width: 150%;
+			height: 250%;
+			left: -25%;
+			bottom: -60%;
+			background: radial-gradient(
+				closest-side,
+				hsla(215, 100%, 59%, 0.15),
+				transparent
+			);
+		}
 
 		canvas,
 		video {

@@ -3,6 +3,7 @@
 	import iro from "@jaames/iro";
 
 	let color = "#fff";
+	let colorRgb = { r: 255, g: 255, b: 255 };
 	let picker;
 
 	onMount(() => {
@@ -32,23 +33,36 @@
 		});
 
 		colorPicker.on("color:change", (value) => {
-			console.log(value.rhv);
 			color = value.hexString;
+			colorRgb = value.rgb;
 		});
 	});
 </script>
 
 <div class="container" style={`--color: ${color}`}>
-	<div class="circles fragment">
+	<div class="circles fragment" data-fragment-index="1">
 		<span class="circle red"></span>
 		<span class="circle green"></span>
 		<span class="circle blue"></span>
 	</div>
 
-	<div class="picker rgb fragment" bind:this={picker}></div>
+	<div class="fragment" data-fragment-index="1">
+		<div class="picker rgb" bind:this={picker}></div>
+		<strong>{`rgb(${colorRgb.r}, ${colorRgb.g}, ${colorRgb.b})`}</strong>
+	</div>
 </div>
 
 <style lang="scss">
+	.picker {
+		margin-bottom: 1em;
+
+		+ strong {
+			font-size: 3rem;
+		}
+	}
+	.fragment {
+		transition-duration: var(--animation-duration);
+	}
 	.container {
 		--animation-duration: 1s;
 		--circle-radius: 20vmin;

@@ -95,10 +95,11 @@
 		width: calc(1.6 * var(--circle-radius));
 		aspect-ratio: 1;
 		border-radius: 100%;
-		box-shadow: inset 0 0 4px black;
+		box-shadow: 0 0 50px #ffbe00;
 		background: #ffbe00;
 		justify-self: center;
 		transition: transform 1s var(--ease-in-out);
+		filter: blur(5px);
 
 		.container:global(.visible) & {
 			transform: translateX(130%);
@@ -144,20 +145,22 @@
 		aspect-ratio: 1;
 		border-radius: 100%;
 		mix-blend-mode: screen;
-		box-shadow: inset 0 0 4px black;
+		background: var(--circle-color);
+		box-shadow: 0 0 50px var(--circle-color);
+		filter: blur(5px);
 
 		&.red {
-			background: rgb(from var(--color) r 0 0);
+			--circle-color: rgb(from var(--color) r 0 0);
 			transform: translateY(calc(var(--end-offset)));
 		}
 
 		&.green {
-			background: rgb(from var(--color) 0 g 0);
+			--circle-color: rgb(from var(--color) 0 g 0);
 			transform: translateX(calc(-1 * var(--end-offset)));
 		}
 
 		&.blue {
-			background: rgb(from var(--color) 0 0 b);
+			--circle-color: rgb(from var(--color) 0 0 b);
 			transform: translateY(calc(-1 * var(--end-offset)));
 		}
 	}

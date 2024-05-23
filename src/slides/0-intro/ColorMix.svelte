@@ -95,10 +95,14 @@
 		box-shadow: inset 0 0 4px black;
 		mix-blend-mode: screen;
 		transition: transform var(--animation-duration) var(--ease-in-out);
+		background: var(--circle-color);
+		box-shadow: 0 0 60px var(--circle-color);
+		filter: blur(5px);
 	}
 
 	.red {
-		background: rgb(from var(--color) r 0 0);
+		--circle-color: rgb(from var(--color) r 0 0);
+
 		transform: translateY(var(--start-offset));
 
 		.circles.fragment:global(.visible) & {
@@ -107,7 +111,7 @@
 	}
 
 	.green {
-		background: rgb(from var(--color) 0 g 0);
+		--circle-color: rgb(from var(--color) 0 g 0);
 		transform: rotate(120deg) translateY(var(--start-offset));
 
 		.circles.fragment:global(.visible) & {
@@ -116,7 +120,7 @@
 	}
 
 	.blue {
-		background: rgb(from var(--color) 0 0 b);
+		--circle-color: rgb(from var(--color) 0 0 b);
 		transform: rotate(-120deg) translateY(var(--start-offset));
 
 		.circles.fragment:global(.visible) & {

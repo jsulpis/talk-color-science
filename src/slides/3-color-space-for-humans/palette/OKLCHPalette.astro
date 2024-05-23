@@ -16,14 +16,17 @@ const lightnesss = [95, 85, 70, 55, 40, 25, 16];
 	</thead>
 	{
 		chromas.map((chroma, i) => (
-			<tr>
+			<tr
+				class={i === 3 ? "rectangle fragment custom" : ""}
+				data-fragment-index="1"
+			>
 				<th class="value">{lightnesss[i]}</th>
 				<th class="value">{chroma}</th>
 				{hues.map((hue) => (
 					<td
 						style={`background: oklch(${lightnesss[i]}% ${chroma} ${hue});color:${i < 3 ? "black" : "white"}`}
 					>
-						<span class="fragment" data-fragment-index="1">
+						<span class="fragment" data-fragment-index="2">
 							Aa
 						</span>
 					</td>
@@ -52,6 +55,19 @@ const lightnesss = [95, 85, 70, 55, 40, 25, 16];
 		td {
 			width: 3dvw;
 			aspect-ratio: 5;
+		}
+		tr {
+			position: relative;
+		}
+		.rectangle::after {
+			content: "";
+			position: absolute;
+			inset: -6px 0px -6px -5px;
+			display: inline-flex;
+			border-radius: 16px;
+		}
+		.rectangle.visible::after {
+			border: 5px solid rgb(255, 255, 255);
 		}
 	}
 </style>

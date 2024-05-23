@@ -16,14 +16,17 @@ const saturations = [80, 85, 90, 90, 90, 85, 80];
 	</thead>
 	{
 		saturations.map((saturation, i) => (
-			<tr>
+			<tr
+				class={i === 3 ? "rectangle fragment custom" : ""}
+				data-fragment-index="1"
+			>
 				<th class="value">{lightnesss[i]}</th>
 				<th class="value">{saturation}</th>
 				{hues.map((hue) => (
 					<td
 						style={`background: hsl(${hue}deg, ${saturation}%, ${lightnesss[i]}%);color:${i < 3 ? "black" : "white"}`}
 					>
-						<span class="fragment" data-fragment-index="1">
+						<span class="fragment" data-fragment-index="2">
 							Aa
 						</span>
 					</td>
@@ -52,6 +55,19 @@ const saturations = [80, 85, 90, 90, 90, 85, 80];
 		td {
 			width: 3dvw;
 			aspect-ratio: 5;
+		}
+		tr {
+			position: relative;
+		}
+		.rectangle::after {
+			content: "";
+			position: absolute;
+			inset: -6px 0px -6px -5px;
+			display: inline-flex;
+			border-radius: 16px;
+		}
+		.rectangle.visible::after {
+			border: 5px solid rgb(255, 255, 255);
 		}
 	}
 </style>

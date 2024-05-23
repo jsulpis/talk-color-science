@@ -39,6 +39,7 @@
 	}
 	canvas {
 		width: 30dvw;
+		margin-top: 10%;
 		aspect-ratio: 1;
 	}
 	strong {

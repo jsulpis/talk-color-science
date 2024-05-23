@@ -64,12 +64,12 @@
 		height: 100dvh;
 	}
 	canvas {
-		height: 80dvh;
+		height: 90dvh;
 		width: 100dvw;
 	}
 	.axis {
 		position: absolute;
-		top: 50%;
+		top: 56%;
 		left: 50%;
 		transform: translateX(-45%);
 		width: 70%;

@@ -179,8 +179,8 @@ float FBM(float p, float ps) {
 	float f = 0.0;
 	float tot = 0.0;
 	float a = .2;
-	for(int i = 0; i < 5; i++) {
-		f += SmoothNoise(p + uTime) * a;
+	for(int i = 0; i < 6; i++) {
+		f += SmoothNoise(p + uTime * .8) * a;
 		p *= 2.0;
 		tot += a;
 		a *= ps;
@@ -194,8 +194,8 @@ float SPD_BlackBody(float w, float t) {
 }
 
 float SPD_Noise(float w) {
-	float n = FBM((w) * 0.005, 0.5);
-	return pow(n, 3.) * 40.;
+	float n = FBM((w - 150.) * 0.005, 0.5);
+	return pow(n, 3.) * 25.;
 }
 
 float SPD(float l_nm) {

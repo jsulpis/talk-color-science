@@ -32,27 +32,27 @@
 		<strong>@jsulpis</strong>
 		<div class="icons">
 			<a href="https://github.com/jsulpis" target="_blank">
-				<img src={github.src} alt="github" />
+				<img data-src={github.src} alt="github" />
 			</a>
 			<a href="https://twitter.com/jsulpis" target="_blank">
-				<img src={twitter.src} alt="X" />
+				<img data-src={twitter.src} alt="X" />
 			</a>
 			<a href="https://bsky.app/profile/jsulpis.bsky.social" target="_blank">
-				<img src={bluesky.src} alt="Bluesky" />
+				<img data-src={bluesky.src} alt="Bluesky" />
 			</a>
 			<a href="https://mastodon.social/@jsulpis" target="_blank">
-				<img src={mastodon.src} alt="Mastodon" />
+				<img data-src={mastodon.src} alt="Mastodon" />
 			</a>
 			<a href="https://codesandbox.io/u/jsulpis" target="_blank">
-				<img src={codesandbox.src} alt="codesandbox" />
+				<img data-src={codesandbox.src} alt="codesandbox" />
 			</a>
 			<a href="https://www.shadertoy.com/user/jsulpis" target="_blank">
-				<img src={shadertoy.src} alt="shadertoy" />
+				<img data-src={shadertoy.src} alt="shadertoy" />
 			</a>
 		</div>
 	</div>
 
-	<img src={qrFeedback.src} alt="qr code for feedback" class="qr" />
+	<img data-src={qrFeedback.src} alt="qr code for feedback" class="qr" />
 
 	<div class="color-spaces">
 		<canvas bind:this={canvasRgb} />

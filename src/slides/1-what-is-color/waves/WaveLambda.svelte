@@ -1,15 +1,6 @@
 <script lang="ts">
-	import { onMount } from "svelte";
-	import { useGlslCanvas } from "../../../webgl/renderer";
-	import fragment from "./wave.frag";
 	import Arrow from "../../../components/Arrow.svelte";
 	import MonochromaticWaveCanvas from "./MonochromaticWaveCanvas.svelte";
-
-	let canvas: HTMLCanvasElement;
-
-	onMount(() => {
-		useGlslCanvas({ canvas, fragment });
-	});
 </script>
 
 <div class="container">

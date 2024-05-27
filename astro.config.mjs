@@ -1,5 +1,4 @@
 import { defineConfig } from "astro/config";
-import topLevelAwait from "vite-plugin-top-level-await";
 import glsl from "vite-plugin-glsl";
 import svelte from "@astrojs/svelte";
 
@@ -9,6 +8,6 @@ export default defineConfig({
 	base: "/talk-color-science",
 	integrations: [svelte()],
 	vite: {
-		plugins: [glsl(), topLevelAwait()],
+		plugins: [glsl()],
 	},
 });

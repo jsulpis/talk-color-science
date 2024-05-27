@@ -1,21 +1,13 @@
-import {
-	WebGLRenderer,
-	PerspectiveCamera,
-	Material,
-	Geometry,
-	Mesh,
-	type MaterialOptions,
-} from "four";
 import defaultVertexShader from "./shaders/vertex.glsl";
 import fragmentHeader from "./shaders/fragment.header.glsl";
+import { Geometry, Mesh, Program, Renderer, type ProgramOptions } from "ogl";
 
 function flatten<T>(array: T[][]): T[] {
 	return array.reduce((acc, val) => acc.concat(val), []);
 }
 
-type Args = Omit<MaterialOptions, "vertex" | "compute"> & {
+type Args = Partial<ProgramOptions> & {
 	canvas: HTMLCanvasElement;
-	vertex?: string;
 	animate?: boolean;
 	colorSpace?: "srgb" | "p3";
 };
@@ -24,41 +16,24 @@ export function useGlslCanvas<CustomUniforms>({
 	canvas,
 	animate,
 	colorSpace,
-	...materialOptions
+	...programOptions
 }: Args) {
-	const renderer = new WebGLRenderer({ canvas });
+	const renderer = new Renderer({
+		canvas,
+		alpha: true,
+		dpr: Math.min(window.devicePixelRatio, 2),
+		width: canvas.clientWidth,
+		height: canvas.clientHeight,
+	});
+	removeInlineStyles(canvas);
 
-	const glP3 = renderer.gl;
+	const gl = renderer.gl;
 
-	if (colorSpace === "p3" && `drawingBufferColorSpace` in glP3) {
-		glP3.drawingBufferColorSpace = "display-p3";
-		glP3.clearColor(1, 0, 0, 1);
-		glP3.clear(glP3.COLOR_BUFFER_BIT);
+	if (colorSpace === "p3" && `drawingBufferColorSpace` in gl) {
+		gl.drawingBufferColorSpace = "display-p3";
 	}
 
-	const uniformsParams = {
-		uTime: 100,
-		...materialOptions?.uniforms,
-		uQuality: Math.min(window.devicePixelRatio, 2),
-		uResolution: [canvas.clientWidth, canvas.clientHeight],
-	};
-
-	renderer.setSize(
-		canvas.clientWidth * uniformsParams.uQuality,
-		canvas.clientHeight * uniformsParams.uQuality
-	);
-	const camera = new PerspectiveCamera();
-
-	const processedMaterialOptions: Omit<MaterialOptions, "compute"> = {
-		vertex: defaultVertexShader,
-		...materialOptions,
-		fragment: fragmentHeader + "\n" + materialOptions.fragment,
-		uniforms: uniformsParams,
-	};
-
-	const material = new Material(processedMaterialOptions);
-
-	const geometry = new Geometry({
+	const geometry = new Geometry(gl, {
 		position: {
 			size: 3,
 			data: new Float32Array(
@@ -74,12 +49,24 @@ export function useGlslCanvas<CustomUniforms>({
 		},
 	});
 
-	const mesh = new Mesh(geometry, material);
+	const program = new Program(gl, {
+		vertex: defaultVertexShader,
+		...programOptions,
+		fragment: fragmentHeader + "\n" + programOptions.fragment,
+		uniforms: {
+			uTime: { value: 100 },
+			uQuality: { value: renderer.dpr },
+			uResolution: { value: [canvas.clientWidth, canvas.clientHeight] },
+			...programOptions?.uniforms,
+		},
+	});
 
-	renderer.render(mesh, camera);
+	const scene = new Mesh(gl, { geometry, program });
+
+	renderer.render({ scene });
 
 	const isPlaying = { value: false };
-	const uniforms = mesh.material.uniforms;
+	const uniforms = program.uniforms;
 
 	let rafHandle: number | null;
 	const parentSection = canvas.closest("section:not(.stack)");
@@ -104,8 +91,8 @@ export function useGlslCanvas<CustomUniforms>({
 			return;
 		}
 
-		(uniforms.uTime as number) += 0.02 * deltaTimeMultiplier;
-		renderer.render(mesh, camera);
+		uniforms.uTime.value += 0.02 * deltaTimeMultiplier;
+		renderer.render({ scene });
 	}
 
 	function pause() {
@@ -125,29 +112,30 @@ export function useGlslCanvas<CustomUniforms>({
 	}
 
 	window.addEventListener("resize", () => {
-		const quality = uniforms.uQuality as number;
+		renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+		removeInlineStyles(canvas);
 
-		renderer.setSize(
-			canvas.clientWidth * quality,
-			canvas.clientHeight * quality
-		);
+		uniforms.uResolution.value = [canvas.clientWidth, canvas.clientHeight];
 
-		mesh.material.uniforms.uResolution = [
-			canvas.clientWidth,
-			canvas.clientHeight,
-		];
-
-		renderer.render(mesh, camera);
+		renderer.render({ scene: scene });
 	});
 
 	canvas.classList.add("loaded");
 
 	return {
 		renderer,
-		pause,
+		uniforms,
 		play,
+		pause,
 		isPlaying,
-		uniforms: mesh.material.uniforms as CustomUniforms,
 		canvas,
 	};
+}
+
+/**
+ * Remove inline style set by ogl
+ */
+function removeInlineStyles(canvas: HTMLCanvasElement) {
+	canvas.style.width = "";
+	canvas.style.height = "";
 }

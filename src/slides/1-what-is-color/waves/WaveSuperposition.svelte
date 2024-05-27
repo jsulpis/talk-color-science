@@ -21,7 +21,7 @@
 
 		:global(canvas) {
 			width: min(60%, 800px);
-			margin-block: max(-30dvh, -230px);
+			margin-block: max(-20dvw, -230px);
 		}
 	}
 	span {

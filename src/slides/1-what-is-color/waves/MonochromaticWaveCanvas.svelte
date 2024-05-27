@@ -15,10 +15,10 @@
 			canvas,
 			fragment,
 			uniforms: {
-				uFrequency: frequency,
-				uFrequency2: frequency2,
-				uAmplitude: amplitude,
-				uAmplitude2: amplitude2,
+				uFrequency: { value: frequency },
+				uFrequency2: { value: frequency2 },
+				uAmplitude: { value: amplitude },
+				uAmplitude2: { value: amplitude2 },
 			},
 		});
 	});

@@ -8,6 +8,8 @@ import cielch from "./assets/cielch-visible.webm";
 import srgb from "./assets/srgb.mov";
 import palette from "./assets/palette.jpg";
 import gradients from "./assets/gradient.avif";
+import lab from "./assets/lab.jpg";
+import lch from "./assets/lch.jpg";
 import Gradients from "./gradients/Gradients.astro";
 import HSLPalette from "./palette/HSLPalette.astro";
 import OKLCHPalette from "./palette/OKLCHPalette.astro";
@@ -24,7 +26,12 @@ import SectionTitle from "../../components/SectionTitle.astro";
 </Slide>
 
 <Slide title="CIE LAB 1976">
-	<div is:raw style="font-size: 1.5rem;">
+	<img data-src={lab.src} alt="" style="height: 70dvmin; margin-top: -2%">
+	<!--
+		I use an image instead of the math plugin because it destroys performance
+		see https://x.com/jsulpis/status/1795349399746338962
+	-->
+	<!-- <div is:raw style="font-size: 1.5rem;">
 		\[\begin{aligned}
 			L* &= 116f(\frac{Y}{Y_n}) - 16 \\
 			a* &= 500(f(\frac{X}{X_n}) - f(\frac{Y}{Y_n})) \\
@@ -37,7 +44,7 @@ import SectionTitle from "../../components/SectionTitle.astro";
   		\delta &= \tfrac{6}{29} \\ \\
 			(X_n, Y_n, Z_n)& \text{ coordonnées du blanc de référence}
 		\end{aligned} \]
-	</div>
+	</div> -->
 </Slide>
 
 <VideoSlide
@@ -48,12 +55,13 @@ import SectionTitle from "../../components/SectionTitle.astro";
 />
 
 <Slide title="CIE LCH 1976">
-	<div is:raw style="font-size: 2rem; margin-top: 3em; line-height: 2em;">
+	<img data-src={lch.src} alt="" style="height: 35dvmin">
+	<!-- <div is:raw style="font-size: 2rem; margin-top: 3em; line-height: 2em;">
 		\[\begin{aligned}
 			C^* &= \sqrt{a^{*2} + b^{*2}} \\
 			h &= \arctan \frac{b^*}{a^*}
 		\end{aligned} \]
-	</div>
+	</div> -->
 </Slide>
 
 <VideoSlide

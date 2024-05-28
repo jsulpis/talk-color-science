@@ -13,6 +13,7 @@ import CodeBlock from "../../components/CodeBlock.astro";
 import PartTitle from "../../components/PartTitle.astro";
 import SectionTitle from "../../components/SectionTitle.astro";
 import questionBackground from "../0-intro/assets/question-background.jpg";
+import cssBackground from "./assets/cssBackground.jpg";
 import CellsBrain from "./CellsBrain.astro";
 ---
 
@@ -69,11 +70,15 @@ import CellsBrain from "./CellsBrain.astro";
 </SectionTitle>
 
 <Slide>
-	<CodeBlock lang="css">
+	<img data-src={cssBackground.src} alt="" style="height: 40dvmin" />
+	<!--
+		I use an image instead of the highlight.js plugin because it's super heavy
+		see https://x.com/jsulpis/status/1795536457819431408
+	-->
+	<!-- <CodeBlock lang="css">
 		{
 			`body {
 	background-color: ???;
 }`
-		}
-	</CodeBlock>
+		} -->
 </Slide>

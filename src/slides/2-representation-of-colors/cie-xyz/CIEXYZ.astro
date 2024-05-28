@@ -25,7 +25,10 @@ import CIEXYZCurves from "./CIEXYZCurves.svelte";
 </Slide>
 
 <Slide title="CIE 1931 XYZ">
-	<img data-src={xyz.src} alt="">
+	<img
+		data-src={xyz.src}
+		alt="Math to convert a color from CIE RGB to CIE XYZ"
+	/>
 	<!--
 		I use an image instead of the math plugin because it destroys performance
 		see https://x.com/jsulpis/status/1795349399746338962
@@ -63,10 +66,11 @@ import CIEXYZCurves from "./CIEXYZCurves.svelte";
 	title="CIE 1931 XYZ"
 	src={xyzVisible}
 	link="https://commons.wikimedia.org/wiki/File:Visible_gamut_within_CIEXYZ_color_space_D65_whitepoint_mesh.webm"
-	authors="Michael Horvath, Christoph Lipka" />
+	authors="Michael Horvath, Christoph Lipka"
+/>
 
 <Slide title="CIE 1931 XYZ">
-	<img data-src={xy.src} alt="">
+	<img data-src={xy.src} alt="" />
 	<!-- <div is:raw>
 		\[\begin{aligned}\\
 			Y &= Y \\
@@ -80,17 +84,22 @@ import CIEXYZCurves from "./CIEXYZCurves.svelte";
 	title="CIE 1931 XYZ"
 	src={xyVisible}
 	link="https://commons.wikimedia.org/w/index.php?title=File:Visible_gamut_within_CIExyY_color_space_D65_whitepoint_mesh.webm"
-	authors="Michael Horvath, Christoph Lipka" />
+	authors="Michael Horvath, Christoph Lipka"
+/>
 
 <Slide title="Diagramme de chromaticité CIE 1931 xy">
 	<div class="r-stack">
-		{[
-			xyDiagram.src,
-			xyDiagramLambda.src,
-			xyColorMix.src,
-			xyCieRgb.src,
-			xyCieRgbWithLabel.src,
-		].map((src, i) => <img class={`diagram${i > 0 ? ' fragment' : ''}`} data-src={src} />)}
+		{
+			[
+				xyDiagram.src,
+				xyDiagramLambda.src,
+				xyColorMix.src,
+				xyCieRgb.src,
+				xyCieRgbWithLabel.src,
+			].map((src, i) => (
+				<img class={`diagram${i > 0 ? " fragment" : ""}`} data-src={src} />
+			))
+		}
 	</div>
 </Slide>
 

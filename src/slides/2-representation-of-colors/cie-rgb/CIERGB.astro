@@ -1,11 +1,11 @@
 ---
 import Slide from "../../../components/Slide.astro";
 import RGBExperiment from "../rgb-experiment/RGBExperiment.svelte";
-import chaplin from "../assets/charlie-chaplin.jpg"
-import movieColor from "../assets/movie-color.jpg"
-import movieSound from "../assets/movie-sound.jpg"
-import wright from "../assets/wright.jpg"
-import guild from "../assets/guild.jpg"
+import chaplin from "../assets/charlie-chaplin.jpg";
+import movieColor from "../assets/movie-color.jpg";
+import movieSound from "../assets/movie-sound.jpg";
+import wright from "../assets/wright.jpg";
+import guild from "../assets/guild.jpg";
 import CIERGBCurves from "./CIERGBCurves.svelte";
 import CIERGBNotations from "./CIERGBNotations.astro";
 ---
@@ -13,12 +13,16 @@ import CIERGBNotations from "./CIERGBNotations.astro";
 <Slide title="1920's">
 	<div class="fragment">
 		<p>Charlie Chaplin</p>
-		<figure >
-			<img data-src={chaplin.src} aria-hidden/>
-			<a href="https://commons.wikimedia.org/wiki/File:Chaplin_the_gold_rush_boot.jpg">
-				<img data-src={chaplin.src} alt="Charlie Chaplin"/>
+		<figure>
+			<img data-src={chaplin.src} aria-hidden />
+			<a
+				href="https://commons.wikimedia.org/wiki/File:Chaplin_the_gold_rush_boot.jpg"
+			>
+				<img data-src={chaplin.src} alt="Charlie Chaplin" />
 			</a>
-			<figcaption>Charlot mangeant sa chaussure dans La Ruée vers l'or (1925)</figcaption>
+			<figcaption>
+				Charlot mangeant sa chaussure dans La Ruée vers l'or (1925)
+			</figcaption>
 		</figure>
 	</div>
 </Slide>
@@ -26,9 +30,11 @@ import CIERGBNotations from "./CIERGBNotations.astro";
 <Slide title="1920's">
 	<p>Cinéma sonore</p>
 	<figure>
-		<img data-src={movieSound.src} aria-hidden/>
-		<a href="https://commons.wikimedia.org/wiki/File:Ray_Vaughan_filming_at_a_Movietone_event_in_Circular_Quay,_Sydney_(8618628686).jpg">
-			<img data-src={movieSound.src}/>
+		<img data-src={movieSound.src} aria-hidden />
+		<a
+			href="https://commons.wikimedia.org/wiki/File:Ray_Vaughan_filming_at_a_Movietone_event_in_Circular_Quay,_Sydney_(8618628686).jpg"
+		>
+			<img data-src={movieSound.src} />
 		</a>
 		<figcaption>Un cadreur et un preneur de son</figcaption>
 	</figure>
@@ -39,7 +45,7 @@ import CIERGBNotations from "./CIERGBNotations.astro";
 	<figure>
 		<img data-src={movieColor.src} aria-hidden />
 		<a href="https://www.cineclubdecaen.com/analyse/couleur.htm">
-			<img data-src={movieColor.src}/>
+			<img data-src={movieColor.src} />
 		</a>
 		<figcaption>Couleurs par le procédé Keller-Dorian Berthon</figcaption>
 	</figure>
@@ -55,7 +61,7 @@ import CIERGBNotations from "./CIERGBNotations.astro";
 		<figure>
 			<figcaption>John Guild</figcaption>
 			<img data-src={guild.src} aria-hidden />
-			<img data-src={guild.src}/>
+			<img data-src={guild.src} />
 		</figure>
 	</div>
 </Slide>
@@ -72,7 +78,6 @@ import CIERGBNotations from "./CIERGBNotations.astro";
 	<CIERGBNotations />
 </Slide>
 
-
 <style lang="scss">
 	.wright-guild {
 		display: flex;
@@ -82,7 +87,7 @@ import CIERGBNotations from "./CIERGBNotations.astro";
 
 		figcaption {
 			font-size: var(--r-main-font-size);
-			margin-bottom: .5em;
+			margin-bottom: 0.5em;
 		}
 	}
 	figure {
@@ -97,8 +102,8 @@ import CIERGBNotations from "./CIERGBNotations.astro";
 			&[aria-hidden] {
 				position: absolute;
 				z-index: -1;
-				transform: scale(1, .9);
-				opacity: .7;
+				transform: scale(1, 0.9);
+				opacity: 0.7;
 				filter: blur(100px);
 			}
 		}

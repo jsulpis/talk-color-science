@@ -5,6 +5,7 @@ import xyp3 from "../assets/xyp3.jpg";
 import srgbP3Mismatch from "../assets/srgb-p3-mismatch.png";
 import figmaPreferences from "../assets/figma-preferences.jpg";
 import srgbIssue from "../assets/srgb-issue.png";
+import cssP3 from "../assets/cssP3.jpg";
 import Slide from "../../../components/Slide.astro";
 import CodeBlock from "../../../components/CodeBlock.astro";
 import Luminosity from "./Luminosity.svelte";
@@ -21,7 +22,16 @@ import Luminance from "./Luminance.svelte";
 </Slide>
 
 <Slide title="P3">
-	<CodeBlock lang="css">
+	<img
+		data-src={cssP3.src}
+		alt="CSS code to display a color in P3 space"
+		style="height: 60dvmin"
+	/>
+	<!--
+		I use an image instead of the highlight.js plugin because it's super heavy
+		see https://x.com/jsulpis/status/1795536457819431408
+	-->
+	<!-- <CodeBlock lang="css">
 		{
 			`body {
 	/* sRGB */
@@ -35,7 +45,7 @@ import Luminance from "./Luminance.svelte";
   }
 }`
 		}
-	</CodeBlock>
+	</CodeBlock> -->
 </Slide>
 
 <Slide data-background-image={srgbP3Mismatch.src} />

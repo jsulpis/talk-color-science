@@ -5,7 +5,7 @@
 	import shadertoy from "./assets/shadertoy.png";
 	import bluesky from "./assets/bluesky.svg";
 	import mastodon from "./assets/mastodon.svg";
-	import qrFeedback from "./assets/qr-feedback.png";
+	import qrFeedback from "./assets/url_bento.me.png";
 	import { onMount } from "svelte";
 	import fragmentRgb from "../2-representation-of-colors/srgb/rgb-3d.frag";
 	import fragmentHsl from "../2-representation-of-colors/srgb/hsl-3d.frag";
@@ -26,9 +26,7 @@
 
 <div class="container">
 	<div class="me">
-		<a class="github" href="https://github.com/jsulpis/talk-color-science">
-			https://github.com/jsulpis/talk-color-science
-		</a>
+		<h1>Julien Sulpis</h1>
 		<strong>@jsulpis</strong>
 		<div class="icons">
 			<a href="https://github.com/jsulpis" target="_blank">
@@ -82,7 +80,14 @@
 	}
 	.me {
 		text-align: center;
-		font-size: 3rem;
+
+		h1 {
+			font-size: 3rem;
+			margin-bottom: 0;
+		}
+		strong {
+			font-size: 2rem;
+		}
 
 		.icons {
 			display: flex;

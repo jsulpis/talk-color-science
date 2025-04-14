@@ -1,10 +1,15 @@
 ---
 import Slide from "../../components/Slide.astro";
 import introBackground from "./assets/intro-background.jpg";
+import devoxxLogo from "./assets/devoxx-logo.webp";
 ---
 
 <Slide data-background-image={introBackground.src} style="top: 0;">
 	<div class="content">
+		<span class="event">
+			<img data-src={devoxxLogo.src} alt="Devoxx Logo" />
+			<span class="date">17/04/2025</span>
+		</span>
 		<div class="title">
 			<h1>
 				Savez-vous <i>vraiment</i> ce qu'est la <strong>couleur</strong> ?
@@ -14,18 +19,17 @@ import introBackground from "./assets/intro-background.jpg";
 
 		<p class="speaker">
 			<span class="name">Julien Sulpis</span>
-			<span class="event">LyonJS #100</span>
-			<span class="date">21/02/2025</span>
 		</p>
 	</div>
 </Slide>
 
 <style lang="scss">
 	.content {
-		height: min(60dvh, 500px);
+		height: min(70dvh, 600px);
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+		margin-top: -10%;
 	}
 	p {
 		margin: 0;
@@ -52,8 +56,16 @@ import introBackground from "./assets/intro-background.jpg";
 		font-size: 1em;
 		font-weight: bold;
 	}
-	.event,
-	.date {
-		font-size: 0.7em;
+	.event {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+		font-size: 0.9em;
+
+		img {
+			height: 12svh;
+			width: auto;
+		}
 	}
 </style>

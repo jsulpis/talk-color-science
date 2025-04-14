@@ -10,6 +10,7 @@
 	import fragmentRgb from "../2-representation-of-colors/srgb/rgb-3d.frag";
 	import fragmentHsl from "../2-representation-of-colors/srgb/hsl-3d.frag";
 	import fragmentHsv from "../2-representation-of-colors/srgb/hsv-3d.frag";
+	import zenikaLogo from "./assets/zenika-logo.png";
 	import srgb from "../3-color-space-for-humans/assets/srgb.mov";
 	import { useGlslCanvas } from "../../webgl/renderer";
 
@@ -32,11 +33,11 @@
 			<a href="https://github.com/jsulpis" target="_blank">
 				<img data-src={github.src} alt="github" />
 			</a>
-			<a href="https://twitter.com/jsulpis" target="_blank">
-				<img data-src={twitter.src} alt="X" />
-			</a>
 			<a href="https://bsky.app/profile/jsulpis.bsky.social" target="_blank">
 				<img data-src={bluesky.src} alt="Bluesky" />
+			</a>
+			<a href="https://twitter.com/jsulpis" target="_blank">
+				<img data-src={twitter.src} alt="X" />
 			</a>
 			<a href="https://mastodon.social/@jsulpis" target="_blank">
 				<img data-src={mastodon.src} alt="Mastodon" />
@@ -48,9 +49,14 @@
 				<img data-src={shadertoy.src} alt="shadertoy" />
 			</a>
 		</div>
+		<a href="https://zenika.com">
+			<img class="zenika" data-src={zenikaLogo.src} alt="Zenika Logo" />
+		</a>
 	</div>
 
-	<img data-src={qrFeedback.src} alt="qr code for feedback" class="qr" />
+	<a href="https://bento.me/jsulpis-talk-color-science">
+		<img data-src={qrFeedback.src} alt="qr code for feedback" class="qr" />
+	</a>
 
 	<div class="color-spaces">
 		<canvas bind:this={canvasRgb} />
@@ -80,13 +86,14 @@
 	}
 	.me {
 		text-align: center;
+		padding-top: 5%;
 
 		h1 {
-			font-size: 3rem;
+			font-size: 3.5rem;
 			margin-bottom: 0;
 		}
 		strong {
-			font-size: 2rem;
+			font-size: 2.5rem;
 		}
 
 		.icons {
@@ -96,9 +103,13 @@
 			gap: 0.5em;
 		}
 		img {
-			height: 1em;
+			height: 0.8em;
 			object-fit: contain;
 		}
+	}
+	img.zenika {
+		height: 2em;
+		margin-top: 1em;
 	}
 	.qr {
 		width: min(40dvh, 100%);
@@ -127,6 +138,7 @@
 
 		&::before {
 			content: "";
+			pointer-events: none;
 			position: absolute;
 			width: 150%;
 			height: 250%;

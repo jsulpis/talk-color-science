@@ -10,7 +10,6 @@
 	import fragmentRgb from "../2-representation-of-colors/srgb/rgb-3d.frag";
 	import fragmentHsl from "../2-representation-of-colors/srgb/hsl-3d.frag";
 	import fragmentHsv from "../2-representation-of-colors/srgb/hsv-3d.frag";
-	import zenikaLogo from "./assets/zenika-logo.png";
 	import srgb from "../3-color-space-for-humans/assets/srgb.mov";
 	import { useGlslCanvas } from "../../webgl/renderer";
 
@@ -49,9 +48,6 @@
 				<img data-src={shadertoy.src} alt="shadertoy" />
 			</a>
 		</div>
-		<a href="https://zenika.com">
-			<img class="zenika" data-src={zenikaLogo.src} alt="Zenika Logo" />
-		</a>
 	</div>
 
 	<a href="https://bento.me/jsulpis-talk-color-science">
@@ -87,6 +83,7 @@
 	.me {
 		text-align: center;
 		padding-top: 5%;
+		transform: scale(1.2);
 
 		h1 {
 			font-size: 3.5rem;
@@ -108,8 +105,9 @@
 		}
 	}
 	img.zenika {
-		height: 2em;
-		margin-top: 1em;
+		height: 1.5em;
+		margin-top: 2em;
+		margin-bottom: -1em;
 	}
 	.qr {
 		width: min(40dvh, 100%);

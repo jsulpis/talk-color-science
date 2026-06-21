@@ -5,12 +5,12 @@
 	import shadertoy from "./assets/shadertoy.png";
 	import bluesky from "./assets/bluesky.svg";
 	import mastodon from "./assets/mastodon.svg";
-	import qrFeedback from "./assets/url_bento.me.png";
+	import qrFeedback from "./assets/qr-code-sunny-tech.svg";
 	import { onMount } from "svelte";
 	import fragmentRgb from "../2-representation-of-colors/srgb/rgb-3d.frag";
 	import fragmentHsl from "../2-representation-of-colors/srgb/hsl-3d.frag";
 	import fragmentHsv from "../2-representation-of-colors/srgb/hsv-3d.frag";
-	import zenikaLogo from "./assets/zenika-logo.png";
+	import scalewayLogo from "./assets/Scaleway-Logo-White.svg";
 	import srgb from "../3-color-space-for-humans/assets/srgb.mov";
 	import { useGlslCanvas } from "../../webgl/renderer";
 
@@ -49,12 +49,15 @@
 				<img data-src={shadertoy.src} alt="shadertoy" />
 			</a>
 		</div>
-		<a href="https://zenika.com">
-			<img class="zenika" data-src={zenikaLogo.src} alt="Zenika Logo" />
+		<a href="https://scaleway.com">
+			<img class="scaleway" data-src={scalewayLogo.src} alt="scaleway Logo" />
 		</a>
 	</div>
 
-	<a href="https://bento.me/jsulpis-talk-color-science">
+	<a
+		href="https://www.jsulpis.dev/fr/conferences/color-science"
+		class="qr-container"
+	>
 		<img data-src={qrFeedback.src} alt="qr code for feedback" class="qr" />
 	</a>
 
@@ -107,17 +110,30 @@
 			object-fit: contain;
 		}
 	}
-	img.zenika {
-		height: 2em;
-		margin-top: 1em;
+	img.scaleway {
+		height: 1.75em;
+		margin-top: 1.5em;
+	}
+	a.qr-container {
+		position: relative;
+		font-size: 0;
+		display: grid;
+		place-items: center;
+
+		&::before {
+			content: "";
+			position: absolute;
+			height: 100%;
+			aspect-ratio: 1;
+			background: conic-gradient(in hsl longer hue, red, red);
+			filter: blur(30px);
+			z-index: -1;
+		}
 	}
 	.qr {
 		width: min(40dvh, 100%);
 		aspect-ratio: 1;
 		border-radius: 2%;
-		box-shadow:
-			0 0 2dvh - 1dvh red,
-			0 0 15dvh rgba(255 0 0 / 0.6);
 	}
 	.color-spaces {
 		grid-column-end: span 2;
